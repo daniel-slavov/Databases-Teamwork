@@ -1,0 +1,21 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase", "MoviesDatabase\MoviesDatabase.csproj", "{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Debug|x86.ActiveCfg = Debug|x86
+		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Debug|x86.Build.0 = Debug|x86
+		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Release|x86.ActiveCfg = Release|x86
+		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.VersionControlPolicy = $1
+	EndGlobalSection
+EndGlobal

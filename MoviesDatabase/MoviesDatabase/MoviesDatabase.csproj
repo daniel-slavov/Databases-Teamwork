@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MoviesDatabase</RootNamespace>
+    <AssemblyName>MoviesDatabase</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Factory">
+      <HintPath>..\packages\Ninject.Extensions.Factory.3.2.1.0\lib\net45-full\Ninject.Extensions.Factory.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Startup.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ConsoleWriter.cs" />
+    <Compile Include="Providers\ConsoleReader.cs" />
+    <Compile Include="Providers\Contracts\IConsoleReader.cs" />
+    <Compile Include="Providers\Contracts\IConsoleWriter.cs" />
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\DeleteCommand.cs" />
+    <Compile Include="Core\Contracts\IEngine.cs" />
+    <Compile Include="MoviesDatabaseModule.cs" />
+    <Compile Include="Commands\UpdateCommand.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Providers\CommandParser.cs" />
+    <Compile Include="Providers\Contracts\ICommandParser.cs" />
+    <Compile Include="Providers\DatabaseProvider.cs" />
+    <Compile Include="Providers\Contracts\IDatabaseProvider.cs" />
+    <Compile Include="Core\Contracts\ICommandFactory.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Providers\" />
+    <Folder Include="Providers\Contracts\" />
+    <Folder Include="Core\" />
+    <Folder Include="Core\Contracts\" />
+    <Folder Include="Commands\Contracts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
