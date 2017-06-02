@@ -9,20 +9,19 @@ namespace MoviesDatabase.Core
     public class Engine : IEngine
     {
         private const string TerminationCommand = "Exit";
-        private const string NullProvidersExceptionMessage = "cannot be null.";
 
         private readonly IConsoleReader reader;
         private readonly IConsoleWriter writer;
         private readonly ICommandParser parser;
-        private readonly IDatabaseProvider dbProvider;
+        //private readonly IDatabaseProvider dbProvider;
 
         public Engine(IConsoleReader consoleReader, IConsoleWriter consoleWriter, ICommandParser commandParser, IDatabaseProvider databaseProvider)
         {
-            this.reader = consoleReader ?? throw new ArgumentNullException($"Reader {NullProvidersExceptionMessage}");
-            this.writer = consoleWriter ?? throw new ArgumentNullException($"Writer {NullProvidersExceptionMessage}");
-            this.parser = commandParser ?? throw new ArgumentNullException($"Parser {NullProvidersExceptionMessage}");
-            this.dbProvider = databaseProvider ?? throw new ArgumentNullException($"Databse provider {NullProvidersExceptionMessage}");
-        }
+            this.reader = consoleReader ?? throw new ArgumentNullException("Reader cannot be null.");
+            this.writer = consoleWriter ?? throw new ArgumentNullException("Writer cannot be null.");
+            this.parser = commandParser ?? throw new ArgumentNullException("Parser cannot be null.");
+			//this.dbProvider = databaseProvider ?? throw new ArgumentNullException("Databse provider cannot be null.");
+		}
 
         public void Start()
         {

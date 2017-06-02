@@ -19,7 +19,7 @@ namespace MoviesDatabase.Providers
 
 		public ICommand ParseCommand(string fullCommand)
 		{
-			string commandName = fullCommand.Split(' ')[0];
+			string commandName = fullCommand.Split(' ')[0] + "Command";
             TypeInfo commandTypeInfo = this.FindCommand(commandName);
             ICommand command = this.commandFactory.GetCommand(commandTypeInfo);
 
