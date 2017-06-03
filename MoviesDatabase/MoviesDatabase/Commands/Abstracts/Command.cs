@@ -11,7 +11,12 @@ namespace MoviesDatabase.CLI.Commands.Abstracts
 
 	    public Command(IDatabaseProvider databaseProvider)
 	    {
-		    //this.dbProvider = databaseProvider ?? throw new ArgumentNullException("Database provider cannnot be null.");
+            if (databaseProvider == null)
+            {
+                throw new ArgumentNullException("Database provider cannnot be null.");
+            }
+
+            this.dbProvider = databaseProvider;
 	    }
 
         public abstract string Execute(IList<string> parameters);
