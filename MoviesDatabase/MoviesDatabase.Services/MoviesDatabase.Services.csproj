@@ -54,6 +54,16 @@
   <ItemGroup>
     <Folder Include="Contracts\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">
+      <Project>{A3AAA882-1B28-4ABB-8586-731C5D43AC3C}</Project>
+      <Name>MoviesDatabase.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.Parsers\MoviesDatabase.Parsers.csproj">
+      <Project>{29D4FFF4-1525-4601-B0FD-DEDB5D68C831}</Project>
+      <Name>MoviesDatabase.Parsers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

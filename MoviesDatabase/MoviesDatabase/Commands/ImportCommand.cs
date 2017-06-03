@@ -42,12 +42,12 @@ namespace MoviesDatabase.CLI.Commands
         {
             string format = parameters[0];
             string path = parameters[2];
-            //Type model = this.ModelParser.GetType(parameters[2]);
+            //Type model = this.ModelParser.GetType(parameters[1]);
 
             switch (format.ToLower())
             {
                 case "json":
-                    //service.CreateMovie(this.JSONParser.Parse<IModel>(path));
+                    service.CreateMovie(this.JSONParser.Parse<IModel>(path));
                     break;
 				case "xml":
                     //service.CreateMovie(this.XMLParser.Parse<IModel>(path));
