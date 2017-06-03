@@ -11,16 +11,16 @@ namespace MoviesDatabase.Data
 
         }
 
-        public DbSet<Movie> Movies;
+        public DbSet<Movie> Movies { get; set; }
 
-        public DbSet<Star> Stars;
+        public DbSet<Star> Stars { get; set; }
 
-        public DbSet<Producer> Producers;
+        public DbSet<Producer> Producers { get; set; }
 
-        public DbSet<Genre> Genres;
+        public DbSet<Genre> Genres { get; set; }
 
-        public DbSet<Studio> Studios;
+        public DbSet<Studio> Studios { get; set; }
 
-        public DbSet<Book> Books;
+        public DbSet<Book> Books { get; set; }
     }
 }
