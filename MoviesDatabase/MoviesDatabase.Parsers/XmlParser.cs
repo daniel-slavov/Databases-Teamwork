@@ -10,7 +10,7 @@ using MoviesDatabase.Parsers.Contracts;
 
 namespace MoviesDatabase.Parsers
 {
-    public class XmlParser : IXmlParser
+    public class XMLParser : IXMLParser
     {
         public List<Movie> ParseMovies(string filePath)
         {

@@ -7,7 +7,7 @@ using MoviesDatabase.Models;
 
 namespace MoviesDatabase.Parsers.Contracts
 {
-    public interface IXmlParser
+    public interface IXMLParser
     {
         List<Movie> ParseMovies(string filePath);
 
