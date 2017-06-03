@@ -4,7 +4,7 @@ using Ninject;
 
 namespace MoviesDatabase.CLI
 {
-    public class MainClass
+    public class Startup
     {
         public static void Main()
         {
