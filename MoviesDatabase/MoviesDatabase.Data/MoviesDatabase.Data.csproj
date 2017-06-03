@@ -49,6 +49,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201706031503266_Initial.cs" />
+    <Compile Include="Migrations\201706031503266_Initial.Designer.cs">
+      <DependentUpon>201706031503266_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MoviesDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,7 +62,7 @@
       <Project>{a3aaa882-1b28-4abb-8586-731c5d43ac3c}</Project>
       <Name>MoviesDatabase.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MoviesDatabase\MoviesDatabase.csproj">
+    <ProjectReference Include="..\MoviesDatabase\MoviesDatabase.CLI.csproj">
       <Project>{ea63dbd7-15b0-4cf3-a343-ad80d63d5722}</Project>
       <Name>MoviesDatabase.CLI</Name>
     </ProjectReference>
@@ -67,6 +72,11 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201706031503266_Initial.resx">
+      <DependentUpon>201706031503266_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
