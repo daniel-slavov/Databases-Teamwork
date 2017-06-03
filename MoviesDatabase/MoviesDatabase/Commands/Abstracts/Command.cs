@@ -7,16 +7,16 @@ namespace MoviesDatabase.CLI.Commands.Abstracts
 {
     public abstract class Command : ICommand
     {
-        protected readonly IDatabaseProvider dbProvider;
+        protected readonly IMovieService service;
 
-	    public Command(IDatabaseProvider databaseProvider)
+	    public Command(IMovieService service)
 	    {
-            if (databaseProvider == null)
+            if (service == null)
             {
                 throw new ArgumentNullException("Database provider cannnot be null.");
             }
 
-            this.dbProvider = databaseProvider;
+            this.service = service;
 	    }
 
         public abstract string Execute(IList<string> parameters);

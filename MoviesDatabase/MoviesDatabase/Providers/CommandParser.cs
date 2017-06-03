@@ -41,8 +41,8 @@ namespace MoviesDatabase.CLI.Providers
 
 		private TypeInfo FindCommand(string commandName)
 		{
-			var currentAssembly = this.GetType().GetTypeInfo().Assembly;
-			var commandTypeInfo = currentAssembly.DefinedTypes
+            Assembly currentAssembly = this.GetType().GetTypeInfo().Assembly;
+            TypeInfo commandTypeInfo = currentAssembly.DefinedTypes
 				.Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
 				.Where(type => type.Name.Contains(commandName))
 				.SingleOrDefault();

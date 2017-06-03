@@ -8,7 +8,7 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class AddCommand : Command
     {
-        public AddCommand(IDatabaseProvider databaseProvider) : base(databaseProvider)
+        public AddCommand(IMovieService databaseProvider) : base(databaseProvider)
         {
         }
 

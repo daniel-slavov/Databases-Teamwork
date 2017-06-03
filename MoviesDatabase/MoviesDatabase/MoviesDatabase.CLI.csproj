@@ -69,11 +69,12 @@
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Providers\CommandParser.cs" />
     <Compile Include="Providers\Contracts\ICommandParser.cs" />
-    <Compile Include="Providers\DatabaseProvider.cs" />
-    <Compile Include="Providers\Contracts\IDatabaseProvider.cs" />
     <Compile Include="Core\Contracts\ICommandFactory.cs" />
     <Compile Include="Commands\Abstracts\Command.cs" />
     <Compile Include="Commands\GenerateReportCommand.cs" />
+    <Compile Include="Commands\ImportCommand.cs" />
+    <Compile Include="Providers\ModelParser.cs" />
+    <Compile Include="Providers\Contracts\IModelParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">

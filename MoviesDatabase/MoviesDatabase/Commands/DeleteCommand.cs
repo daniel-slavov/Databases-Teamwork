@@ -4,11 +4,11 @@ using MoviesDatabase.CLI.Commands.Abstracts;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.CLI.Providers.Contracts;
 
-namespace MoviesDatabase.CLI.Commands
+namespace MoviesDatabase.CLI3.Commands
 {
     public class DeleteCommand : Command
     {
-        public DeleteCommand(IDatabaseProvider databaseProvider) : base(databaseProvider)
+        public DeleteCommand(IMovieService databaseProvider) : base(databaseProvider)
         {
         }
 

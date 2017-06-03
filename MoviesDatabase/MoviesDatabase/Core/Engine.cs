@@ -13,7 +13,6 @@ namespace MoviesDatabase.CLI.Core
         private readonly IConsoleReader reader;
         private readonly IConsoleWriter writer;
         private readonly ICommandParser parser;
-        //private readonly IDatabaseProvider dbProvider;
 
         public Engine(IConsoleReader consoleReader, IConsoleWriter consoleWriter, ICommandParser commandParser, IDatabaseProvider databaseProvider)
         {
@@ -35,7 +34,6 @@ namespace MoviesDatabase.CLI.Core
             this.reader = consoleReader;
             this.writer = consoleWriter;
             this.parser = commandParser;
-			//this.dbProvider = databaseProvider ?? throw new ArgumentNullException("Databse provider cannot be null.");
 		}
 
         public void Start()

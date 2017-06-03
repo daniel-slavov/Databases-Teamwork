@@ -1,6 +1,8 @@
-﻿namespace MoviesDatabase.Models
+﻿using MoviesDatabase.Models.Contracts;
+
+namespace MoviesDatabase.Models
 {
-    public class Producer
+    public class Producer : IModel
     {
         public Producer()
         {

@@ -1,6 +1,8 @@
-﻿namespace MoviesDatabase.Models
+﻿using MoviesDatabase.Models.Contracts;
+
+namespace MoviesDatabase.Models
 {
-    public class Book
+    public class Book : IModel
     {
         public Book()
         {

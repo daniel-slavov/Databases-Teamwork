@@ -1,6 +1,8 @@
-﻿namespace MoviesDatabase.Models
+﻿using MoviesDatabase.Models.Contracts;
+
+namespace MoviesDatabase.Models
 {
-    public class Studio
+    public class Studio : IModel
     {
         public Studio()
         {

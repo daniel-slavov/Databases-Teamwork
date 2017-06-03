@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using MoviesDatabase.Models.Contracts;
 
 namespace MoviesDatabase.Models
 {
-    public class Star
+    public class Star : IModel
     {
         public Star()
         {
