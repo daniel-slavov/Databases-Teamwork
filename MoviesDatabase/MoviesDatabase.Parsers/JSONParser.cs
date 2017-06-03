@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MoviesDatabase.Models;
+using MoviesDatabase.Parsers.Contracts;
 using Newtonsoft.Json;
 
 namespace MoviesDatabase.Parsers
 {
-    public class JSONParser
+    public class JSONParser : IJSONParser
     {
         private StreamReader reader;
 

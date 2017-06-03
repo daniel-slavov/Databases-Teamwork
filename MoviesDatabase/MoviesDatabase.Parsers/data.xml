@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<movies>
+  <movie id="1" producerId="1" bookId="1" studioId="1">
+    <title>Movie 1</title>
+    <year>1958</year>
+    <description>Something special</description>
+    <length>154</length>
+  </movie>
+  <movie id="2" producerId="2" bookId="2" studioId="2">
+    <title>Movie 2</title>
+    <year>1999</year>
+    <description>Something not special</description>
+    <length>14</length>
+  </movie>
+  <movie id="3" producerId="3" bookId="3" studioId="3">
+    <title>Movie 3</title>
+    <year>1981</year>
+    <description>blah blah blah</description>
+    <length>141</length>
+  </movie>
+</movies>

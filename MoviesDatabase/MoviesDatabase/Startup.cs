@@ -1,5 +1,6 @@
 ﻿using System;
 using MoviesDatabase.CLI.Core.Contracts;
+using MoviesDatabase.Parsers;
 using Ninject;
 
 namespace MoviesDatabase.CLI

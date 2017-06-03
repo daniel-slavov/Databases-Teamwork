@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IJSONParser.cs" />
+    <Compile Include="Contracts\IXmlParser.cs" />
     <Compile Include="JSONParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">
@@ -56,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
