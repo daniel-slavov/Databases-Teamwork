@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using MoviesDatabase.Commands.Contracts;
+using MoviesDatabase.CLI.Commands.Contracts;
 
-namespace MoviesDatabase.Providers.Contracts
+namespace MoviesDatabase.CLI.Providers.Contracts
 {
     public interface ICommandParser
     {

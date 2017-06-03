@@ -1,7 +1,7 @@
 ﻿using System;
-using MoviesDatabase.Providers.Contracts;
+using MoviesDatabase.CLI.Providers.Contracts;
 
-namespace MoviesDatabase.Providers
+namespace MoviesDatabase.CLI.Providers
 {
     public class DatabaseProvider : IDatabaseProvider
     {

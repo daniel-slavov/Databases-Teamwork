@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using MoviesDatabase.Commands.Contracts;
-using MoviesDatabase.Core.Contracts;
-using MoviesDatabase.Providers.Contracts;
+using MoviesDatabase.CLI.Commands.Contracts;
+using MoviesDatabase.CLI.Core.Contracts;
+using MoviesDatabase.CLI.Providers.Contracts;
 
-namespace MoviesDatabase.Providers
+namespace MoviesDatabase.CLI.Providers
 {
     public class CommandParser : ICommandParser
     {

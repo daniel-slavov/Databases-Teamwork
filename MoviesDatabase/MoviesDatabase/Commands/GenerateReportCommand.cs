@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using MoviesDatabase.Commands.Abstracts;
-using MoviesDatabase.Providers.Contracts;
+using MoviesDatabase.CLI.Commands.Abstracts;
+using MoviesDatabase.CLI.Providers.Contracts;
 
-namespace MoviesDatabase.Commands
+namespace MoviesDatabase.CLI.Commands
 {
     public class GenerateReportCommand : Command
     {

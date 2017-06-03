@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MoviesDatabase</RootNamespace>
+    <RootNamespace>MoviesDatabase.CLI</RootNamespace>
     <AssemblyName>MoviesDatabase</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>

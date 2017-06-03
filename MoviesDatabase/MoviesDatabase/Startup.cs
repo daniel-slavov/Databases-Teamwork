@@ -1,8 +1,8 @@
 ﻿using System;
-using MoviesDatabase.Core.Contracts;
+using MoviesDatabase.CLI.Core.Contracts;
 using Ninject;
 
-namespace MoviesDatabase
+namespace MoviesDatabase.CLI
 {
     public class MainClass
     {

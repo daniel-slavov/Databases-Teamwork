@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using MoviesDatabase.Commands;
-using MoviesDatabase.Commands.Contracts;
-using MoviesDatabase.Core;
-using MoviesDatabase.Core.Contracts;
-using MoviesDatabase.Providers;
-using MoviesDatabase.Providers.Contracts;
+using MoviesDatabase.CLI.Commands;
+using MoviesDatabase.CLI.Commands.Contracts;
+using MoviesDatabase.CLI.Core;
+using MoviesDatabase.CLI.Core.Contracts;
+using MoviesDatabase.CLI.Providers;
+using MoviesDatabase.CLI.Providers.Contracts;
 using Ninject;
 using Ninject.Extensions.Factory;
 using Ninject.Modules;
@@ -13,7 +13,7 @@ using Ninject.Extensions.Conventions;
 using System.IO;
 using System.Reflection;
 
-namespace MoviesDatabase
+namespace MoviesDatabase.CLI
 {
     public class MoviesDatabaseModule : NinjectModule
     {

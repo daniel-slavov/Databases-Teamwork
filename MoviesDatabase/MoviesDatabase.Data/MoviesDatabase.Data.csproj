@@ -59,7 +59,7 @@
     </ProjectReference>
     <ProjectReference Include="..\MoviesDatabase\MoviesDatabase.csproj">
       <Project>{ea63dbd7-15b0-4cf3-a343-ad80d63d5722}</Project>
-      <Name>MoviesDatabase</Name>
+      <Name>MoviesDatabase.CLI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

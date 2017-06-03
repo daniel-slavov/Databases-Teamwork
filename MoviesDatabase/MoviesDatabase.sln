@@ -1,7 +1,11 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase", "MoviesDatabase\MoviesDatabase.csproj", "{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase.CLI", "MoviesDatabase\MoviesDatabase.CLI.csproj", "{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase.Data", "MoviesDatabase.Data\MoviesDatabase.Data.csproj", "{914326FF-1E4E-4511-8093-F6DFB741F9DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase.Models", "MoviesDatabase.Models\MoviesDatabase.Models.csproj", "{A3AAA882-1B28-4ABB-8586-731C5D43AC3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,14 @@ Global
 		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Debug|x86.Build.0 = Debug|x86
 		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Release|x86.ActiveCfg = Release|x86
 		{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}.Release|x86.Build.0 = Release|x86
+		{914326FF-1E4E-4511-8093-F6DFB741F9DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{914326FF-1E4E-4511-8093-F6DFB741F9DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{914326FF-1E4E-4511-8093-F6DFB741F9DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{914326FF-1E4E-4511-8093-F6DFB741F9DB}.Release|x86.Build.0 = Release|Any CPU
+		{A3AAA882-1B28-4ABB-8586-731C5D43AC3C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A3AAA882-1B28-4ABB-8586-731C5D43AC3C}.Debug|x86.Build.0 = Debug|Any CPU
+		{A3AAA882-1B28-4ABB-8586-731C5D43AC3C}.Release|x86.ActiveCfg = Release|Any CPU
+		{A3AAA882-1B28-4ABB-8586-731C5D43AC3C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

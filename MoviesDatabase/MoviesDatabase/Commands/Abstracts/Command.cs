@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using MoviesDatabase.Commands.Contracts;
-using MoviesDatabase.Providers.Contracts;
+using MoviesDatabase.CLI.Commands.Contracts;
+using MoviesDatabase.CLI.Providers.Contracts;
 
-namespace MoviesDatabase.Commands.Abstracts
+namespace MoviesDatabase.CLI.Commands.Abstracts
 {
     public abstract class Command : ICommand
     {

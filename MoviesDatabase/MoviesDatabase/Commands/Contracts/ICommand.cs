@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MoviesDatabase.Commands.Contracts
+namespace MoviesDatabase.CLI.Commands.Contracts
 {
     public interface ICommand
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using MoviesDatabase.Commands.Contracts;
-using MoviesDatabase.Core.Contracts;
-using MoviesDatabase.Providers.Contracts;
+using MoviesDatabase.CLI.Commands.Contracts;
+using MoviesDatabase.CLI.Core.Contracts;
+using MoviesDatabase.CLI.Providers.Contracts;
 
-namespace MoviesDatabase.Core
+namespace MoviesDatabase.CLI.Core
 {
     public class Engine : IEngine
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MoviesDatabase.Providers.Contracts
+namespace MoviesDatabase.CLI.Providers.Contracts
 {
     public interface IConsoleReader
     {

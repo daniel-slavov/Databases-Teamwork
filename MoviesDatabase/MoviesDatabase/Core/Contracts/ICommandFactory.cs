@@ -1,7 +1,7 @@
 ﻿using System;
-using MoviesDatabase.Commands.Contracts;
+using MoviesDatabase.CLI.Commands.Contracts;
 
-namespace MoviesDatabase.Core.Contracts
+namespace MoviesDatabase.CLI.Core.Contracts
 {
     public interface ICommandFactory
     {
