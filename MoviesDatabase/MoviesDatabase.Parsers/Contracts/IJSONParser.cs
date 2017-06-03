@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoviesDatabase.Parsers
+namespace MoviesDatabase.Parsers.Contracts
 {
-    public class Class1
+    public interface IJSONParser
     {
+        List<T> Parse<T>(string filePath);
     }
 }

@@ -75,7 +75,16 @@
     <Compile Include="Commands\Abstracts\Command.cs" />
     <Compile Include="Commands\GenerateReportCommand.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">
+      <Project>{a3aaa882-1b28-4abb-8586-731c5d43ac3c}</Project>
+      <Name>MoviesDatabase.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.Parsers\MoviesDatabase.Parsers.csproj">
+      <Project>{29d4fff4-1525-4601-b0fd-dedb5d68c831}</Project>
+      <Name>MoviesDatabase.Parsers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="App.config" />
