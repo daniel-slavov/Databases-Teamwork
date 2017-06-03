@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using MoviesDatabase.CLI.Commands.Abstracts;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.CLI.Providers.Contracts;
+using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.CLI.Commands
 {
     public class AddCommand : Command
     {
-        public AddCommand(IMovieService databaseProvider) : base(databaseProvider)
+        public AddCommand(IMovieService service) : base(service)
         {
         }
 

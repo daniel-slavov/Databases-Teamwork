@@ -12,6 +12,10 @@ using Ninject.Modules;
 using Ninject.Extensions.Conventions;
 using System.IO;
 using System.Reflection;
+using MoviesDatabase.Services.Contracts;
+using MoviesDatabase.Services;
+using MoviesDatabase.Parsers.Contracts;
+using MoviesDatabase.Parsers;
 
 namespace MoviesDatabase.CLI
 {
@@ -28,9 +32,14 @@ namespace MoviesDatabase.CLI
 			Bind<IConsoleReader>().To<ConsoleReader>().InSingletonScope();
             Bind<IConsoleWriter>().To<ConsoleWriter>().InSingletonScope();
             Bind<ICommandParser>().To<CommandParser>().InSingletonScope();
-            Bind<IDatabaseProvider>().To<DatabaseProvider>().InSingletonScope();
+            Bind<IModelParser>().To<ModelParser>().InSingletonScope();
 
-            Bind<ICommandFactory>().ToFactory().InSingletonScope();
+            Bind<IJSONParser>().To<JSONParser>();
+            Bind<IXMLParser>().To<XMLParser>();
+
+			Bind<IMovieService>().To<MovieService>();
+
+			Bind<ICommandFactory>().ToFactory().InSingletonScope();
 
 			Bind<ICommand>().ToMethod(context =>
 			{

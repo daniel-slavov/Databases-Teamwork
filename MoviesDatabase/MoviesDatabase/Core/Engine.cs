@@ -14,7 +14,7 @@ namespace MoviesDatabase.CLI.Core
         private readonly IConsoleWriter writer;
         private readonly ICommandParser parser;
 
-        public Engine(IConsoleReader consoleReader, IConsoleWriter consoleWriter, ICommandParser commandParser, IDatabaseProvider databaseProvider)
+        public Engine(IConsoleReader consoleReader, IConsoleWriter consoleWriter, ICommandParser commandParser)
         {
             if (consoleReader == null)
             {

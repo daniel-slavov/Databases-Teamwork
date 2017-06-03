@@ -6,6 +6,7 @@ using MoviesDatabase.CLI.Providers.Contracts;
 using MoviesDatabase.Models;
 using MoviesDatabase.Models.Contracts;
 using MoviesDatabase.Parsers.Contracts;
+using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.CLI.Commands
 {
@@ -46,10 +47,10 @@ namespace MoviesDatabase.CLI.Commands
             switch (format.ToLower())
             {
                 case "json":
-                    service.CreateMovie(JSONParser.Parse<IModel>(path));
+                    //service.CreateMovie(this.JSONParser.Parse<IModel>(path));
                     break;
 				case "xml":
-                    service.CreateMovie(XMlParser.Parse<IModel>(path));
+                    //service.CreateMovie(this.XMLParser.Parse<IModel>(path));
 					break;
                 default:
                     return "Unsupported format.";

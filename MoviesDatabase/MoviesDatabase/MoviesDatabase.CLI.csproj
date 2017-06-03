@@ -85,6 +85,10 @@
       <Project>{29d4fff4-1525-4601-b0fd-dedb5d68c831}</Project>
       <Name>MoviesDatabase.Parsers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.Services\MoviesDatabase.Services.csproj">
+      <Project>{5D0A0F23-57C4-4DF5-9064-C65B9B281688}</Project>
+      <Name>MoviesDatabase.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

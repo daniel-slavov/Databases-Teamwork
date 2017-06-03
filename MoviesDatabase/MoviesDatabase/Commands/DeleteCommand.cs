@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using MoviesDatabase.CLI.Commands.Abstracts;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.CLI.Providers.Contracts;
+using MoviesDatabase.Services.Contracts;
 
-namespace MoviesDatabase.CLI3.Commands
+namespace MoviesDatabase.CLI.Commands
 {
     public class DeleteCommand : Command
     {
-        public DeleteCommand(IMovieService databaseProvider) : base(databaseProvider)
+        public DeleteCommand(IMovieService service) : base(service)
         {
         }
 
