@@ -17,9 +17,9 @@ namespace MoviesDatabase.CLI.Core
 
         public Engine(IConsoleReader consoleReader, IConsoleWriter consoleWriter, ICommandParser commandParser, IDatabaseProvider databaseProvider)
         {
-            this.reader = consoleReader ?? throw new ArgumentNullException("Reader cannot be null.");
-            this.writer = consoleWriter ?? throw new ArgumentNullException("Writer cannot be null.");
-            this.parser = commandParser ?? throw new ArgumentNullException("Parser cannot be null.");
+            //this.reader = consoleReader ?? throw new ArgumentNullException("Reader cannot be null.");
+            //this.writer = consoleWriter ?? throw new ArgumentNullException("Writer cannot be null.");
+            //this.parser = commandParser ?? throw new ArgumentNullException("Parser cannot be null.");
 			//this.dbProvider = databaseProvider ?? throw new ArgumentNullException("Databse provider cannot be null.");
 		}
 

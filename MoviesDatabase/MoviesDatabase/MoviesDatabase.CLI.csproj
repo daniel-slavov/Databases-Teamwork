@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,6 +27,9 @@
     <WarningLevel>4</WarningLevel>
     <ExternalConsole>true</ExternalConsole>
     <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MoviesDatabase.CLI.Startup</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -72,15 +75,7 @@
     <Compile Include="Commands\Abstracts\Command.cs" />
     <Compile Include="Commands\GenerateReportCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Providers\" />
-    <Folder Include="Providers\Contracts\" />
-    <Folder Include="Core\" />
-    <Folder Include="Core\Contracts\" />
-    <Folder Include="Commands\Contracts\" />
-    <Folder Include="Commands\Abstracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="App.config" />
