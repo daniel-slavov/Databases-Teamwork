@@ -61,7 +61,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="data.xml" />
+    <Content Include="InitialData\books.xml" />
+    <Content Include="InitialData\genres.xml" />
+    <Content Include="InitialData\producers.xml" />
+    <Content Include="InitialData\studios.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

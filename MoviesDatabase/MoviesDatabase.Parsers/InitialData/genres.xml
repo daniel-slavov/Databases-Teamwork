@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<genres>
+  <genre>
+    <name>Fantasy</name>
+  </genre>
+  <genre>
+    <name>Romance</name>
+  </genre>
+  <genre>
+    <name>Adventure</name>
+  </genre>
+  <genre>
+    <name>Action</name>
+  </genre>
+  <genre>
+    <name>Comedy</name>
+  </genre>
+  <genre>
+    <name>Thriller</name>
+  </genre>
+  <genre>
+    <name>Sci-Fi</name>
+  </genre>
+  <genre>
+    <name>Family</name>
+  </genre>
+</genres>

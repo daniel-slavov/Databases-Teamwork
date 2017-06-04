@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<producers>
+  <producer>
+    <name>Andrew Form</name>
+  </producer>
+  <producer>
+    <name>Tim Bevan</name>
+  </producer>
+  <producer>
+    <name>Eric Fellner</name>
+  </producer>
+  <producer>
+    <name>Jason Blum</name>
+  </producer>
+  <producer>
+    <name>Dana Brunetti</name>
+  </producer>
+  <producer>
+    <name>Peter Chernin</name>
+  </producer>
+  <producer>
+    <name>John Davis</name>
+  </producer>
+</producers>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<studios>
+  <studio>
+    <name>
+      Studio 100
+    </name>
+    <address>
+      Belgium
+    </address>
+  </studio>
+  <studio>
+    <name>
+      Cloud Ten Pictures
+    </name>
+    <address>
+      Canada
+    </address>
+  </studio>
+  <studio>
+    <name>
+      Laurel Films
+    </name>
+    <address>
+      China
+    </address>
+  </studio>
+</studios>

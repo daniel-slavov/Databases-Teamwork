@@ -1,0 +1,44 @@
+[
+    {
+        "Title": "Ps, I love you",
+        "Year": 2007,
+        "Description": "A young widow discovers that her late husband has left her 10 messages intended to help ease her pain and start a new life. ",
+        "Length":126,
+        "ProducerName": "Susan Blackwell",
+        "StudioName":"Alcon Entertainment",
+        "BookTitle":"Ps, I love you",
+        "Stars":[
+            "Hilary Swank",
+            "Gerard Butler",
+            "Lisa Kudrow",
+            "Gina Gershon",
+            "James Marsters"
+        ],
+        "Genres":[
+            "Romance",
+            "Drama"
+        ]
+    },
+    {
+        "Title": "Avatar",
+        "Year": 2009,
+        "Description": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+        "Length":162,
+        "ProducerName": "Dileep Rao",
+        "StudioName":" Twentieth Century Fox Film Corporation",
+        "BookTitle":null,
+        "Stars":[
+            "Sam Worthington",
+            "Zoe Saldana",
+            "Sigourney Weaver",
+            "Stephen Lang",
+            "Michelle Rodriguez"
+        ],
+        "Genres":[
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+        ]
+    }
+]

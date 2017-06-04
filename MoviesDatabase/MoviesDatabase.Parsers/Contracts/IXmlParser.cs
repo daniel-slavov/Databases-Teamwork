@@ -9,8 +9,6 @@ namespace MoviesDatabase.Parsers.Contracts
 {
     public interface IXMLParser
     {
-        List<Movie> ParseMovies(string filePath);
-
         List<Genre> ParseGenres(string filePath);
 
         List<Book> ParseBooks(string filePath);
@@ -18,7 +16,5 @@ namespace MoviesDatabase.Parsers.Contracts
         List<Producer> ParseProducers(string filePath);
 
         List<Studio> ParseStudios(string filePath);
-
-        List<Star> ParseStars(string filePath);
     }
 }
