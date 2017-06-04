@@ -12,5 +12,7 @@ namespace MoviesDatabase.Services.Contracts
         void AddGenres();
 
         Genre CreateGenre(string name);
+
+        Genre GetGenreBy(string name);
     }
 }

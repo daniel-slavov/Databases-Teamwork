@@ -12,5 +12,7 @@ namespace MoviesDatabase.Services.Contracts
         void AddProducers();
 
         Producer CreateProducer(string name);
+
+        Producer GetProducerBy(string name);
     }
 }

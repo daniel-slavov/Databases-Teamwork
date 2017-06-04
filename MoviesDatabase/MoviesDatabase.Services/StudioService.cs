@@ -56,5 +56,13 @@ namespace MoviesDatabase.Services
 
             return studio;
         }
+
+        public Studio GetStudioBy(string name)
+        {
+            var studio = this.studioRepository.Entities
+                .FirstOrDefault(s => s.Name == name);
+
+            return studio;
+        }
     }
 }

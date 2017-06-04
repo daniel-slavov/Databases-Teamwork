@@ -56,5 +56,13 @@ namespace MoviesDatabase.Services
 
             return book;
         }
+
+        public Book GetBookBy(string title)
+        {
+            var book = this.bookRepository.Entities
+                .FirstOrDefault(b => b.Title == title);
+
+            return book;
+        }
     }
 }

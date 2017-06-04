@@ -47,7 +47,7 @@ namespace MoviesDatabase.CLI.Commands
             switch (format.ToLower())
             {
                 case "json":
-                    service.CreateMovie(this.JSONParser.Parse<IModel>(path));
+                    //service.CreateMovie(this.JSONParser.Parse<IModel>(path));
                     break;
 				case "xml":
                     //service.CreateMovie(this.XMLParser.Parse<IModel>(path));

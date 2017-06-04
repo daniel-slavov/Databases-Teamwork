@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
@@ -50,6 +51,14 @@ namespace MoviesDatabase.Services
         {
             var producer = this.producerFactory.CreateProducer(name);
             this.producerRepository.Add(producer);
+
+            return producer;
+        }
+
+        public Producer GetProducerBy(string name)
+        {
+            var producer = this.producerRepository.Entities
+                .FirstOrDefault(p => p.Name == name);
 
             return producer;
         }

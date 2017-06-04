@@ -12,5 +12,7 @@ namespace MoviesDatabase.Services.Contracts
         void AddStudios();
 
         Studio CreateStudio(string name, string address);
+
+        Studio GetStudioBy(string name);
     }
 }

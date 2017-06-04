@@ -56,5 +56,13 @@ namespace MoviesDatabase.Services
 
             return genre;
         }
+
+        public Genre GetGenreBy(string name)
+        {
+            var genre = this.genreRepository.Entities
+                .FirstOrDefault(g => g.Name == name);
+
+            return genre;
+        }
     }
 }
