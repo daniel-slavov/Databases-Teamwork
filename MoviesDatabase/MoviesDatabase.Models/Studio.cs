@@ -9,6 +9,12 @@ namespace MoviesDatabase.Models
 
         }
 
+        public Studio(string name, string address)
+        {
+            this.Name = name;
+            this.Address = address;
+        }
+
         public int StudioID { get; set; }
 
         public string Name { get; set; }

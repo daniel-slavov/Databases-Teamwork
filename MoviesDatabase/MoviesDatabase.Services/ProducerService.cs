@@ -4,11 +4,13 @@ using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
 using MoviesDatabase.Parsers.Contracts;
+using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.Services
 {
-    public class ProducerService
+    public class ProducerService : IProducerService
     {
+        private const string filePath = "...";
         private readonly IRepository<Producer> producerRepository;
         private readonly IJSONParser jsonParser;
         private readonly IProducerFactory producerFactory;
@@ -35,8 +37,9 @@ namespace MoviesDatabase.Services
             this.producerFactory = producerFactory;
         }
 
-        public void AddProducers(IList<Producer> producers)
+        public void AddProducers()
         {
+            var producers = this.jsonParser.Parse<Producer>(filePath);
             foreach (var producer in producers)
             {
                 this.producerRepository.Add(producer);

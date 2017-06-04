@@ -10,6 +10,11 @@ namespace MoviesDatabase.Models
             this.Movies = new HashSet<Movie>();
         }
 
+        public Genre(string name) : this()
+        {
+            this.Name = name;
+        }
+
         public int GenreID { get; set; }
 
         public string Name { get; set; }

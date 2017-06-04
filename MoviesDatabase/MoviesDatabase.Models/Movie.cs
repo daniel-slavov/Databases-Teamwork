@@ -11,6 +11,17 @@ namespace MoviesDatabase.Models
             this.Genres = new HashSet<Genre>();
         }
 
+        public Movie(string title, int year, string description, int length, Producer producer, Studio studio, Book book): this()
+        {
+            this.Title = title;
+            this.Year = year;
+            this.Description = description;
+            this.Length = length;
+            this.Producer = producer;
+            this.Studio = studio;
+            this.Book = book;
+        }
+
         public int MovieID { get; set; }
 
         public string Title { get; set; }
