@@ -90,6 +90,14 @@
       <Project>{5D0A0F23-57C4-4DF5-9064-C65B9B281688}</Project>
       <Name>MoviesDatabase.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.Factories\MoviesDatabase.Factories.csproj">
+      <Project>{C6A3F771-87F7-4363-B06D-E962ECC2C850}</Project>
+      <Name>MoviesDatabase.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.Data\MoviesDatabase.Data.csproj">
+      <Project>{914326FF-1E4E-4511-8093-F6DFB741F9DB}</Project>
+      <Name>MoviesDatabase.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

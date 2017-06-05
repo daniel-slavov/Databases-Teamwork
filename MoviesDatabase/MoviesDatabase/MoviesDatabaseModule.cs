@@ -16,6 +16,10 @@ using MoviesDatabase.Services.Contracts;
 using MoviesDatabase.Services;
 using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Parsers;
+using MoviesDatabase.Factories;
+using MoviesDatabase.Data.Contracts;
+using MoviesDatabase.Data;
+using System.Data.Entity;
 
 namespace MoviesDatabase.CLI
 {
@@ -38,6 +42,11 @@ namespace MoviesDatabase.CLI
             Bind<IXMLParser>().To<XMLParser>();
 
 			Bind<IMovieService>().To<MovieService>();
+            Bind<IProducerService>().To<ProducerService>();
+            Bind<IBookService>().To<BookService>();
+            Bind<IGenreService>().To<GenreService>();
+            Bind<IStarService>().To<StarService>();
+            Bind<IStudioService>().To<StudioService>();
 
 			Bind<ICommandFactory>().ToFactory().InSingletonScope();
 
@@ -46,6 +55,17 @@ namespace MoviesDatabase.CLI
 				Type commandType = (Type)context.Parameters.Single().GetValue(context, null);
 				return (ICommand)context.Kernel.Get(commandType);
 			}).NamedLikeFactoryMethod((ICommandFactory commandFactory) => commandFactory.GetCommand(null));
+
+            Bind(typeof(IRepository<>)).To(typeof(Repository<>));
+
+            Bind<DbContext>().To<MoviesDbContext>();
+
+            Bind<IBookFactory>().ToFactory().InSingletonScope();
+            Bind<IGenreFactory>().ToFactory().InSingletonScope();
+            Bind<IMovieFactory>().ToFactory().InSingletonScope();
+            Bind<IProducerFactory>().ToFactory().InSingletonScope();
+            Bind<IStarFactory>().ToFactory().InSingletonScope();
+            Bind<IStudioFactory>().ToFactory().InSingletonScope(); 
         }
     }
 }

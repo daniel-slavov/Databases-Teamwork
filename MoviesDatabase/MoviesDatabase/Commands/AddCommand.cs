@@ -4,6 +4,7 @@ using MoviesDatabase.CLI.Commands.Abstracts;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.CLI.Providers.Contracts;
 using MoviesDatabase.Services.Contracts;
+using MoviesDatabase.Models;
 
 namespace MoviesDatabase.CLI.Commands
 {
@@ -15,7 +16,9 @@ namespace MoviesDatabase.CLI.Commands
 
         public override string Execute(IList<string> parameters)
         {
-            throw new NotImplementedException();
+            this.service.CreateMovie("title", 2000, "test", 120, new Producer(), new Studio(), new Book());
+
+            return "Command executed successfully.";
         }
     }
 }

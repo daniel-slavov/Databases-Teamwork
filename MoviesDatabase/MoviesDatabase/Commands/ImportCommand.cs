@@ -40,16 +40,16 @@ namespace MoviesDatabase.CLI.Commands
 
         public override string Execute(IList<string> parameters)
         {
-            string format = parameters[0];
+            string model = parameters[0];
             string path = parameters[2];
             //Type model = this.ModelParser.GetType(parameters[1]);
 
-            switch (format.ToLower())
+            switch (model.ToLower())
             {
-                case "json":
+                case "movie":
                     //service.CreateMovie(this.JSONParser.Parse<IModel>(path));
                     break;
-				case "xml":
+				case "star":
                     //service.CreateMovie(this.XMLParser.Parse<IModel>(path));
 					break;
                 default:
