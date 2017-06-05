@@ -13,21 +13,14 @@ namespace MoviesDatabase.Services
 {
     public class StarService : IStarService
     {
-        private const string filePath = "...";
         private readonly IRepository<Star> starRepository;
-        private readonly IJSONParser jsonParser;
         private readonly IStarFactory starFactory;
 
-        public StarService(IRepository<Star> starRepository, IJSONParser jsonParser, IStarFactory starFactory)
+        public StarService(IRepository<Star> starRepository, IStarFactory starFactory)
         {
             if (starRepository == null)
             {
                 throw new ArgumentNullException("Star repository cannot be null!");
-            }
-
-            if (jsonParser == null)
-            {
-                throw new ArgumentNullException("Json parser cannot be null!");
             }
 
             if (starFactory == null)
@@ -36,14 +29,11 @@ namespace MoviesDatabase.Services
             }
 
             this.starRepository = starRepository;
-            this.jsonParser = jsonParser;
             this.starFactory = starFactory;
         }
 
-        public void AddStars()
+        public void AddStars(IList<Star> stars)
         {
-            var stars = this.jsonParser.Parse<Star>(filePath);
-
             foreach (var star in stars)
             {
                 this.starRepository.Add(star);

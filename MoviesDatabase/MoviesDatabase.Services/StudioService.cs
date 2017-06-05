@@ -13,21 +13,14 @@ namespace MoviesDatabase.Services
 {
     public class StudioService : IStudioService
     {
-        private const string filePath = "...";
         private readonly IRepository<Studio> studioRepository;
-        private readonly IJSONParser jsonParser;
         private readonly IStudioFactory studioFactory;
 
-        public StudioService(IRepository<Studio> studioRepository, IJSONParser jsonParser, IStudioFactory studioFactory)
+        public StudioService(IRepository<Studio> studioRepository, IStudioFactory studioFactory)
         {
             if (studioRepository == null)
             {
                 throw new ArgumentNullException("Studio repository cannot be null!");
-            }
-
-            if (jsonParser == null)
-            {
-                throw new ArgumentNullException("Json parser cannot be null!");
             }
 
             if (studioFactory == null)
@@ -36,13 +29,11 @@ namespace MoviesDatabase.Services
             }
 
             this.studioRepository = studioRepository;
-            this.jsonParser = jsonParser;
             this.studioFactory = studioFactory;
         }
 
-        public void AddStudios()
+        public void AddStudios(IList<Studio> studios)
         {
-            var studios = this.jsonParser.Parse<Studio>(filePath);
             foreach (var studio in studios)
             {
                 this.studioRepository.Add(studio);

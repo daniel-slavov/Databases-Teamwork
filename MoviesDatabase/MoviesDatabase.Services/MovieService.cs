@@ -13,9 +13,7 @@ namespace MoviesDatabase.Services
 {
     public class MovieService : IMovieService
     {
-        private const string filePath = "...";
         private readonly IRepository<Movie> movieRepository;
-        private readonly IJSONParser jsonParser;
         private readonly IMovieFactory movieFactory;
         private readonly IProducerService producerService;
         private readonly IStudioService studioService;
@@ -23,18 +21,13 @@ namespace MoviesDatabase.Services
         private readonly IBookService bookService;
         private readonly IStarService starService;
 
-        public MovieService(IRepository<Movie> movieRepository, IJSONParser jsonParser, IMovieFactory movieFactory, 
+        public MovieService(IRepository<Movie> movieRepository, IMovieFactory movieFactory, 
             IProducerService producerService, IStudioService studioService, IGenreService genreService, 
             IBookService bookService, IStarService starService)
         {
             if (movieRepository == null)
             {
                 throw new ArgumentNullException("Movie repository cannot be null!");
-            }
-
-            if (jsonParser == null)
-            {
-                throw new ArgumentNullException("Json parser cannot be null!");
             }
 
             if (movieFactory == null)
@@ -68,7 +61,6 @@ namespace MoviesDatabase.Services
             }
 
             this.movieRepository = movieRepository;
-            this.jsonParser = jsonParser;
             this.movieFactory = movieFactory;
             this.producerService = producerService;
             this.studioService = studioService;
@@ -77,10 +69,8 @@ namespace MoviesDatabase.Services
             this.starService = starService;
         }
 
-        public void AddMovies()
+        public void AddMovies(IList<MovieModel> movies)
         {
-            var movies = this.jsonParser.Parse<MovieModel>(filePath);
-
             foreach (var movie in movies)
             {
                 var listOfGenres = new List<Genre>();

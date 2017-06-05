@@ -13,21 +13,14 @@ namespace MoviesDatabase.Services
 {
     public class GenreService : IGenreService
     {
-        private const string filePath = "...";
         private readonly IRepository<Genre> genreRepository;
-        private readonly IJSONParser jsonParser;
         private readonly IGenreFactory genreFactory;
 
-        public GenreService(IRepository<Genre> genreRepository, IJSONParser jsonParser, IGenreFactory genreFactory)
+        public GenreService(IRepository<Genre> genreRepository, IGenreFactory genreFactory)
         {
             if (genreRepository == null)
             {
                 throw new ArgumentNullException("Genre repository cannot be null!");
-            }
-
-            if (jsonParser == null)
-            {
-                throw new ArgumentNullException("Json parser cannot be null!");
             }
 
             if (genreFactory == null)
@@ -36,13 +29,11 @@ namespace MoviesDatabase.Services
             }
 
             this.genreRepository = genreRepository;
-            this.jsonParser = jsonParser;
             this.genreFactory = genreFactory;
         }
 
-        public void AddGenres()
+        public void AddGenres(IList<Genre> genres)
         {
-            var genres = this.jsonParser.Parse<Genre>(filePath);
             foreach (var genre in genres)
             {
                 this.genreRepository.Add(genre);

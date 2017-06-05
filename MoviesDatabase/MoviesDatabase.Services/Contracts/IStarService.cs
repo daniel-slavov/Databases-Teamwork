@@ -9,7 +9,7 @@ namespace MoviesDatabase.Services.Contracts
 {
     public interface IStarService
     {
-        void AddStars();
+        void AddStars(IList<Star> stars);
 
         Star CreateStar(string firstName, string lastName, int age, string address);
     }

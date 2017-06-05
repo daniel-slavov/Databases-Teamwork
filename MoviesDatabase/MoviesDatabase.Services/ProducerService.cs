@@ -11,21 +11,14 @@ namespace MoviesDatabase.Services
 {
     public class ProducerService : IProducerService
     {
-        private const string filePath = "...";
         private readonly IRepository<Producer> producerRepository;
-        private readonly IJSONParser jsonParser;
         private readonly IProducerFactory producerFactory;
 
-        public ProducerService(IRepository<Producer> producerRepository, IJSONParser jsonParser, IProducerFactory producerFactory)
+        public ProducerService(IRepository<Producer> producerRepository, IProducerFactory producerFactory)
         {
             if (producerRepository == null)
             {
                 throw new ArgumentNullException("Producer repository cannot be null!");
-            }
-
-            if (jsonParser == null)
-            {
-                throw new ArgumentNullException("Json parser cannot be null!");
             }
 
             if (producerFactory == null)
@@ -34,13 +27,11 @@ namespace MoviesDatabase.Services
             }
 
             this.producerRepository = producerRepository;
-            this.jsonParser = jsonParser;
             this.producerFactory = producerFactory;
         }
 
-        public void AddProducers()
+        public void AddProducers(IList<Producer> producers)
         {
-            var producers = this.jsonParser.Parse<Producer>(filePath);
             foreach (var producer in producers)
             {
                 this.producerRepository.Add(producer);

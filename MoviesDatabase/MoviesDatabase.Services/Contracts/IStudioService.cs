@@ -9,7 +9,7 @@ namespace MoviesDatabase.Services.Contracts
 {
     public interface IStudioService
     {
-        void AddStudios();
+        void AddStudios(IList<Studio> studios);
 
         Studio CreateStudio(string name, string address);
 

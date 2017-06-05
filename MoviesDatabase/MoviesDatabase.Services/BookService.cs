@@ -13,21 +13,14 @@ namespace MoviesDatabase.Services
 {
     public class BookService : IBookService
     {
-        private const string filePath = "...";
         private readonly IRepository<Book> bookRepository;
-        private readonly IJSONParser jsonParser;
         private readonly IBookFactory bookFactory;
 
-        public BookService(IRepository<Book> bookRepository, IJSONParser jsonParser, IBookFactory bookFactory)
+        public BookService(IRepository<Book> bookRepository, IBookFactory bookFactory)
         {
             if (bookRepository == null)
             {
                 throw new ArgumentNullException("Book repository cannot be null!");
-            }
-
-            if (jsonParser == null)
-            {
-                throw new ArgumentNullException("Json parser cannot be null!");
             }
 
             if (bookFactory == null)
@@ -36,13 +29,11 @@ namespace MoviesDatabase.Services
             }
 
             this.bookRepository = bookRepository;
-            this.jsonParser = jsonParser;
             this.bookFactory = bookFactory;
         }
 
-        public void AddBooks()
+        public void AddBooks(IList<Book> books)
         {
-            var books = this.jsonParser.Parse<Book>(filePath);
             foreach (var book in books)
             {
                 this.bookRepository.Add(book);

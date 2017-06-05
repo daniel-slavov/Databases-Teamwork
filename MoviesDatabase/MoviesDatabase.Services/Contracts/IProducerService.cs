@@ -9,7 +9,7 @@ namespace MoviesDatabase.Services.Contracts
 {
     public interface IProducerService
     {
-        void AddProducers();
+        void AddProducers(IList<Producer> producers);
 
         Producer CreateProducer(string name);
 

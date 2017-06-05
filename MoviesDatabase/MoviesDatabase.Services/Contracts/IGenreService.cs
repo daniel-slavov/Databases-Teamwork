@@ -9,7 +9,7 @@ namespace MoviesDatabase.Services.Contracts
 {
     public interface IGenreService
     {
-        void AddGenres();
+        void AddGenres(IList<Genre> genres);
 
         Genre CreateGenre(string name);
 

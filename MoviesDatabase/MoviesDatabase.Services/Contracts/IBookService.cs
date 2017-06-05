@@ -9,7 +9,7 @@ namespace MoviesDatabase.Services.Contracts
 {
     public interface IBookService
     {
-        void AddBooks();
+        void AddBooks(IList<Book> books);
 
         Book CreateBook(string title, string author, int year);
 
