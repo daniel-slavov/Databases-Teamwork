@@ -20,6 +20,8 @@ using MoviesDatabase.Factories;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Data;
 using System.Data.Entity;
+using MoviesDatabase.Models;
+using MoviesDatabase.Models.Contracts;
 
 namespace MoviesDatabase.CLI
 {
@@ -29,9 +31,9 @@ namespace MoviesDatabase.CLI
         {
 			Bind<IEngine>().To<Engine>().InSingletonScope();
 
-            Bind<AddCommand>().ToSelf().InSingletonScope();
-            Bind<DeleteCommand>().ToSelf().InSingletonScope();
-            Bind<UpdateCommand>().ToSelf().InSingletonScope();
+            //Bind<AddCommand>().ToSelf().InSingletonScope();
+            //Bind<DeleteCommand>().ToSelf().InSingletonScope();
+            //Bind<UpdateCommand>().ToSelf().InSingletonScope();
 
 			Bind<IConsoleReader>().To<ConsoleReader>().InSingletonScope();
             Bind<IConsoleWriter>().To<ConsoleWriter>().InSingletonScope();
@@ -57,6 +59,8 @@ namespace MoviesDatabase.CLI
 			}).NamedLikeFactoryMethod((ICommandFactory commandFactory) => commandFactory.GetCommand(null));
 
             Bind(typeof(IRepository<>)).To(typeof(Repository<>));
+
+            //Bind<IRepository<IModel>>().To<Repository<Movie>>.; 
 
             Bind<DbContext>().To<MoviesDbContext>();
 
