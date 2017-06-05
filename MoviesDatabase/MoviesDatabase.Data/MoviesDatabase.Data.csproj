@@ -54,6 +54,18 @@
     <Compile Include="Migrations\201706031503266_Initial.Designer.cs">
       <DependentUpon>201706031503266_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706042307339_Added required field constrained.cs" />
+    <Compile Include="Migrations\201706042307339_Added required field constrained.Designer.cs">
+      <DependentUpon>201706042307339_Added required field constrained.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706042328349_Added nvarchar max length constraints.cs" />
+    <Compile Include="Migrations\201706042328349_Added nvarchar max length constraints.Designer.cs">
+      <DependentUpon>201706042328349_Added nvarchar max length constraints.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706042338253_Allow movie without book.cs" />
+    <Compile Include="Migrations\201706042338253_Allow movie without book.Designer.cs">
+      <DependentUpon>201706042338253_Allow movie without book.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MoviesDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +86,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201706031503266_Initial.resx">
       <DependentUpon>201706031503266_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042307339_Added required field constrained.resx">
+      <DependentUpon>201706042307339_Added required field constrained.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042328349_Added nvarchar max length constraints.resx">
+      <DependentUpon>201706042328349_Added nvarchar max length constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042338253_Allow movie without book.resx">
+      <DependentUpon>201706042338253_Allow movie without book.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

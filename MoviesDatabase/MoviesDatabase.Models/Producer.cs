@@ -1,4 +1,5 @@
 ﻿using MoviesDatabase.Models.Contracts;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoviesDatabase.Models
 {
@@ -16,6 +17,7 @@ namespace MoviesDatabase.Models
 
         public int ProducerID { get; set; }
 
+        [Required]
         public string Name { get; set; }
     }
 }

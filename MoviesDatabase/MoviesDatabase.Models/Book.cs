@@ -1,4 +1,5 @@
 ﻿using MoviesDatabase.Models.Contracts;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoviesDatabase.Models
 {
@@ -15,9 +16,9 @@ namespace MoviesDatabase.Models
             this.Author = author;
             this.Year = year;
         }
-
         public int BookID { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
         public string Author { get; set; }

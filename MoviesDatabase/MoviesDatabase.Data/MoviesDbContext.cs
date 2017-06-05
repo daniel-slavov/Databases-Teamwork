@@ -1,5 +1,6 @@
 ﻿using MoviesDatabase.Models;
 using System.Data.Entity;
+using System;
 
 namespace MoviesDatabase.Data
 {
@@ -22,5 +23,85 @@ namespace MoviesDatabase.Data
         public DbSet<Studio> Studios { get; set; }
 
         public DbSet<Book> Books { get; set; }
+
+        protected override void OnModelCreating(
+            DbModelBuilder modelBuilder)
+        {
+            this.OnBookModelCreating(modelBuilder);
+            this.OnGenreModelCreating(modelBuilder);
+            this.OnMovieModelCreating(modelBuilder);
+            this.OnProducerModelCreating(modelBuilder);
+            this.OnStarModelCreating(modelBuilder);
+            this.OnStudioModelCreating(modelBuilder);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
+
+        private void OnBookModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Book>()
+                .Property(book => book.Title)
+                .HasMaxLength(40);
+
+            modelBuilder.Entity<Book>()
+                .Property(book => book.Author)
+                .HasMaxLength(50);
+        }
+
+        private void OnGenreModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Genre>()
+                .Property(genre => genre.Name)
+                .HasMaxLength(20);
+        }
+
+        private void OnMovieModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.Title)
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.Description)
+                .HasColumnType("ntext");
+
+            modelBuilder.Entity<Movie>()
+                .Property(movie => movie.BookID)
+                .IsOptional();
+        }
+
+        private void OnProducerModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Producer>()
+                .Property(producer => producer.Name)
+                .HasMaxLength(50);
+        }
+
+        private void OnStarModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Star>()
+                .Property(star => star.FirstName)
+                .HasMaxLength(15);
+
+            modelBuilder.Entity<Star>()
+                .Property(star => star.LastName)
+                .HasMaxLength(15);
+
+            modelBuilder.Entity<Star>()
+                .Property(star => star.Address)
+                .HasMaxLength(60);
+       }
+
+        private void OnStudioModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Studio>()
+                .Property(studio => studio.Name)
+                .HasMaxLength(30);
+
+            modelBuilder.Entity<Studio>()
+                .Property(studio => studio.Address)
+                .HasMaxLength(60);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using MoviesDatabase.Models.Contracts;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoviesDatabase.Models
 {
@@ -24,8 +25,10 @@ namespace MoviesDatabase.Models
 
         public int MovieID { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
+        [Required]
         public int Year { get; set; }
 
         public string Description { get; set; }
