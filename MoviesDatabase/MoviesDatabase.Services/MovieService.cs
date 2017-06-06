@@ -73,47 +73,64 @@ namespace MoviesDatabase.Services
         {
             foreach (var movie in movies)
             {
-                var listOfGenres = new List<Genre>();
-                foreach (var genreName in movie.Genres)
-                {
-                    var genre = this.genreService.GetGenreBy(genreName);
-                    if (genre == null)
-                    {
-                        var newGenre = this.genreService.CreateGenre(genreName);
-                        listOfGenres.Add(newGenre);
-                    }
-                    else
-                    {
-                        listOfGenres.Add(genre);
-                    }
-                }
-
-                var producer = this.producerService.GetProducerBy(movie.ProducerName);
-                if (producer == null)
-                {
-                    producer = this.producerService.CreateProducer(movie.ProducerName);
-                }
-
-                var studio = this.studioService.GetStudioBy(movie.StudioName);
-                if (studio == null)
-                {
-                    studio = this.studioService.CreateStudio(movie.StudioName, null);
-                }
-
-                var book = this.bookService.GetBookBy(movie.BookTitle);
-                if (book == null)
-                {
-                    book = this.bookService.CreateBook(movie.BookTitle, null, 0);
-                }
-
-                this.movieFactory.CreateMovie(movie.Title, movie.Year, movie.Description, movie.Length, producer,
-                    studio, book);
+                this.CreateMovie(movie.Title, movie.Year, movie.Description, movie.Length, movie.ProducerName,
+                    movie.StudioName, movie.BookTitle, movie.Genres, movie.Stars);
             }
         }
 
-        public Movie CreateMovie(string title, int year, string description, int length, Producer producer, Studio studio, Book book)
+        public Movie CreateMovie(string title, int year, string description, int length, string producerName, string studioName, string bookTitle, IEnumerable<string> genres, IEnumerable<string> stars)
         {
-            var movie = this.movieFactory.CreateMovie(title, year, description, length, producer, studio, book);
+            var listOfGenres = new List<Genre>();
+            foreach (var genreName in genres)
+            {
+                var genre = this.genreService.GetGenreBy(genreName);
+                if (genre == null)
+                {
+                    var newGenre = this.genreService.CreateGenre(genreName);
+                    listOfGenres.Add(newGenre);
+                }
+                else
+                {
+                    listOfGenres.Add(genre);
+                }
+            }
+
+            var listOfStars = new List<Star>();
+            foreach (var starName in stars)
+            {
+                var firstName = starName.Split(' ')[0];
+                var lastName = starName.Split(' ')[1];
+                var star = this.starService.GetStarByName(firstName, lastName);
+                if (star == null)
+                {
+                    var newStar = this.starService.CreateStar(firstName, lastName, 0, null);
+                    listOfStars.Add(newStar);
+                }
+                else
+                {
+                    listOfStars.Add(star);
+                }
+            }
+
+            var producer = this.producerService.GetProducerBy(producerName);
+            if (producer == null)
+            {
+                producer = this.producerService.CreateProducer(producerName);
+            }
+
+            var studio = this.studioService.GetStudioBy(studioName);
+            if (studio == null)
+            {
+                studio = this.studioService.CreateStudio(studioName, null);
+            }
+
+            var book = this.bookService.GetBookBy(bookTitle);
+            if (book == null)
+            {
+                book = this.bookService.CreateBook(bookTitle, null, 0);
+            }
+
+            var movie = this.movieFactory.CreateMovie(title, year, description, length, producer,studio, book, listOfGenres, listOfStars);
             this.movieRepository.Add(movie);
 
             return movie;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace MoviesDatabase.Factories
     public interface IMovieFactory
     {
         Movie CreateMovie(string title, int year, string description, int length, Producer producer, Studio studio,
-            Book book);
+            Book book, IEnumerable<Genre> genres, IEnumerable<Star> stars);
     }
 }

@@ -12,5 +12,7 @@ namespace MoviesDatabase.Services.Contracts
         void AddStars(IList<Star> stars);
 
         Star CreateStar(string firstName, string lastName, int age, string address);
+
+        Star GetStarByName(string firstName, string lastName);
     }
 }

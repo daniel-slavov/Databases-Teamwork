@@ -9,7 +9,7 @@ namespace MoviesDatabase.Services.Contracts
     public interface IMovieService
     {
         void AddMovies(IList<MovieModel> movies);
-        Movie CreateMovie(string title, int year, string description, int length, Producer producer, Studio studio, Book book);
+        Movie CreateMovie(string title, int year, string description, int length, string producerName, string studioName, string bookTitle, IEnumerable<string> genres, IEnumerable<string> stars);
 
         Movie GetMovieBy(string title);
     }

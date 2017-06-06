@@ -47,5 +47,13 @@ namespace MoviesDatabase.Services
 
             return star;
         }
+
+        public Star GetStarByName(string firstName, string lastName)
+        {
+            var star = this.starRepository.Entities
+                .FirstOrDefault(s => s.FirstName == firstName && s.LastName == lastName);
+
+            return star;
+        }
     }
 }
