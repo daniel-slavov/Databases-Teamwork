@@ -8,6 +8,7 @@ using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
 using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Services.Contracts;
+using System.Data.Entity;
 
 namespace MoviesDatabase.Services
 {
@@ -40,7 +41,7 @@ namespace MoviesDatabase.Services
             }
         }
 
-        public Star CreateStar(string firstName, string lastName, int age, string address)
+        public Star CreateStar(string firstName, string lastName, int? age, string address)
         {
             var star = this.starFactory.CreateStar(firstName, lastName, age, address);
             this.starRepository.Add(star);
@@ -51,9 +52,29 @@ namespace MoviesDatabase.Services
         public Star GetStarByName(string firstName, string lastName)
         {
             var star = this.starRepository.Entities
+                .Include(s => s.Movies)
                 .FirstOrDefault(s => s.FirstName == firstName && s.LastName == lastName);
 
             return star;
+        }
+
+        public IEnumerable<Movie> GetAllMoviesOfStar(string firstName, string lastName)
+        {
+            var star = GetStarByName(firstName, lastName);
+            var movies = star.Movies;
+
+            return movies;
+        }
+
+        public void UpdateStar(Star star)
+        {
+            this.starRepository.Update(star);
+        }
+
+        public void DeleteStar(string firstName, string lastName)
+        {
+            var star = GetStarByName(firstName, lastName);
+            this.starRepository.Delete(star);
         }
     }
 }

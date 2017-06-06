@@ -16,6 +16,7 @@ namespace MoviesDatabase.Models
             this.Author = author;
             this.Year = year;
         }
+
         public int BookID { get; set; }
 
         [Required]
@@ -23,6 +24,6 @@ namespace MoviesDatabase.Models
 
         public string Author { get; set; }
 
-        public int Year { get; set; }
+        public int? Year { get; set; }
     }
 }

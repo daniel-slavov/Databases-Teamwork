@@ -8,6 +8,7 @@ using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
 using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Services.Contracts;
+using System.Data.Entity;
 
 namespace MoviesDatabase.Services
 {
@@ -50,7 +51,7 @@ namespace MoviesDatabase.Services
 
         public Genre GetGenreBy(string name)
         {
-            var genre = this.genreRepository.Entities
+            var genre = this.genreRepository.Entities.Include(g => g.Movies)
                 .FirstOrDefault(g => g.Name == name);
 
             return genre;

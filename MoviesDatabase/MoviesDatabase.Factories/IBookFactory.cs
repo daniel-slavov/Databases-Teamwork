@@ -9,6 +9,6 @@ namespace MoviesDatabase.Factories
 {
     public interface IBookFactory
     {
-        Book CreateBook(string title, string author, int year);
+        Book CreateBook(string title, string author, int? year);
     }
 }

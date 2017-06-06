@@ -11,8 +11,12 @@ namespace MoviesDatabase.Services.Contracts
     {
         void AddBooks(IList<Book> books);
 
-        Book CreateBook(string title, string author, int year);
+        Book CreateBook(string title, string author, int? year);
 
         Book GetBookBy(string title);
+
+        void UpdateBook(Book book);
+
+        void DeleteBook(string title);
     }
 }

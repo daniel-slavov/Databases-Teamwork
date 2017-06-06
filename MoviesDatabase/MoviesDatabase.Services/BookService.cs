@@ -40,7 +40,7 @@ namespace MoviesDatabase.Services
             }
         }
 
-        public Book CreateBook(string title, string author, int year)
+        public Book CreateBook(string title, string author, int? year)
         {
             var book = this.bookFactory.CreateBook(title, author, year);
             this.bookRepository.Add(book);
@@ -54,6 +54,17 @@ namespace MoviesDatabase.Services
                 .FirstOrDefault(b => b.Title == title);
 
             return book;
+        }
+
+        public void UpdateBook(Book book)
+        {
+            this.bookRepository.Update(book);
+        }
+
+        public void DeleteBook(string title)
+        {
+            var book = GetBookBy(title);
+            this.bookRepository.Delete(book);
         }
     }
 }

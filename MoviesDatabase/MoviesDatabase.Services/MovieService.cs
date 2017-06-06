@@ -8,6 +8,7 @@ using MoviesDatabase.Models.Contracts;
 using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Parsers.Models;
 using MoviesDatabase.Services.Contracts;
+using System.Data.Entity;
 
 namespace MoviesDatabase.Services
 {
@@ -21,8 +22,8 @@ namespace MoviesDatabase.Services
         private readonly IBookService bookService;
         private readonly IStarService starService;
 
-        public MovieService(IRepository<Movie> movieRepository, IMovieFactory movieFactory, 
-            IProducerService producerService, IStudioService studioService, IGenreService genreService, 
+        public MovieService(IRepository<Movie> movieRepository, IMovieFactory movieFactory,
+            IProducerService producerService, IStudioService studioService, IGenreService genreService,
             IBookService bookService, IStarService starService)
         {
             if (movieRepository == null)
@@ -103,7 +104,7 @@ namespace MoviesDatabase.Services
                 var star = this.starService.GetStarByName(firstName, lastName);
                 if (star == null)
                 {
-                    var newStar = this.starService.CreateStar(firstName, lastName, 0, null);
+                    var newStar = this.starService.CreateStar(firstName, lastName, null, null);
                     listOfStars.Add(newStar);
                 }
                 else
@@ -130,7 +131,7 @@ namespace MoviesDatabase.Services
                 book = this.bookService.CreateBook(bookTitle, null, 0);
             }
 
-            var movie = this.movieFactory.CreateMovie(title, year, description, length, producer,studio, book, listOfGenres, listOfStars);
+            var movie = this.movieFactory.CreateMovie(title, year, description, length, producer, studio, book, listOfGenres, listOfStars);
             this.movieRepository.Add(movie);
 
             return movie;
@@ -142,6 +143,33 @@ namespace MoviesDatabase.Services
                 .FirstOrDefault(m => m.Title == title);
 
             return movie;
+        }
+
+        public IEnumerable<Movie> GetMoviesByGenre(string genreName)
+        {
+            var genre = this.genreService.GetGenreBy(genreName);
+            var movies = genre.Movies;
+
+            return movies;
+        }
+
+        public IEnumerable<Movie> GetAllMovies()
+        {
+            var movies = this.movieRepository.Entities.ToList();
+            return movies;
+        }
+
+        public void UpdateMovie(Movie movie)
+        {
+            this.movieRepository.Update(movie);
+        }
+
+        public void DeleteMovie(string title)
+        {
+            var movie = this.movieRepository.Entities
+                .FirstOrDefault(m => m.Title == title);
+
+            this.movieRepository.Delete(movie);
         }
     }
 }
