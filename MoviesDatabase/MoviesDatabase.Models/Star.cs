@@ -11,7 +11,7 @@ namespace MoviesDatabase.Models
             this.Movies = new HashSet<Movie>();
         }
 
-        public Star(string firstName, string lastName, int age, string address) : this()
+        public Star(string firstName, string lastName, int? age, string address) : this()
         {
             this.FirstName = firstName;
             this.LastName = lastName;

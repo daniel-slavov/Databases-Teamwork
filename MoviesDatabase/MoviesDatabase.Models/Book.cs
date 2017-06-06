@@ -10,7 +10,7 @@ namespace MoviesDatabase.Models
 
         }
 
-        public Book(string title, string author, int year)
+        public Book(string title, string author, int? year)
         {
             this.Title = title;
             this.Author = author;

@@ -105,7 +105,7 @@ namespace MoviesDatabase.Services
                 var star = this.starService.GetStarByName(firstName, lastName);
                 if (star == null)
                 {
-                    var newStar = this.starService.CreateStar(firstName, lastName, 0, null);
+                    var newStar = this.starService.CreateStar(firstName, lastName, null, null);
                     listOfStars.Add(newStar);
                 }
                 else
@@ -129,7 +129,7 @@ namespace MoviesDatabase.Services
             var book = this.bookService.GetBookBy(bookTitle);
             if (book == null)
             {
-                book = this.bookService.CreateBook(bookTitle, null, 0);
+                book = this.bookService.CreateBook(bookTitle, null, null);
             }
 
             var movie = this.movieFactory.CreateMovie(title, year, description, length, producer, studio, book, listOfGenres, listOfStars);
