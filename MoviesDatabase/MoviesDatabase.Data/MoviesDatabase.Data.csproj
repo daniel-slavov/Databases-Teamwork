@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201706042338253_Allow movie without book.Designer.cs">
       <DependentUpon>201706042338253_Allow movie without book.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706061547355_Added unique index constraints.cs" />
+    <Compile Include="Migrations\201706061547355_Added unique index constraints.Designer.cs">
+      <DependentUpon>201706061547355_Added unique index constraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MoviesDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706042338253_Allow movie without book.resx">
       <DependentUpon>201706042338253_Allow movie without book.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706061547355_Added unique index constraints.resx">
+      <DependentUpon>201706061547355_Added unique index constraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
