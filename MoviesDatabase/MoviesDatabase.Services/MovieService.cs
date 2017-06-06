@@ -85,6 +85,7 @@ namespace MoviesDatabase.Services
             foreach (var genreName in genres)
             {
                 var genre = this.genreService.GetGenreBy(genreName);
+                //Console.WriteLine(genre);
                 if (genre == null)
                 {
                     var newGenre = this.genreService.CreateGenre(genreName);
@@ -104,7 +105,7 @@ namespace MoviesDatabase.Services
                 var star = this.starService.GetStarByName(firstName, lastName);
                 if (star == null)
                 {
-                    var newStar = this.starService.CreateStar(firstName, lastName, null, null);
+                    var newStar = this.starService.CreateStar(firstName, lastName, 0, null);
                     listOfStars.Add(newStar);
                 }
                 else
