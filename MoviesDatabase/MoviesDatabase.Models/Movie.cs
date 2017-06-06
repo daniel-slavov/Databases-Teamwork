@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using MoviesDatabase.Models.Contracts;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,7 +13,8 @@ namespace MoviesDatabase.Models
             this.Genres = new HashSet<Genre>();
         }
 
-        public Movie(string title, int year, string description, int length, Producer producer, Studio studio, Book book): this()
+        public Movie(string title, int year, string description, int length, Producer producer, Studio studio,
+            Book book, ICollection<Genre> genres, ICollection<Star> stars) : this()
         {
             this.Title = title;
             this.Year = year;
@@ -21,6 +23,8 @@ namespace MoviesDatabase.Models
             this.Producer = producer;
             this.Studio = studio;
             this.Book = book;
+            this.Genres = genres;
+            this.Stars = stars;
         }
 
         public int MovieID { get; set; }
