@@ -19,5 +19,7 @@ namespace MoviesDatabase.Services.Contracts
         IEnumerable<Movie> GetAllMovies();
 
         void DeleteMovie(string title);
+
+        IEnumerable<MovieForPrint> ConvertForPrint(IEnumerable<Movie> movies);
     }
 }

@@ -26,19 +26,10 @@ namespace MoviesDatabase.CLI.Commands
 
         public string Execute(IList<string> parameters)
         {
-            //         IJSONParser parser = new JSONParser();
-            //         IEnumerable<MovieModel> allMovies = parser.Parse<MovieModel>("/Users/ds/Documents/Databases-Teamwork/MoviesDatabase/MoviesDatabase.Parsers/InitialData/movies.json");
-            //         var table = ConsoleTable.From<MovieModel>(allMovies);
-            //         var tableColumns = table.Columns;
+            IEnumerable<Movie> movies = this.MovieService.GetAllMovies();
+            IEnumerable<MovieForPrint> moviesForPrint = this.MovieService.ConvertForPrint(movies);
 
-            //tableColumns.RemoveAt(2);
-
-            //Console.WriteLine(string.Join(", ", table.Columns));
-
-
-            //return table.ToString();
-
-            return "";
+            return ConsoleTable.From<MovieForPrint>(moviesForPrint).ToString();
         }
     }
 }

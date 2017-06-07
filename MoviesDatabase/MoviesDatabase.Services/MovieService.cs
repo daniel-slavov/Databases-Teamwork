@@ -167,5 +167,18 @@ namespace MoviesDatabase.Services
 
             this.movieRepository.Delete(movie);
         }
+
+        public IEnumerable<MovieForPrint> ConvertForPrint(IEnumerable<Movie> movies)
+        {
+            IList<MovieForPrint> moviesForPrint = new List<MovieForPrint>();
+
+            foreach (Movie movie in movies)
+            {
+                MovieForPrint currentMovie = new MovieForPrint(movie);
+                moviesForPrint.Add(currentMovie);
+            }
+
+            return moviesForPrint;
+        }
     }
 }
