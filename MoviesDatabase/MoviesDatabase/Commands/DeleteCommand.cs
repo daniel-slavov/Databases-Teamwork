@@ -8,13 +8,33 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class DeleteCommand : ICommand
     {
-        public DeleteCommand(IMovieService service)
+        private readonly IMovieService MovieService;
+        private readonly IStarService StarService;
+        private readonly IBookService BookService;
+
+        public DeleteCommand(IMovieService movieService, IStarService starService, IBookService bookService)
         {
+            this.MovieService = movieService;
+            this.StarService = starService;
+            this.BookService = bookService;
         }
 
         public string Execute(IList<string> parameters)
         {
-            throw new NotImplementedException();
+            string type = parameters[0];
+
+            switch (type.ToLower())
+            {
+                case "star":
+                    break;
+                case "book":
+                    break;
+                case "movie":
+                    break;
+                default:
+                    break;
+            }
+            return $"{type} deleted successfully.";
         }
     }
 }

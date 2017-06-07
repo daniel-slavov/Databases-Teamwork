@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using MoviesDatabase.Data.Contracts;
@@ -120,13 +120,13 @@ namespace MoviesDatabase.Services
                 producer = this.producerService.CreateProducer(producerName);
             }
 
-            var studio = this.studioService.GetStudioBy(studioName);
+            var studio = this.studioService.GetStudioByName(studioName);
             if (studio == null)
             {
                 studio = this.studioService.CreateStudio(studioName, null);
             }
 
-            var book = this.bookService.GetBookBy(bookTitle);
+            var book = this.bookService.GetBookByTitle(bookTitle);
             if (book == null)
             {
                 book = this.bookService.CreateBook(bookTitle, null, null);
@@ -138,7 +138,7 @@ namespace MoviesDatabase.Services
             return movie;
         }
 
-        public Movie GetMovieBy(string title)
+        public Movie GetMovieByTitle(string title)
         {
             var movie = this.movieRepository.Entities
                 .FirstOrDefault(m => m.Title == title);
@@ -158,11 +158,6 @@ namespace MoviesDatabase.Services
         {
             var movies = this.movieRepository.Entities.ToList();
             return movies;
-        }
-
-        public void UpdateMovie(Movie movie)
-        {
-            this.movieRepository.Update(movie);
         }
 
         public void DeleteMovie(string title)

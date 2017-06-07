@@ -13,7 +13,7 @@ namespace MoviesDatabase.Services.Contracts
 
         Book CreateBook(string title, string author, int? year);
 
-        Book GetBookBy(string title);
+        Book GetBookByTitle(string title);
 
         void UpdateBook(Book book);
 

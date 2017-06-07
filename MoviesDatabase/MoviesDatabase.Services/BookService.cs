@@ -48,7 +48,7 @@ namespace MoviesDatabase.Services
             return book;
         }
 
-        public Book GetBookBy(string title)
+        public Book GetBookByTitle(string title)
         {
             var book = this.bookRepository.Entities
                 .FirstOrDefault(b => b.Title == title);
@@ -63,7 +63,7 @@ namespace MoviesDatabase.Services
 
         public void DeleteBook(string title)
         {
-            var book = GetBookBy(title);
+            var book = GetBookByTitle(title);
             this.bookRepository.Delete(book);
         }
     }

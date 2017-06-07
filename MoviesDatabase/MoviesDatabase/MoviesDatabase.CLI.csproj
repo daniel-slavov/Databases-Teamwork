@@ -77,6 +77,9 @@
     <Compile Include="Providers\Contracts\IModelParser.cs" />
     <Compile Include="Commands\ImportXMLCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Commands\ListAllMoviesCommand.cs" />
+    <Compile Include="Commands\ListByGenreCommand.cs" />
+    <Compile Include="Commands\ListByStarCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">

@@ -115,7 +115,6 @@ namespace MoviesDatabase.CLI.Core
 					this.writer.WriteLine("Plaese log in to use this command.");
 				}
             }
-
         }
     }
 }

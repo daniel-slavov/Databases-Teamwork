@@ -17,6 +17,9 @@ namespace MoviesDatabase.CLI.Commands
         {
             //this.service.CreateMovie("title", 2000, "test", 120, new Producer(), new Studio(), new Book());
 
+            //var testMovie = new Movie("testtittle", 2000, "test", 120, new Producer(), new Studio(), new Book(), new List<Genre>(), new List<Star>());
+            //Console.WriteLine(testMovie.GetType().GetProperty("Title").GetValue(testMovie, null));
+
             return "Command executed successfully.";
         }
     }
