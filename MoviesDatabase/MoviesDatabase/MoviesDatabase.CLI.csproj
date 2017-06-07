@@ -90,7 +90,7 @@
     <Compile Include="Providers\Contracts\IModelParser.cs" />
     <Compile Include="Commands\ImportXMLCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
-    <Compile Include="Commands\ListAllMoviesCommand.cs" />
+    <Compile Include="Commands\ListAllCommand.cs" />
     <Compile Include="Commands\ListByGenreCommand.cs" />
     <Compile Include="Commands\ListByStarCommand.cs" />
     <Compile Include="Providers\MoviesConverter.cs" />

@@ -16,6 +16,8 @@ namespace MoviesDatabase.Services.Contracts
 
         IEnumerable<Movie> GetMoviesByGenre(string genre);
 
+        IEnumerable<Movie> GetMoviesByStar(string starName);
+
         IEnumerable<Movie> GetAllMovies();
 
         void DeleteMovie(string title);

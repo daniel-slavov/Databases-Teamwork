@@ -154,6 +154,11 @@ namespace MoviesDatabase.Services
             return movies;
         }
 
+		public IEnumerable<Movie> GetMoviesByStar(string starName)
+		{
+            throw new NotImplementedException();
+		}
+
         public IEnumerable<Movie> GetAllMovies()
         {
             var movies = this.movieRepository.Entities.ToList();

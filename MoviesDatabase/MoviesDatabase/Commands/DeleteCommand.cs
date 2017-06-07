@@ -72,7 +72,7 @@ namespace MoviesDatabase.CLI.Commands
 
 					return $"Studio {studioName} was deleted successfully.";
 				default:
-                    throw new ArgumentException($"Model {model} cannot be deleted.");
+                    throw new ArgumentException($"{model} cannot be deleted.");
             }
         }
     }
