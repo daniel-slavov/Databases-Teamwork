@@ -55,7 +55,7 @@ namespace MoviesDatabase.CLI.Commands
 						KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
 
 						PropertyInfo propertyInfo = currentBook.GetType().GetProperty(update.Key);
-						propertyInfo.SetValue(currentBook, Convert.ChangeType(update.Value, propertyInfo.PropertyType), null);
+                        propertyInfo.SetValue(currentBook, Convert.ChangeType(update.Value, (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? (Nullable.GetUnderlyingType(propertyInfo.PropertyType)) : (propertyInfo.PropertyType)), null);
 					}
 
 					this.BookService.UpdateBook(currentBook);
@@ -75,7 +75,7 @@ namespace MoviesDatabase.CLI.Commands
                         KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
 
                         PropertyInfo propertyInfo = currentStar.GetType().GetProperty(update.Key);
-                        propertyInfo.SetValue(currentStar, Convert.ChangeType(update.Value, propertyInfo.PropertyType),null);
+                        propertyInfo.SetValue(currentStar, Convert.ChangeType(update.Value, (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? (Nullable.GetUnderlyingType(propertyInfo.PropertyType)) : (propertyInfo.PropertyType)),null);
                     }
 
                     this.StarService.UpdateStar(currentStar);
@@ -93,7 +93,7 @@ namespace MoviesDatabase.CLI.Commands
 						KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
 
 						PropertyInfo propertyInfo = currentStudio.GetType().GetProperty(update.Key);
-						propertyInfo.SetValue(currentStudio, Convert.ChangeType(update.Value, propertyInfo.PropertyType), null);
+						propertyInfo.SetValue(currentStudio, Convert.ChangeType(update.Value, (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? (Nullable.GetUnderlyingType(propertyInfo.PropertyType)) : (propertyInfo.PropertyType)), null);
 					}
 
                     this.StudioService.UpdateStudio(currentStudio);
