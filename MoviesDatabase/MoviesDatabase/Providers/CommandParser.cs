@@ -44,7 +44,7 @@ namespace MoviesDatabase.CLI.Providers
             Assembly currentAssembly = this.GetType().GetTypeInfo().Assembly;
             TypeInfo commandTypeInfo = currentAssembly.DefinedTypes
 				.Where(type => type.ImplementedInterfaces.Any(inter => inter == typeof(ICommand)))
-				.Where(type => type.Name.Contains(commandName))
+                .Where(type => type.Name.ToLower().Contains(commandName.ToLower()))
 				.SingleOrDefault();
 
 			if (commandTypeInfo == null)
