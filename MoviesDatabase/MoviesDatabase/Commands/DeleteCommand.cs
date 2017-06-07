@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using MoviesDatabase.CLI.Commands.Contracts;
-using MoviesDatabase.CLI.Providers.Contracts;
 using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.CLI.Commands
@@ -43,9 +42,9 @@ namespace MoviesDatabase.CLI.Commands
 
         public string Execute(IList<string> parameters)
         {
-            string type = parameters[0];
+            string model = parameters[0];
 
-            switch (type.ToLower())
+            switch (model.ToLower())
             {
                 case "book":
                     string bookName = parameters[1];
@@ -73,8 +72,10 @@ namespace MoviesDatabase.CLI.Commands
 
 					return $"Studio {studioName} was deleted successfully.";
 				default:
-                    return $"{type} cannot be deleted.";
+                    throw new ArgumentException($"Model {model} cannot be deleted.");
             }
         }
     }
 }
+// Sample command:
+// Delete Studio Sony

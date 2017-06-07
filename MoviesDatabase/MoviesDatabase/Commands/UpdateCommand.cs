@@ -37,11 +37,11 @@ namespace MoviesDatabase.CLI.Commands
 
         public string Execute(IList<string> parameters)
         {
-			string type = parameters[0];
+            string model = parameters[0];
 
             parameters.RemoveAt(0);
 
-			switch (type.ToLower())
+			switch (model.ToLower())
 			{
 				case "book":
 					string bookName = parameters[1];
@@ -100,10 +100,10 @@ namespace MoviesDatabase.CLI.Commands
 
                     return $"Studio {studioName} was updated successfully.";
 				default:
-					return $"{type} cannot be updated.";
+                    throw new ArgumentException($"Model {model} cannot be updated.");
 			}
         }
     }
 }
-
-//Update Star Ivan Ivanov age:20 address:Sofia
+// Sample command:
+// Update Star Ivan Ivanov age:20 address:Sofia

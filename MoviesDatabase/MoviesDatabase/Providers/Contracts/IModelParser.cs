@@ -8,3 +8,5 @@ namespace MoviesDatabase.CLI.Providers.Contracts
         Type GetType(string modelName);
     }
 }
+
+// NOT NEEDED ANYMORE

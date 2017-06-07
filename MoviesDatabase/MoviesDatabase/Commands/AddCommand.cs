@@ -9,8 +9,16 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class AddCommand : ICommand
     {
-        public AddCommand(IMovieService service)
+        private readonly IMovieService MovieService;
+
+        public AddCommand(IMovieService movieService)
         {
+            if (movieService == null)
+            {
+                throw new ArgumentNullException("Movie service cannot be null.");
+            }
+
+            this.MovieService = movieService;
         }
 
         public string Execute(IList<string> parameters)

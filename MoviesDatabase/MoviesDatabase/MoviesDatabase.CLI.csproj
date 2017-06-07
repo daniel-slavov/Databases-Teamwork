@@ -53,6 +53,19 @@
     <Reference Include="Ninject.Extensions.Conventions">
       <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ConsoleTables">
+      <HintPath>..\packages\ConsoleTables.2.1.0\lib\net40\ConsoleTables.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Startup.cs" />
@@ -80,6 +93,8 @@
     <Compile Include="Commands\ListAllMoviesCommand.cs" />
     <Compile Include="Commands\ListByGenreCommand.cs" />
     <Compile Include="Commands\ListByStarCommand.cs" />
+    <Compile Include="Providers\MoviesConverter.cs" />
+    <Compile Include="Providers\Contracts\IMoviesConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">

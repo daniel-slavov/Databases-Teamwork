@@ -9,24 +9,18 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class ImportXMLCommand : ICommand
     {
-        private readonly IXMLParser XMLParser;
+		private readonly IBookService BookService;
         private readonly IGenreService GenreService;
-        private readonly IStudioService StudioService;
         private readonly IProducerService ProducerService;
-        private readonly IBookService BookService;
+		private readonly IStudioService StudioService;
+		private readonly IXMLParser XMLParser;
 
-        public ImportXMLCommand(IXMLParser xmlParser, IStudioService studioService, IProducerService producerService, IBookService bookService, IGenreService genreService)
+		public ImportXMLCommand(IBookService bookService, IGenreService genreService, IProducerService producerService, IStudioService studioService, IXMLParser xmlParser)
         {
-            if(xmlParser == null)
-            {
-                throw new ArgumentNullException("XML parser cannnot be null.");
-            }
-
-			if (studioService == null)
+			if (bookService == null)
 			{
-				throw new ArgumentNullException("Studio service cannnot be null.");
+				throw new ArgumentNullException("Book service cannnot be null.");
 			}
-
 
 			if (genreService == null)
 			{
@@ -38,17 +32,23 @@ namespace MoviesDatabase.CLI.Commands
 				throw new ArgumentNullException("Studio service cannnot be null.");
 			}
 
-			if (bookService == null)
+			if (studioService == null)
 			{
-				throw new ArgumentNullException("Book service cannnot be null.");
+				throw new ArgumentNullException("Studio service cannnot be null.");
 			}
 
-            this.XMLParser = xmlParser;
-            this.GenreService = genreService;
-            this.StudioService = studioService;
-            this.ProducerService = producerService;
+			if (xmlParser == null)
+			{
+				throw new ArgumentNullException("XML parser cannnot be null.");
+			}
+			
             this.BookService = bookService;
-        }
+            this.GenreService = genreService;
+            this.ProducerService = producerService;
+			this.StudioService = studioService;
+			this.XMLParser = xmlParser;
+		}
+
         public string Execute(IList<string> parameters)
         {
             string model = parameters[0];
@@ -56,26 +56,28 @@ namespace MoviesDatabase.CLI.Commands
 
             switch (model.ToLower())
             {
+				case "book":
+					List<Book> books = this.XMLParser.ParseBooks(path);
+					this.BookService.AddBooks(books);
+					break;
                 case "genre":
                     List<Genre> genres = this.XMLParser.ParseGenres(path);
                     this.GenreService.AddGenres(genres);
                     break;
+				case "producer":
+					List<Producer> producers = this.XMLParser.ParseProducers(path);
+					this.ProducerService.AddProducers(producers);
+					break;
                 case "studio":
                     List<Studio> studios = this.XMLParser.ParseStudios(path);
                     this.StudioService.AddStudios(studios);
                     break;
-                case "producer":
-                    List<Producer> producers = this.XMLParser.ParseProducers(path);
-                    this.ProducerService.AddProducers(producers);
-                    break;
-                case "book":
-                    List<Book> books = this.XMLParser.ParseBooks(path);
-                    this.BookService.AddBooks(books);
-                    break;
                 default:
-                    throw new ArgumentException("Model type is not supported.");
+                    throw new ArgumentException($"Model type {model} is not supported.");
             }
-            return "File imported successfully.";
+            return $"{model} XML file imported successfully.";
         }
     }
 }
+// Sample command:
+// ImportXML Producer ./sample.xml
