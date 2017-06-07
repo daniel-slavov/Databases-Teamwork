@@ -7,7 +7,6 @@ namespace MoviesDatabase.Parsers.Models
     {
         public MovieForPrint(Movie movie)
         {
-            //this.MovieID = movie.MovieID;
             this.Title = movie.Title;
             this.Year = movie.Year;
             this.Length = movie.Length;
@@ -17,8 +16,6 @@ namespace MoviesDatabase.Parsers.Models
             this.Stars = string.Join(", ", movie.Stars.Select(star => star.FirstName + star.LastName));
             this.Genres = string.Join(", ", movie.Genres.Select(genre => genre.Name));
         }
-
-		//public int MovieID { get; private set; }
 
 		public string Title { get; private set; }
 
