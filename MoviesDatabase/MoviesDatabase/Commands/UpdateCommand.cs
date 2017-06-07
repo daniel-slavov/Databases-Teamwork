@@ -44,7 +44,7 @@ namespace MoviesDatabase.CLI.Commands
 			switch (model.ToLower())
 			{
 				case "book":
-					string bookName = parameters[1];
+					string bookName = parameters[0];
 
 					parameters.RemoveAt(0);
 
@@ -62,8 +62,8 @@ namespace MoviesDatabase.CLI.Commands
 
 					return $"Book {bookName} was updated successfully.";
 				case "star":
-					string firstName = parameters[1];
-					string lastName = parameters[2];
+					string firstName = parameters[0];
+					string lastName = parameters[1];
 
 					parameters.RemoveAt(0);
 					parameters.RemoveAt(0);
@@ -82,7 +82,7 @@ namespace MoviesDatabase.CLI.Commands
 
                     return $"Star {firstName} {lastName} was updated successfully.";
 				case "studio":
-					string studioName = parameters[1];
+					string studioName = parameters[0];
 
 					parameters.RemoveAt(0);
 
