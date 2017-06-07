@@ -58,7 +58,12 @@ namespace MoviesDatabase.Services
 
         public void UpdateStudio(Studio studio)
         {
-            // TO DO + delete
-        }
+			throw new NotImplementedException();
+		}
+
+		public void DeleteStudio(string name)
+		{
+			throw new NotImplementedException();
+		}
     }
 }

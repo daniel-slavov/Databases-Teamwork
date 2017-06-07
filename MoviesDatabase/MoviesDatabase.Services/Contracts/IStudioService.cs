@@ -16,5 +16,7 @@ namespace MoviesDatabase.Services.Contracts
         Studio GetStudioByName(string name);
 
         void UpdateStudio(Studio studio);
+
+        void DeleteStudio(string name);
     }
 }

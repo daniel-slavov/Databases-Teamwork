@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using MoviesDatabase.CLI.Commands.Contracts;
-using MoviesDatabase.CLI.Providers.Contracts;
 using MoviesDatabase.Models;
 using MoviesDatabase.Services.Contracts;
 
@@ -11,15 +9,30 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class UpdateCommand : ICommand
     {
-        private readonly IStudioService StudioService;
-		private readonly IStarService StarService;
 		private readonly IBookService BookService;
+		private readonly IStarService StarService;
+		private readonly IStudioService StudioService;
 
-        public UpdateCommand(IStudioService studioService, IStarService starService, IBookService bookService)
+        public UpdateCommand(IBookService bookService, IStarService starService, IStudioService studioService)
         {
-            this.StudioService = studioService;
-			this.StarService = starService;
+			if (bookService == null)
+			{
+				throw new ArgumentNullException("Book service cannot be null.");
+			}
+
+			if (starService == null)
+			{
+				throw new ArgumentNullException("Star service cannot be null.");
+			}
+
+			if (studioService == null)
+			{
+				throw new ArgumentNullException("Studio service cannot be null.");
+			}
+
 			this.BookService = bookService;
+			this.StarService = starService;
+			this.StudioService = studioService;
         }
 
         public string Execute(IList<string> parameters)
@@ -30,6 +43,24 @@ namespace MoviesDatabase.CLI.Commands
 
 			switch (type.ToLower())
 			{
+				case "book":
+					string bookName = parameters[1];
+
+					parameters.RemoveAt(0);
+
+					Book currentBook = this.BookService.GetBookByTitle(bookName);
+
+					foreach (string parameter in parameters)
+					{
+						KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
+
+						PropertyInfo propertyInfo = currentBook.GetType().GetProperty(update.Key);
+						propertyInfo.SetValue(currentBook, Convert.ChangeType(update.Value, propertyInfo.PropertyType), null);
+					}
+
+					this.BookService.UpdateBook(currentBook);
+
+					return $"Book {bookName} was updated successfully.";
 				case "star":
 					string firstName = parameters[1];
 					string lastName = parameters[2];
@@ -49,25 +80,7 @@ namespace MoviesDatabase.CLI.Commands
 
                     this.StarService.UpdateStar(currentStar);
 
-					break;
-				case "book":
-                    string bookName = parameters[1];
-
-                    parameters.RemoveAt(0);
-
-                    Book currentBook = this.BookService.GetBookByTitle(bookName);
-
-					foreach (string parameter in parameters)
-					{
-						KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
-
-						PropertyInfo propertyInfo = currentBook.GetType().GetProperty(update.Key);
-						propertyInfo.SetValue(currentBook, Convert.ChangeType(update.Value, propertyInfo.PropertyType), null);
-					}
-
-                    this.BookService.UpdateBook(currentBook);
-
-					break;
+                    return $"Star {firstName} {lastName} was updated successfully.";
 				case "studio":
 					string studioName = parameters[1];
 
@@ -85,11 +98,10 @@ namespace MoviesDatabase.CLI.Commands
 
                     this.StudioService.UpdateStudio(currentStudio);
 
-					break;
+                    return $"Studio {studioName} was updated successfully.";
 				default:
-					break;
+					return $"{type} cannot be updated.";
 			}
-            return $"{type} updated successfully.";
         }
     }
 }
