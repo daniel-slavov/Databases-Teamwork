@@ -85,7 +85,6 @@ namespace MoviesDatabase.Services
             foreach (var genreName in genres)
             {
                 var genre = this.genreService.GetGenreBy(genreName);
-                //Console.WriteLine(genre);
                 if (genre == null)
                 {
                     var newGenre = this.genreService.CreateGenre(genreName);
@@ -141,6 +140,8 @@ namespace MoviesDatabase.Services
         public Movie GetMovieByTitle(string title)
         {
             var movie = this.movieRepository.Entities
+                .Include(m => m.Stars)
+                .Include(m => m.Genres)
                 .FirstOrDefault(m => m.Title == title);
 
             return movie;
@@ -156,12 +157,20 @@ namespace MoviesDatabase.Services
 
 		public IEnumerable<Movie> GetMoviesByStar(string starName)
 		{
-            throw new NotImplementedException();
+		    var firstName = starName.Split(' ')[0];
+		    var lastName = starName.Split(' ')[1];
+		    var star = this.starService.GetStarByName(firstName, lastName);
+		    var movies = star.Movies;
+
+		    return movies;
 		}
 
         public IEnumerable<Movie> GetAllMovies()
         {
-            var movies = this.movieRepository.Entities.ToList();
+            var movies = this.movieRepository.Entities
+                .Include(m => m.Genres)
+                .Include(m => m.Stars)
+                .ToList();
             return movies;
         }
 
