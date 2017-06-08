@@ -27,6 +27,11 @@ namespace MoviesDatabase.CLI.Commands
         public string Execute(IList<string> parameters)
         {
             IEnumerable<Movie> movies = this.MovieService.GetAllMovies();
+            if (movies == null)
+            {
+                return "No movie to show.";
+            }
+
             IEnumerable<MovieForPrint> moviesForPrint = this.MovieService.ConvertForPrint(movies);
 
             return ConsoleTable.From<MovieForPrint>(moviesForPrint).ToString();

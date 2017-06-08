@@ -50,6 +50,11 @@ namespace MoviesDatabase.CLI.Commands
 
 					Book currentBook = this.BookService.GetBookByTitle(bookName);
 
+				    if (currentBook == null)
+				    {
+				        return "There is not such book in database.";
+				    }
+
 					foreach (string parameter in parameters)
 					{
 						KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
@@ -69,6 +74,10 @@ namespace MoviesDatabase.CLI.Commands
 					parameters.RemoveAt(0);
 
 					Star currentStar = this.StarService.GetStarByName(firstName, lastName);
+				    if (currentStar == null)
+				    {
+				        return "There is not such star in database.";
+				    }
 
                     foreach (string parameter in parameters)
                     {
@@ -87,8 +96,12 @@ namespace MoviesDatabase.CLI.Commands
 					parameters.RemoveAt(0);
 
                     Studio currentStudio = this.StudioService.GetStudioByName(studioName);
+				    if (currentStudio == null)
+				    {
+				        return "There is not such studio in database.";
+				    }
 
-					foreach (string parameter in parameters)
+                    foreach (string parameter in parameters)
 					{
 						KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
 
