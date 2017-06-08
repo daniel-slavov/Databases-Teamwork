@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.CLI.Providers.Contracts;
 using MoviesDatabase.Services.Contracts;
-using MoviesDatabase.Models;
 
 namespace MoviesDatabase.CLI.Commands
 {
@@ -35,29 +34,79 @@ namespace MoviesDatabase.CLI.Commands
             this.Writer = writer;
 		}
 
-        public string Execute(IList<string> parameters)
+        string ICommand.Execute(IList<string> parameters)
         {
-            this.Writer.Write("Title: ");
-            string title = this.Reader.ReadLine();
-            this.Writer.Write("Year: ");
-            int year = int.Parse(this.Reader.ReadLine()); 
-			this.Writer.Write("Description: ");
-            string description = this.Reader.ReadLine();
-            this.Writer.Write("Length: ");
-            int length = int.Parse(this.Reader.ReadLine());
+            string title = "";
+            string description = "";
+            string producer = "";
+            string studio = "";
+            string book = "";
+            string inputGenres = "";
+            string inputStars = "";
+            int year = 0;
+            int length = 0;
+            IList<string> genres = new List<string>();
+			IList<string> stars = new List<string>();
 
-			string studioName = this.Reader.ReadLine();
-			this.Writer.Write("Title: ");
-			//IList<string> producers = this.Reader.ReadLine();
-			this.Writer.Write("Title: ");
-			
+            while(string.IsNullOrWhiteSpace(title))
+            {
+                this.Writer.Write("Title: ");
+                title = this.Reader.ReadLine();
+            }
 
-            //this.service.CreateMovie("title", 2000, "test", 120, new Producer(), new Studio(), new Book());
+            while (year < 1)
+            {
+                this.Writer.Write("Year: ");
+                int.TryParse(this.Reader.ReadLine(), out year);
+            }
 
-            //var testMovie = new Movie("testtittle", 2000, "test", 120, new Producer(), new Studio(), new Book(), new List<Genre>(), new List<Star>());
-            //Console.WriteLine(testMovie.GetType().GetProperty("Title").GetValue(testMovie, null));
+            while (string.IsNullOrWhiteSpace(description))
+			{
+				this.Writer.Write("Description: ");
+				description = this.Reader.ReadLine();
+			}
 
-            return "Command executed successfully.";
+            while (year < 1)
+            {
+                this.Writer.Write("Length: ");
+                length = int.Parse(this.Reader.ReadLine());
+            }
+
+            while (string.IsNullOrWhiteSpace(producer))
+			{
+				this.Writer.Write("Pruducer: ");
+				producer = this.Reader.ReadLine();
+			}
+
+            while (string.IsNullOrWhiteSpace(studio))
+			{
+				this.Writer.Write("Studio: ");
+				studio = this.Reader.ReadLine();
+			}
+
+			while (string.IsNullOrWhiteSpace(book))
+			{
+				this.Writer.Write("Book: ");
+				book = this.Reader.ReadLine();
+			}
+
+            while (string.IsNullOrWhiteSpace(inputGenres))
+            {
+                this.Writer.Write("Genres: ");
+                inputGenres = this.Reader.ReadLine();
+				genres = inputGenres.Replace(", ", "_").Split('_');
+            }
+
+            while (string.IsNullOrWhiteSpace(inputStars))
+            {
+                this.Writer.Write("Stars: ");
+                inputStars = this.Reader.ReadLine();
+				stars = inputStars.Replace(", ", "_").Split('_');
+            }
+
+            this.MovieService.CreateMovie(title, year, description, length, producer, studio, book, genres, stars);
+
+            return "Movie was added successfully.";
         }
     }
 }
