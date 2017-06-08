@@ -37,16 +37,19 @@ namespace MoviesDatabase.CLI.Commands
 
         public string Execute(IList<string> parameters)
         {
-   //         this.Writer.Write("Title: ");
-   //         string title = this.Reader.ReadLine();
-   //         this.Writer.Write("Year: ");
-   //         int year = int.Parse(this.Reader.ReadLine()); 
-			//this.Writer.Write("Description: ");
-   //         string description = this.Reader.re
-			//string studioName = this.Reader.ReadLine();
-			//this.Writer.Write("Title: ");
+            this.Writer.Write("Title: ");
+            string title = this.Reader.ReadLine();
+            this.Writer.Write("Year: ");
+            int year = int.Parse(this.Reader.ReadLine()); 
+			this.Writer.Write("Description: ");
+            string description = this.Reader.ReadLine();
+            this.Writer.Write("Length: ");
+            int length = int.Parse(this.Reader.ReadLine());
+
+			string studioName = this.Reader.ReadLine();
+			this.Writer.Write("Title: ");
 			//IList<string> producers = this.Reader.ReadLine();
-			//this.Writer.Write("Title: ");
+			this.Writer.Write("Title: ");
 			
 
             //this.service.CreateMovie("title", 2000, "test", 120, new Producer(), new Studio(), new Book());

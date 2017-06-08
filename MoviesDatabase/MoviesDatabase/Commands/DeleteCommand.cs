@@ -43,7 +43,7 @@ namespace MoviesDatabase.CLI.Commands
         public string Execute(IList<string> parameters)
         {
             string model = parameters[0];
-            string name = parameters[0].Replace('_', ' ');
+            string name = parameters[1].Replace('_', ' ');
 
             switch (model.ToLower())
             {
