@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using MoviesDatabase.CLI.Commands.Contracts;
-using MoviesDatabase.Services.Contracts;
 using ConsoleTables;
+using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.Models;
-using MoviesDatabase.Parsers.Contracts;
-using MoviesDatabase.Parsers;
 using MoviesDatabase.Parsers.Models;
+using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.CLI.Commands
 {
@@ -27,9 +25,10 @@ namespace MoviesDatabase.CLI.Commands
         public string Execute(IList<string> parameters)
         {
             IEnumerable<Movie> movies = this.MovieService.GetAllMovies();
+
             if (movies == null)
             {
-                return "No movie to show.";
+                throw new ArgumentNullException("No movies to show.");
             }
 
             IEnumerable<MovieForPrint> moviesForPrint = this.MovieService.ConvertForPrint(movies);

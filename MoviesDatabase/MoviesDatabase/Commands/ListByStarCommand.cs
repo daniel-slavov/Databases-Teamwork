@@ -27,9 +27,10 @@ namespace MoviesDatabase.CLI.Commands
             string starName = string.Join(" ", parameters);
             
             IEnumerable<Movie> movies = this.MovieService.GetMoviesByStar(starName);
-		    if (movies == null)
+		    
+            if (movies == null)
 		    {
-		        return "This star has no movie to show.";
+                throw new NullReferenceException("This star has no movie to show.");
 		    }
 
 			IEnumerable<MovieForPrint> moviesForPrint = this.MovieService.ConvertForPrint(movies);

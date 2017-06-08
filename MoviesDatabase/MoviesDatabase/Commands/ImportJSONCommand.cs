@@ -52,10 +52,10 @@ namespace MoviesDatabase.CLI.Commands
                     this.StarService.AddStars(stars);
 					break;
                 default:
-                    throw new ArgumentException($"Model type {model} is not supported.");
+                    throw new ArgumentException($"{model}s are not supported.");
             }
 
-            return $"{model} JSON file imported successfully.";
+            return "JSON file imported successfully.";
         }
     }
 }

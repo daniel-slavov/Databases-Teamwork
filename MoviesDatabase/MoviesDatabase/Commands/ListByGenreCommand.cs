@@ -25,10 +25,12 @@ namespace MoviesDatabase.CLI.Commands
 		public string Execute(IList<string> parameters)
 		{
             IEnumerable<Movie> movies = this.MovieService.GetMoviesByGenre(parameters[0]);
-		    if (movies == null)
+		    
+            if (movies == null)
 		    {
-		        return "There is no movies in this genre.";
+                throw new NullReferenceException("There is no movies in this genre.");
 		    }
+
 			IEnumerable<MovieForPrint> moviesForPrint = this.MovieService.ConvertForPrint(movies);
 
 			return ConsoleTable.From<MovieForPrint>(moviesForPrint).ToString();

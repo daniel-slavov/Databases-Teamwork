@@ -73,9 +73,9 @@ namespace MoviesDatabase.CLI.Commands
                     this.StudioService.AddStudios(studios);
                     break;
                 default:
-                    throw new ArgumentException($"Model type {model} is not supported.");
+                    throw new ArgumentException($"{model}s are not supported.");
             }
-            return $"{model} XML file imported successfully.";
+            return "XML file imported successfully.";
         }
     }
 }

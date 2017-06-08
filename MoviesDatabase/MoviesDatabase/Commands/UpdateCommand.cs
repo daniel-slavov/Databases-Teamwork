@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using MoviesDatabase.CLI.Commands.Contracts;
@@ -38,21 +38,19 @@ namespace MoviesDatabase.CLI.Commands
         public string Execute(IList<string> parameters)
         {
             string model = parameters[0];
+            string name = parameters[1].Replace('_', ' ');
 
-            parameters.RemoveAt(0);
+			parameters.RemoveAt(0);
+			parameters.RemoveAt(0);
 
 			switch (model.ToLower())
 			{
 				case "book":
-					string bookName = parameters[0];
-
-					parameters.RemoveAt(0);
-
-					Book currentBook = this.BookService.GetBookByTitle(bookName);
+					Book currentBook = this.BookService.GetBookByTitle(name);
 
 				    if (currentBook == null)
 				    {
-				        return "There is not such book in database.";
+                        throw new NullReferenceException("There is not such book in database.");
 				    }
 
 					foreach (string parameter in parameters)
@@ -65,18 +63,16 @@ namespace MoviesDatabase.CLI.Commands
 
 					this.BookService.UpdateBook(currentBook);
 
-					return $"Book {bookName} was updated successfully.";
-				case "star":
-					string firstName = parameters[0];
-					string lastName = parameters[1];
-
-					parameters.RemoveAt(0);
-					parameters.RemoveAt(0);
+                    break;
+                case "star":
+                    string firstName = name.Split(' ')[0];
+					string lastName = name.Split(' ')[1];
 
 					Star currentStar = this.StarService.GetStarByName(firstName, lastName);
-				    if (currentStar == null)
+				    
+                    if (currentStar == null)
 				    {
-				        return "There is not such star in database.";
+                        throw new NullReferenceException("There is not such star in database.");
 				    }
 
                     foreach (string parameter in parameters)
@@ -89,16 +85,13 @@ namespace MoviesDatabase.CLI.Commands
 
                     this.StarService.UpdateStar(currentStar);
 
-                    return $"Star {firstName} {lastName} was updated successfully.";
+                    break;
 				case "studio":
-					string studioName = parameters[0];
-
-					parameters.RemoveAt(0);
-
-                    Studio currentStudio = this.StudioService.GetStudioByName(studioName);
-				    if (currentStudio == null)
+					Studio currentStudio = this.StudioService.GetStudioByName(name);
+				    
+                    if (currentStudio == null)
 				    {
-				        return "There is not such studio in database.";
+                        throw new NullReferenceException("There is not such studio in database.");
 				    }
 
                     foreach (string parameter in parameters)
@@ -111,11 +104,13 @@ namespace MoviesDatabase.CLI.Commands
 
                     this.StudioService.UpdateStudio(currentStudio);
 
-                    return $"Studio {studioName} was updated successfully.";
+                    break;
 				default:
-                    throw new ArgumentException($"Model {model} cannot be updated.");
+                    throw new ArgumentException($"{model}s cannot be updated.");
 			}
-        }
+
+            return $"{name} was updated successfully.";
+		}
     }
 }
 // Sample command:
