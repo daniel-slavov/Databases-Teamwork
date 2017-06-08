@@ -39,15 +39,15 @@ namespace MoviesDatabase.Models
 
         public int Length { get; set; }
 
-        public int ProducerID { get; set; }
+        public int? ProducerID { get; set; }
 
         public virtual Producer Producer { get; set; }
 
-        public int StudioID { get; set; }
+        public int? StudioID { get; set; }
 
         public virtual Studio Studio { get; set; }
 
-        public int BookID { get; set; }
+        public int? BookID { get; set; }
 
         public virtual Book Book { get; set; }
 

@@ -70,6 +70,14 @@
     <Compile Include="Migrations\201706061547355_Added unique index constraints.Designer.cs">
       <DependentUpon>201706061547355_Added unique index constraints.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706081120592_Allow null properties.cs" />
+    <Compile Include="Migrations\201706081120592_Allow null properties.Designer.cs">
+      <DependentUpon>201706081120592_Allow null properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706081121563_Fix Foreign keys.cs" />
+    <Compile Include="Migrations\201706081121563_Fix Foreign keys.Designer.cs">
+      <DependentUpon>201706081121563_Fix Foreign keys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MoviesDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +110,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706061547355_Added unique index constraints.resx">
       <DependentUpon>201706061547355_Added unique index constraints.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706081120592_Allow null properties.resx">
+      <DependentUpon>201706081120592_Allow null properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706081121563_Fix Foreign keys.resx">
+      <DependentUpon>201706081121563_Fix Foreign keys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
