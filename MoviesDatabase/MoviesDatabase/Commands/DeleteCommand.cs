@@ -43,37 +43,30 @@ namespace MoviesDatabase.CLI.Commands
         public string Execute(IList<string> parameters)
         {
             string model = parameters[0];
+            string name = parameters[0].Replace('_', ' ');
 
             switch (model.ToLower())
             {
                 case "book":
-                    string bookName = parameters[1];
-
-                    this.BookService.DeleteBook(bookName);
-
-					return $"Book {bookName} was deleted successfully.";
+                    this.BookService.DeleteBook(name);
+                    break;
 				case "movie":
-                    string movieTitle = parameters[1];
-
-                    this.MovieService.DeleteMovie(movieTitle);
-
-                    return $"Movie {movieTitle} was deleted successfully.";
+                    this.MovieService.DeleteMovie(name);
+                    break;
 				case "star":
-                    string firstName = parameters[1];
-                    string lastName = parameters[2];
+                    string firstName = name.Split(' ')[0];
+                    string lastName = name.Split(' ')[1];
 
                     this.StarService.DeleteStar(firstName, lastName);
-
-                    return $"Star {firstName} {lastName} was deleted successfully.";
+                    break;
 				case "studio":
-                    string studioName = parameters[1];
-
-                    this.StudioService.DeleteStudio(studioName);
-
-					return $"Studio {studioName} was deleted successfully.";
+                    this.StudioService.DeleteStudio(name);
+                    break;
 				default:
-                    throw new ArgumentException($"{model} cannot be deleted.");
+                    throw new ArgumentException($"{model}s cannot be deleted.");
             }
+
+            return $"{model} {name} was deleted successfully.";
         }
     }
 }

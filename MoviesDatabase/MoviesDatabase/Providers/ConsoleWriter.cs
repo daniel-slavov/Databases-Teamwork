@@ -8,16 +8,14 @@ namespace MoviesDatabase.CLI.Providers
 {
     public class ConsoleWriter : IConsoleWriter
     {
+        public void Write(string message)
+        {
+            Console.Write(message);
+        }
+
         public void WriteLine(string message)
         {
             Console.WriteLine(message);
         }
-
-        //public void PrintMovies(IEnumerable<Movie> movies)
-        //{
-        //    StringBuilder builder = new StringBuilder();
-
-        //    builder.AppendLine("");
-        //}
     }
 }

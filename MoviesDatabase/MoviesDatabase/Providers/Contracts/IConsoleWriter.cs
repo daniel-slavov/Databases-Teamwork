@@ -6,10 +6,8 @@ namespace MoviesDatabase.CLI.Providers.Contracts
 {
     public interface IConsoleWriter
     {
+        void Write(string message);
+
         void WriteLine(string message);
-
-        //void Print(Movie movie);
-
-        //void PrintMovies(IEnumerable<Movie> movies);
     }
 }
