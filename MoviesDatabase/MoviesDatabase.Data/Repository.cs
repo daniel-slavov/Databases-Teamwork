@@ -39,21 +39,18 @@ namespace MoviesDatabase.Data
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Added;
-            this.Context.SaveChanges();
         }
 
         public void Update(T entity)
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
-            this.Context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
             var entry = this.Context.Entry(entity);
             entry.State = EntityState.Deleted;
-            this.Context.SaveChanges();
         }
     }
 }

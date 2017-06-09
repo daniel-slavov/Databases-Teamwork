@@ -14,10 +14,11 @@ namespace MoviesDatabase.Services
 {
     public class StarService : IStarService
     {
+        private readonly IUnitOfWork unitOfWork;
         private readonly IRepository<Star> starRepository;
         private readonly IStarFactory starFactory;
 
-        public StarService(IRepository<Star> starRepository, IStarFactory starFactory)
+        public StarService(IRepository<Star> starRepository, IUnitOfWork unitOfWork, IStarFactory starFactory)
         {
             if (starRepository == null)
             {
@@ -30,6 +31,7 @@ namespace MoviesDatabase.Services
             }
 
             this.starRepository = starRepository;
+            this.unitOfWork = unitOfWork;
             this.starFactory = starFactory;
         }
 
@@ -39,12 +41,15 @@ namespace MoviesDatabase.Services
             {
                 this.starRepository.Add(star);
             }
+
+            this.unitOfWork.Commit();
         }
 
         public Star CreateStar(string firstName, string lastName, int? age, string address)
         {
             var star = this.starFactory.CreateStar(firstName, lastName, age, address);
             this.starRepository.Add(star);
+            this.unitOfWork.Commit();
 
             return star;
         }
@@ -69,12 +74,14 @@ namespace MoviesDatabase.Services
         public void UpdateStar(Star star)
         {
             this.starRepository.Update(star);
+            this.unitOfWork.Commit();
         }
 
         public void DeleteStar(string firstName, string lastName)
         {
             var star = GetStarByName(firstName, lastName);
             this.starRepository.Delete(star);
+            this.unitOfWork.Commit();
         }
     }
 }

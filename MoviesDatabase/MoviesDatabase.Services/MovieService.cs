@@ -15,6 +15,7 @@ namespace MoviesDatabase.Services
     public class MovieService : IMovieService
     {
         private readonly IRepository<Movie> movieRepository;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IMovieFactory movieFactory;
         private readonly IProducerService producerService;
         private readonly IStudioService studioService;
@@ -22,13 +23,18 @@ namespace MoviesDatabase.Services
         private readonly IBookService bookService;
         private readonly IStarService starService;
 
-        public MovieService(IRepository<Movie> movieRepository, IMovieFactory movieFactory,
+        public MovieService(IRepository<Movie> movieRepository, IUnitOfWork unitOfWork, IMovieFactory movieFactory,
             IProducerService producerService, IStudioService studioService, IGenreService genreService,
             IBookService bookService, IStarService starService)
         {
             if (movieRepository == null)
             {
                 throw new ArgumentNullException("Movie repository cannot be null!");
+            }
+
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null!");
             }
 
             if (movieFactory == null)
@@ -62,6 +68,7 @@ namespace MoviesDatabase.Services
             }
 
             this.movieRepository = movieRepository;
+            this.unitOfWork = unitOfWork;
             this.movieFactory = movieFactory;
             this.producerService = producerService;
             this.studioService = studioService;
@@ -133,6 +140,7 @@ namespace MoviesDatabase.Services
 
             var movie = this.movieFactory.CreateMovie(title, year, description, length, producer, studio, book, listOfGenres, listOfStars);
             this.movieRepository.Add(movie);
+            this.unitOfWork.Commit();
 
             return movie;
         }
@@ -180,6 +188,7 @@ namespace MoviesDatabase.Services
                 .FirstOrDefault(m => m.Title == title);
 
             this.movieRepository.Delete(movie);
+            this.unitOfWork.Commit();
         }
 
         public IEnumerable<MovieForPrint> ConvertForPrint(IEnumerable<Movie> movies)
@@ -190,6 +199,7 @@ namespace MoviesDatabase.Services
             {
                 MovieForPrint currentMovie = new MovieForPrint(movie);
                 moviesForPrint.Add(currentMovie);
+                this.unitOfWork.Commit();
             }
 
             return moviesForPrint;

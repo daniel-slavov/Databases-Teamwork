@@ -14,9 +14,10 @@ namespace MoviesDatabase.Services
     public class BookService : IBookService
     {
         private readonly IRepository<Book> bookRepository;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IBookFactory bookFactory;
 
-        public BookService(IRepository<Book> bookRepository, IBookFactory bookFactory)
+        public BookService(IRepository<Book> bookRepository, IUnitOfWork unitOfWork, IBookFactory bookFactory)
         {
             if (bookRepository == null)
             {
@@ -28,7 +29,13 @@ namespace MoviesDatabase.Services
                 throw new ArgumentNullException("Book factory cannot be null!");
             }
 
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null!");
+            }
+
             this.bookRepository = bookRepository;
+            this.unitOfWork = unitOfWork;
             this.bookFactory = bookFactory;
         }
 
@@ -37,6 +44,7 @@ namespace MoviesDatabase.Services
             foreach (var book in books)
             {
                 this.bookRepository.Add(book);
+                this.unitOfWork.Commit();
             }
         }
 
@@ -44,6 +52,7 @@ namespace MoviesDatabase.Services
         {
             var book = this.bookFactory.CreateBook(title, author, year);
             this.bookRepository.Add(book);
+            this.unitOfWork.Commit();
 
             return book;
         }
@@ -59,12 +68,14 @@ namespace MoviesDatabase.Services
         public void UpdateBook(Book book)
         {
             this.bookRepository.Update(book);
+            this.unitOfWork.Commit();
         }
 
         public void DeleteBook(string title)
         {
             var book = GetBookByTitle(title);
             this.bookRepository.Delete(book);
+            this.unitOfWork.Commit();
         }
     }
 }

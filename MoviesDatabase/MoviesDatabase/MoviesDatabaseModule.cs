@@ -58,8 +58,8 @@ namespace MoviesDatabase.CLI
 				return (ICommand)context.Kernel.Get(commandType);
 			}).NamedLikeFactoryMethod((ICommandFactory commandFactory) => commandFactory.GetCommand(null));
 
-            Bind(typeof(IRepository<>)).To(typeof(Repository<>)); 
-
+            Bind(typeof(IRepository<>)).To(typeof(Repository<>));
+            Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<DbContext>().To<MoviesDbContext>().InThreadScope();
 
             Bind<IBookFactory>().ToFactory().InSingletonScope();

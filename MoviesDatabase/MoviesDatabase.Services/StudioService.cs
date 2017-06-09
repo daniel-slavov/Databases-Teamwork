@@ -13,10 +13,11 @@ namespace MoviesDatabase.Services
 {
     public class StudioService : IStudioService
     {
+        private readonly IUnitOfWork unitOfWork;
         private readonly IRepository<Studio> studioRepository;
         private readonly IStudioFactory studioFactory;
 
-        public StudioService(IRepository<Studio> studioRepository, IStudioFactory studioFactory)
+        public StudioService(IRepository<Studio> studioRepository, IUnitOfWork unitOfFirst, IStudioFactory studioFactory)
         {
             if (studioRepository == null)
             {
@@ -28,7 +29,13 @@ namespace MoviesDatabase.Services
                 throw new ArgumentNullException("Studio factory cannot be null!");
             }
 
+            if (unitOfFirst == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null!");
+            }
+
             this.studioRepository = studioRepository;
+            this.unitOfWork = unitOfWork;
             this.studioFactory = studioFactory;
         }
 
@@ -38,12 +45,15 @@ namespace MoviesDatabase.Services
             {
                 this.studioRepository.Add(studio);
             }
+
+            this.unitOfWork.Commit();
         }
 
         public Studio CreateStudio(string name, string address)
         {
             var studio = this.studioFactory.CreateStudio(name, address);
             this.studioRepository.Add(studio);
+            this.unitOfWork.Commit();
 
             return studio;
         }

@@ -15,9 +15,10 @@ namespace MoviesDatabase.Services
     public class GenreService : IGenreService
     {
         private readonly IRepository<Genre> genreRepository;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IGenreFactory genreFactory;
 
-        public GenreService(IRepository<Genre> genreRepository, IGenreFactory genreFactory)
+        public GenreService(IRepository<Genre> genreRepository, IUnitOfWork unitOfWork, IGenreFactory genreFactory)
         {
             if (genreRepository == null)
             {
@@ -29,7 +30,13 @@ namespace MoviesDatabase.Services
                 throw new ArgumentNullException("Genre factory cannot be null!");
             }
 
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null!");
+            }
+
             this.genreRepository = genreRepository;
+            this.unitOfWork = unitOfWork;
             this.genreFactory = genreFactory;
         }
 
@@ -45,6 +52,7 @@ namespace MoviesDatabase.Services
         {
             var genre = this.genreFactory.CreateGenre(name);
             this.genreRepository.Add(genre);
+            this.unitOfWork.Commit();
 
             return genre;
         }

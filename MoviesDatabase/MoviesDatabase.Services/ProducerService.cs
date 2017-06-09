@@ -12,9 +12,10 @@ namespace MoviesDatabase.Services
     public class ProducerService : IProducerService
     {
         private readonly IRepository<Producer> producerRepository;
+        private readonly IUnitOfWork unitOfWork;
         private readonly IProducerFactory producerFactory;
 
-        public ProducerService(IRepository<Producer> producerRepository, IProducerFactory producerFactory)
+        public ProducerService(IRepository<Producer> producerRepository, IUnitOfWork unitOfWork, IProducerFactory producerFactory)
         {
             if (producerRepository == null)
             {
@@ -26,7 +27,13 @@ namespace MoviesDatabase.Services
                 throw new ArgumentNullException("Producer factory cannot be null!");
             }
 
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null!");
+            }
+
             this.producerRepository = producerRepository;
+            this.unitOfWork = unitOfWork;
             this.producerFactory = producerFactory;
         }
 
@@ -36,12 +43,15 @@ namespace MoviesDatabase.Services
             {
                 this.producerRepository.Add(producer);
             }
+
+            this.unitOfWork.Commit();
         }
 
         public Producer CreateProducer(string name)
         {
             var producer = this.producerFactory.CreateProducer(name);
             this.producerRepository.Add(producer);
+            this.unitOfWork.Commit();
 
             return producer;
         }
