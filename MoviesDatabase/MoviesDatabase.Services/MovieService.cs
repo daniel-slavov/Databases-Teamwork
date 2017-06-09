@@ -179,6 +179,7 @@ namespace MoviesDatabase.Services
                 .Include(m => m.Genres)
                 .Include(m => m.Stars)
                 .ToList();
+
             return movies;
         }
 

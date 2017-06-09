@@ -80,6 +80,11 @@ namespace MoviesDatabase.Services
         public void DeleteStar(string firstName, string lastName)
         {
             var star = GetStarByName(firstName, lastName);
+            if (star == null)
+            {
+                throw new NullReferenceException("There is not star with these names.");
+            }
+
             this.starRepository.Delete(star);
             this.unitOfWork.Commit();
         }

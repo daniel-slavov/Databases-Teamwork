@@ -68,12 +68,22 @@ namespace MoviesDatabase.Services
 
         public void UpdateStudio(Studio studio)
         {
-			throw new NotImplementedException();
-		}
+            this.studioRepository.Add(studio);
+            this.unitOfWork.Commit();
+        }
 
 		public void DeleteStudio(string name)
 		{
-			throw new NotImplementedException();
+		    var studio = this.studioRepository.Entities
+		        .FirstOrDefault(s => s.Name == name);
+
+		    if (studio == null)
+		    {
+		        throw new NullReferenceException("There is not studio with this name.");
+		    }
+
+		    this.studioRepository.Delete(studio);
+		    this.unitOfWork.Commit();
 		}
     }
 }
