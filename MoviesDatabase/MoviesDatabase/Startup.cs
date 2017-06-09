@@ -3,6 +3,8 @@ using MoviesDatabase.CLI.Core.Contracts;
 using MoviesDatabase.Parsers;
 using MoviesDatabase.Parsers.Models;
 using Ninject;
+using MoviesDatabase.PostgreSQL;
+using System.Linq;
 
 namespace MoviesDatabase.CLI
 {
