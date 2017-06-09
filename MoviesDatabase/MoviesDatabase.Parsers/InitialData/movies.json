@@ -40,5 +40,81 @@
             "Fantasy",
             "Sci-Fi"
         ]
+    },
+    {
+        "Title": "The Fault in Our Stars",
+        "Year": 2014,
+        "Description": "Two teenage cancer patients begin a life-affirming journey to visit a reclusive author in Amsterdam.",
+        "Length":126,
+        "ProducerName": "Josh Boone",
+        "StudioName":"Fox 2000 Pictures",
+        "BookTitle": "The Fault in Our Stars",
+        "Stars":[
+            "Shailene Woodley",
+            "Ansel Elgort"
+        ],
+        "Genres":[
+            "Drama",
+            "Romance"
+        ]
+    },
+    {
+        "Title": "Harry Potter and the Sorcerer's Stone",
+        "Year": 2001,
+        "Description": "Rescued from the outrageous neglect of his aunt and uncle, a young boy with a great destiny proves his worth while attending Hogwarts School of Witchcraft and Wizardry.",
+        "Length":152,
+        "ProducerName": "Chris Columbus",
+        "StudioName":"Warner Bros.",
+        "BookTitle": "Harry Potter and the Sorcerer's Stone",
+        "Stars":[
+            "Daniel Radcliffe",
+            "Emma Watson",
+            "Rupert Grint",
+            "Alan Rickman",
+            "Maggie Smith"
+        ],
+        "Genres":[
+            "Adventure",
+            "Family",
+            "Fantasy"
+        ]
+    },
+    {
+        "Title": "Breakfast at Tiffany's",
+        "Year": 1961,
+        "Description": "A young New York socialite becomes interested in a young man who has moved into her apartment building, but her past threatens to get in the way.",
+        "Length":114,
+        "ProducerName": "Blake Edwards",
+        "StudioName":"Paramount Pictures",
+        "BookTitle": "Breakfast at Tiffany's",
+        "Stars":[
+            "Audrey Hepburn",
+            "George Peppard"
+        ],
+        "Genres":[
+            "Comedy",
+            "Drama",
+            "Romance"
+        ]
+    },
+    {
+        "Title": "Divergent",
+        "Year": 2014,
+        "Description": "In a world divided by factions based on virtues, Tris learns she's Divergent and won't fit in. When she discovers a plot to destroy Divergents, Tris and the mysterious Four must find out what makes Divergents dangerous before it's too late.",
+        "Length":139,
+        "ProducerName": "Neil Burger",
+        "StudioName":"Lionsgate",
+        "BookTitle": "Divergent",
+        "Stars":[
+            "Shailene Woodley",
+            "Theo James",
+            "Ashley Judd",
+            "Kate Winslet"
+        ],
+        "Genres":[
+            "Adventure",
+            "Mystery",
+            "Sci-Fi"
+        ]
     }
 ]
