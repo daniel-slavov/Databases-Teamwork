@@ -27,9 +27,8 @@ namespace MoviesDatabase.Services
         public User GetUser(string username, string password)
         {
             var user = this.userRepository.Entities
-                .Include(u => u.Username)
                 .FirstOrDefault(u => u.Username == username && u.PassHash == password);
-            Console.WriteLine(user.ToString());
+
             return user;
         }
     }
