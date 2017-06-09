@@ -18,6 +18,8 @@ namespace MoviesDatabase.Data
             {
                 throw new ArgumentNullException("DbContext cannot be null.");
             }
+
+            this.dbContext = dbContext;
         }
         public void Dispose()
         {

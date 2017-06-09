@@ -50,6 +50,7 @@ namespace MoviesDatabase.CLI
             Bind<IGenreService>().To<GenreService>();
             Bind<IStarService>().To<StarService>();
             Bind<IStudioService>().To<StudioService>();
+            Bind<IUserService>().To<UserService>();
 
 			Bind<ICommandFactory>().ToFactory().InSingletonScope();
 
@@ -63,6 +64,7 @@ namespace MoviesDatabase.CLI
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<DbContext>().To<UsersDbContext>().WhenInjectedInto<Repository<User>>();
             Bind<DbContext>().To<MoviesDbContext>();
+
 
             Bind<IBookFactory>().ToFactory().InSingletonScope();
             Bind<IGenreFactory>().ToFactory().InSingletonScope();
