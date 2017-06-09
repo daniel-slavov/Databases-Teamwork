@@ -63,7 +63,8 @@ namespace MoviesDatabase.CLI
             Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             Bind<IUnitOfWork>().To<UnitOfWork>();
             Bind<DbContext>().To<UsersDbContext>().WhenInjectedInto<Repository<User>>();
-            Bind<DbContext>().To<MoviesDbContext>().InThreadScope();
+            Bind<DbContext>().To<MoviesDbContext>();
+
 
             Bind<IBookFactory>().ToFactory().InSingletonScope();
             Bind<IGenreFactory>().ToFactory().InSingletonScope();
