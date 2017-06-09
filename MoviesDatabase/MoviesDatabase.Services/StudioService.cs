@@ -17,7 +17,7 @@ namespace MoviesDatabase.Services
         private readonly IRepository<Studio> studioRepository;
         private readonly IStudioFactory studioFactory;
 
-        public StudioService(IRepository<Studio> studioRepository, IUnitOfWork unitOfFirst, IStudioFactory studioFactory)
+        public StudioService(IRepository<Studio> studioRepository, IUnitOfWork unitOfWork, IStudioFactory studioFactory)
         {
             if (studioRepository == null)
             {
@@ -29,7 +29,7 @@ namespace MoviesDatabase.Services
                 throw new ArgumentNullException("Studio factory cannot be null!");
             }
 
-            if (unitOfFirst == null)
+            if (unitOfWork == null)
             {
                 throw new ArgumentNullException("Unit of work cannot be null!");
             }
@@ -68,7 +68,7 @@ namespace MoviesDatabase.Services
 
         public void UpdateStudio(Studio studio)
         {
-            this.studioRepository.Add(studio);
+            this.studioRepository.Update(studio);
             this.unitOfWork.Commit();
         }
 
