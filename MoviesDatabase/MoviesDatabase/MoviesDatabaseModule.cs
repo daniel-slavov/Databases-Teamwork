@@ -22,6 +22,7 @@ using MoviesDatabase.Data;
 using System.Data.Entity;
 using MoviesDatabase.Models;
 using MoviesDatabase.Models.Contracts;
+using MoviesDatabase.PostgreSQL;
 
 namespace MoviesDatabase.CLI
 {
@@ -60,7 +61,8 @@ namespace MoviesDatabase.CLI
 
             Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             Bind<IUnitOfWork>().To<UnitOfWork>();
-            Bind<DbContext>().To<MoviesDbContext>().InThreadScope();
+            Bind<DbContext>().To<UsersDbContext>().WhenInjectedInto<Repository<User>>();
+            Bind<DbContext>().To<MoviesDbContext>();
 
             Bind<IBookFactory>().ToFactory().InSingletonScope();
             Bind<IGenreFactory>().ToFactory().InSingletonScope();
