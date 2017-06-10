@@ -238,6 +238,21 @@ namespace MoviesDatabase.Test.Services
         }
 
         [Test]
+        public void DeleteBook_ShouldCallRepositoryEntities_WhenValidParametersPassed()
+        {
+            //var bookRepositoryMock = new Mock<IRepository<Book>>();
+            //var unitOfWorkMock = new Mock<IUnitOfWork>();
+            //var bookFactoryMock = new Mock<IBookFactory>();
+            //var bookMock = new Mock<Book>();
+            //var bookService = new BookService(
+            //    bookRepositoryMock.Object, unitOfWorkMock.Object, bookFactoryMock.Object);
+
+            //bookService.DeleteBook(bookMock.Object);
+
+            //bookRepositoryMock.Verify(r => r.Entities, Times.Once);
+        }
+
+        [Test]
         public void DeleteBook_ShouldThrowArgumentNullException_WhenBookIsNotFound()
         {
             var title = "Harry Potter";
