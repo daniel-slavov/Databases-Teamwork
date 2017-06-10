@@ -65,6 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Migrations\201706091854474_Initial.cs" />
     <Compile Include="Migrations\201706091854474_Initial.Designer.cs">
       <DependentUpon>201706091854474_Initial.cs</DependentUpon>

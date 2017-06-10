@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IUnitOfWork.cs" />
     <Compile Include="Contracts\IRepository.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Migrations\201706031503266_Initial.cs" />
     <Compile Include="Migrations\201706031503266_Initial.Designer.cs">
       <DependentUpon>201706031503266_Initial.cs</DependentUpon>

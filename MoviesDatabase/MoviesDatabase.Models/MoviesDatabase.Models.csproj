@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="Genre.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Producer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

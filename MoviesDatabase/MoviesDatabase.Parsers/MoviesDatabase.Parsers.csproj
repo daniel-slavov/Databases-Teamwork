@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IJSONParser.cs" />
     <Compile Include="Contracts\IXMLParser.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="JSONParser.cs" />
     <Compile Include="Models\MovieModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
