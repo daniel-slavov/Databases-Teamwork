@@ -250,6 +250,7 @@ namespace MoviesDatabase.Test.Services
             //bookService.DeleteBook(bookMock.Object);
 
             //bookRepositoryMock.Verify(r => r.Entities, Times.Once);
+            Assert.IsTrue(false);
         }
 
         [Test]
