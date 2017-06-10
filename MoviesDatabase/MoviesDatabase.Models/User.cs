@@ -16,7 +16,7 @@ namespace MoviesDatabase.Models
         public User(string username, string passHash)
         {
             this.Username = username;
-            this.PassHash = PassHash;
+            this.PassHash = passHash;
         }
 
         [Key]
