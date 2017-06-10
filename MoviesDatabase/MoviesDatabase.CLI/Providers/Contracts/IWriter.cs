@@ -4,8 +4,10 @@ using MoviesDatabase.Models;
 
 namespace MoviesDatabase.CLI.Providers.Contracts
 {
-    public interface IMoviesConverter
+    public interface IWriter
     {
-        string ToString(IEnumerable<Movie> movies);
+        void Write(string message);
+
+        void WriteLine(string message);
     }
 }

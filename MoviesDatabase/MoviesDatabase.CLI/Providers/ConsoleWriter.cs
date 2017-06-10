@@ -6,7 +6,7 @@ using MoviesDatabase.Models;
 
 namespace MoviesDatabase.CLI.Providers
 {
-    public class ConsoleWriter : IConsoleWriter
+    public class ConsoleWriter : IWriter
     {
         public void Write(string message)
         {

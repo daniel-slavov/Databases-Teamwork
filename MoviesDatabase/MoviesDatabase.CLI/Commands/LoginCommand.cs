@@ -21,6 +21,11 @@ namespace MoviesDatabase.CLI.Commands
 
         public string Execute(IList<string> parameters)
         {
+            if (parameters == null || parameters.Count < 2)
+            {
+                throw new ArgumentException("Missing username and/or password.");
+            }
+
             var username = parameters[0];
             var password = parameters[1];
 

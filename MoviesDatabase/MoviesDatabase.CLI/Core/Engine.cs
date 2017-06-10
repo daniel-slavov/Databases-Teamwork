@@ -14,13 +14,13 @@ namespace MoviesDatabase.CLI.Core
 
 		private const string Help = @"Help:"; // to be filled
 
-        private readonly IConsoleReader reader;
-        private readonly IConsoleWriter writer;
+        private readonly IReader reader;
+        private readonly IWriter writer;
         private readonly ICommandParser parser;
 
         private bool isLoggedIn = false;
 
-        public Engine(IConsoleReader consoleReader, IConsoleWriter consoleWriter, ICommandParser commandParser)
+        public Engine(IReader consoleReader, IWriter consoleWriter, ICommandParser commandParser)
         {
             if (consoleReader == null)
             {
