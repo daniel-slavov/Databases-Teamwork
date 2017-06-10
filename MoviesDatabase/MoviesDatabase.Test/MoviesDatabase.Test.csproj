@@ -66,7 +66,7 @@
   <ItemGroup>
     <Compile Include="Models\ProducerTest.cs" />
     <Compile Include="Models\StudioTest.cs" />
-    <Compile Include="Services\BookServiceTests.cs" />
+    <Compile Include="Models\UserTest.cs" />
     <Compile Include="Models\GenreTest.cs" />
     <Compile Include="Models\BookTest.cs" />
     <Compile Include="Models\StarTest.cs" />
