@@ -44,8 +44,9 @@ namespace MoviesDatabase.Services
             foreach (var book in books)
             {
                 this.bookRepository.Add(book);
-                this.unitOfWork.Commit();
             }
+
+            this.unitOfWork.Commit();
         }
 
         public Book CreateBook(string title, string author, int? year)
@@ -74,6 +75,12 @@ namespace MoviesDatabase.Services
         public void DeleteBook(string title)
         {
             var book = GetBookByTitle(title);
+            
+            if(book == null)
+            {
+                throw new NullReferenceException("There is no book with this title.");
+            }
+
             this.bookRepository.Delete(book);
             this.unitOfWork.Commit();
         }

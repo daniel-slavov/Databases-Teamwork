@@ -54,6 +54,44 @@ namespace MoviesDatabase.Test.Services
                 () => new StudioService(repositoryMock.Object, unitOfWorkMock.Object, factoryMock.Object));
         }
 
+        [Test]
+        public void AddStudios_ShouldCallRepositoryAddMethod_WhenValidListIsPassed()
+        {
+            var studioRepositoryMock = new Mock<IRepository<Studio>>();
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var studioFactoryMock = new Mock<IStudioFactory>();
+            var studioService = new StudioService(
+                studioRepositoryMock.Object, unitOfWorkMock.Object, studioFactoryMock.Object);
+            var studios = new List<Studio>
+            {
+                new Studio("Fox", null),
+                new Studio("Disney", null)
+            };
+
+            studioService.AddStudios(studios);
+
+            studioRepositoryMock.Verify(s => s.Add(It.IsAny<Studio>()), Times.Exactly(studios.Count));
+        }
+
+        [Test]
+        public void AddStudios_ShouldCallUnitOfWorkCommitMethod_WhenValidListIsPassed()
+        {
+            var studioRepositoryMock = new Mock<IRepository<Studio>>();
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var studioFactoryMock = new Mock<IStudioFactory>();
+            var studioService = new StudioService(
+                studioRepositoryMock.Object, unitOfWorkMock.Object, studioFactoryMock.Object);
+            var studios = new List<Studio>
+            {
+                new Studio("Fox", null),
+                new Studio("Disney", null)
+            };
+
+            studioService.AddStudios(studios);
+
+            unitOfWorkMock.Verify(n => n.Commit(), Times.Once);
+        }
+
         [TestCase("Studio", "Street")]
         public void CreateStudio_ShouldCallFactory_WhenParametersAreCorrect(string name, string address)
         {
