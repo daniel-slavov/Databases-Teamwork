@@ -64,7 +64,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\ProducerTest.cs" />
     <Compile Include="Models\StudioTest.cs" />
+    <Compile Include="Models\GenreTest.cs" />
+    <Compile Include="Models\BookTest.cs" />
+    <Compile Include="Models\StarTest.cs" />
+    <Compile Include="Models\MovieTest.cs" />
     <Compile Include="Services\StudioServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
