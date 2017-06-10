@@ -43,6 +43,8 @@ namespace MoviesDatabase.Services
             {
                 this.genreRepository.Add(genre);
             }
+
+            this.unitOfWork.Commit();
         }
 
         public Genre CreateGenre(string name)

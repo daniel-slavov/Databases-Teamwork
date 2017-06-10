@@ -240,17 +240,21 @@ namespace MoviesDatabase.Test.Services
         [Test]
         public void DeleteBook_ShouldCallRepositoryEntities_WhenValidParametersPassed()
         {
-            //var bookRepositoryMock = new Mock<IRepository<Book>>();
-            //var unitOfWorkMock = new Mock<IUnitOfWork>();
-            //var bookFactoryMock = new Mock<IBookFactory>();
-            //var bookMock = new Mock<Book>();
-            //var bookService = new BookService(
-            //    bookRepositoryMock.Object, unitOfWorkMock.Object, bookFactoryMock.Object);
+            var title = "Harry Potter";
+            var author = "J.K.Rowling";
+            var year = 2001;
+            var bookRepositoryMock = new Mock<IRepository<Book>>();
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var bookFactoryMock = new Mock<IBookFactory>();
+            var list = new List<Book>() { new Book(title, author, year) };
+            var queryableBooks = list.AsQueryable();
+            bookRepositoryMock.Setup(r => r.Entities).Returns(queryableBooks);
+            var bookService = new BookService(
+                bookRepositoryMock.Object, unitOfWorkMock.Object, bookFactoryMock.Object);
 
-            //bookService.DeleteBook(bookMock.Object);
+            bookService.DeleteBook(title);
 
-            //bookRepositoryMock.Verify(r => r.Entities, Times.Once);
-            Assert.IsTrue(false);
+            bookRepositoryMock.Verify(r => r.Entities, Times.Once);
         }
 
         [Test]
