@@ -18,7 +18,7 @@ namespace MoviesDatabase.PostgreSQL
 
         }
 
-        public IDbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

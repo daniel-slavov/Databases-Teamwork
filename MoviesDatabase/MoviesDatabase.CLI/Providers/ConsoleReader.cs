@@ -3,7 +3,7 @@ using MoviesDatabase.CLI.Providers.Contracts;
 
 namespace MoviesDatabase.CLI.Providers
 {
-    public class ConsoleReader : IConsoleReader
+    public class ConsoleReader : IReader
     {
         public string ReadLine()
         {

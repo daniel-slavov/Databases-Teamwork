@@ -9,10 +9,10 @@ namespace MoviesDatabase.CLI.Commands
     public class AddCommand : ICommand
     {
         private readonly IMovieService MovieService;
-		private readonly IConsoleReader Reader;
-		private readonly IConsoleWriter Writer;
+		private readonly IReader Reader;
+		private readonly IWriter Writer;
 
-		public AddCommand(IMovieService movieService, IConsoleReader reader, IConsoleWriter writer)
+		public AddCommand(IMovieService movieService, IReader reader, IWriter writer)
         {
             if (movieService == null)
             {

@@ -22,6 +22,7 @@ using MoviesDatabase.Data;
 using System.Data.Entity;
 using MoviesDatabase.Models;
 using MoviesDatabase.Models.Contracts;
+using MoviesDatabase.PostgreSQL;
 
 namespace MoviesDatabase.CLI
 {
@@ -35,8 +36,8 @@ namespace MoviesDatabase.CLI
             //Bind<DeleteCommand>().ToSelf().InSingletonScope();
             //Bind<UpdateCommand>().ToSelf().InSingletonScope();
 
-			Bind<IConsoleReader>().To<ConsoleReader>().InSingletonScope();
-            Bind<IConsoleWriter>().To<ConsoleWriter>().InSingletonScope();
+			Bind<IReader>().To<ConsoleReader>().InSingletonScope();
+            Bind<IWriter>().To<ConsoleWriter>().InSingletonScope();
             Bind<ICommandParser>().To<CommandParser>().InSingletonScope();
             Bind<IModelParser>().To<ModelParser>().InSingletonScope();
 
@@ -49,6 +50,7 @@ namespace MoviesDatabase.CLI
             Bind<IGenreService>().To<GenreService>();
             Bind<IStarService>().To<StarService>();
             Bind<IStudioService>().To<StudioService>();
+            Bind<IUserService>().To<UserService>();
 
 			Bind<ICommandFactory>().ToFactory().InSingletonScope();
 
@@ -60,7 +62,9 @@ namespace MoviesDatabase.CLI
 
             Bind(typeof(IRepository<>)).To(typeof(Repository<>));
             Bind<IUnitOfWork>().To<UnitOfWork>();
-            Bind<DbContext>().To<MoviesDbContext>().InThreadScope();
+            Bind<DbContext>().To<UsersDbContext>().WhenInjectedInto<Repository<User>>();
+            Bind<DbContext>().To<MoviesDbContext>();
+
 
             Bind<IBookFactory>().ToFactory().InSingletonScope();
             Bind<IGenreFactory>().ToFactory().InSingletonScope();

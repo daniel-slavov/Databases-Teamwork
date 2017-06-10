@@ -55,6 +55,7 @@
     <Compile Include="Contracts\IProducerService.cs" />
     <Compile Include="Contracts\IStarService.cs" />
     <Compile Include="Contracts\IStudioService.cs" />
+    <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="GenreService.cs" />
     <Compile Include="ProducerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="MovieService.cs" />
     <Compile Include="StarService.cs" />
     <Compile Include="StudioService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoviesDatabase.Data\MoviesDatabase.Data.csproj">

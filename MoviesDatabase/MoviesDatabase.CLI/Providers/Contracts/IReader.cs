@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MoviesDatabase.CLI.Providers.Contracts
 {
-    public interface IConsoleReader
+    public interface IReader
     {
         string ReadLine();
     }
