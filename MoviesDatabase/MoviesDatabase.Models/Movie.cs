@@ -1,11 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using MoviesDatabase.Models.Contracts;
 using System.ComponentModel.DataAnnotations;
 
 namespace MoviesDatabase.Models
 {
-    public class Movie : IModel
+    public class Movie
     {
         public Movie()
         {

@@ -1,5 +1,4 @@
-﻿using MoviesDatabase.Models.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MoviesDatabase.Models
 {
-    public class User : IModel
+    public class User
     {
         public User()
         {

@@ -1,9 +1,8 @@
-﻿using MoviesDatabase.Models.Contracts;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MoviesDatabase.Models
 {
-    public class Book : IModel
+    public class Book
     {
         public Book()
         {

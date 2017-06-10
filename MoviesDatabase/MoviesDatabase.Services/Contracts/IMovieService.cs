@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using MoviesDatabase.Models;
-using MoviesDatabase.Models.Contracts;
 using MoviesDatabase.Parsers.Models;
 
 namespace MoviesDatabase.Services.Contracts

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using MoviesDatabase.Models.Contracts;
 using System.ComponentModel.DataAnnotations;
 
 namespace MoviesDatabase.Models
 {
-    public class Star : IModel
+    public class Star
     {
         public Star()
         {
