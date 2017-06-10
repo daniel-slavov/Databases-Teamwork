@@ -1,13 +1,12 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
-using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Parsers.Models;
 using MoviesDatabase.Services.Contracts;
-using System.Data.Entity;
 
 namespace MoviesDatabase.Services
 {
@@ -22,9 +21,7 @@ namespace MoviesDatabase.Services
         private readonly IBookService bookService;
         private readonly IStarService starService;
 
-        public MovieService(IRepository<Movie> movieRepository, IUnitOfWork unitOfWork, IMovieFactory movieFactory,
-            IProducerService producerService, IStudioService studioService, IGenreService genreService,
-            IBookService bookService, IStarService starService)
+        public MovieService(IRepository<Movie> movieRepository, IUnitOfWork unitOfWork, IMovieFactory movieFactory, IProducerService producerService, IStudioService studioService, IGenreService genreService, IBookService bookService, IStarService starService)
         {
             if (movieRepository == null)
             {
@@ -80,8 +77,7 @@ namespace MoviesDatabase.Services
         {
             foreach (var movie in movies)
             {
-                this.CreateMovie(movie.Title, movie.Year, movie.Description, movie.Length, movie.ProducerName,
-                    movie.StudioName, movie.BookTitle, movie.Genres, movie.Stars);
+                this.CreateMovie(movie.Title, movie.Year, movie.Description, movie.Length, movie.ProducerName, movie.StudioName, movie.BookTitle, movie.Genres, movie.Stars);
             }
         }
 
@@ -162,15 +158,15 @@ namespace MoviesDatabase.Services
             return movies;
         }
 
-		public IEnumerable<Movie> GetMoviesByStar(string starName)
-		{
-		    var firstName = starName.Split(' ')[0];
-		    var lastName = starName.Split(' ')[1];
-		    var star = this.starService.GetStarByName(firstName, lastName);
-		    var movies = star.Movies;
+        public IEnumerable<Movie> GetMoviesByStar(string starName)
+        {
+            var firstName = starName.Split(' ')[0];
+            var lastName = starName.Split(' ')[1];
+            var star = this.starService.GetStarByName(firstName, lastName);
+            var movies = star.Movies;
 
-		    return movies;
-		}
+            return movies;
+        }
 
         public IEnumerable<Movie> GetAllMovies()
         {

@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
-using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.Services
@@ -74,9 +71,9 @@ namespace MoviesDatabase.Services
 
         public void DeleteBook(string title)
         {
-            var book = GetBookByTitle(title);
-            
-            if(book == null)
+            var book = this.GetBookByTitle(title);
+
+            if (book == null)
             {
                 throw new NullReferenceException("There is no book with this title.");
             }

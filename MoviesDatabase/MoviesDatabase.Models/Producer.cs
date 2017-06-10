@@ -6,7 +6,6 @@ namespace MoviesDatabase.Models
     {
         public Producer()
         {
-
         }
 
         public Producer(string name)

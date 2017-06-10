@@ -6,7 +6,6 @@ namespace MoviesDatabase.Models
     {
         public Book()
         {
-
         }
 
         public Book(string title, string author, int? year)

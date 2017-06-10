@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 using MoviesDatabase.Models;
 using MoviesDatabase.Parsers.Contracts;
@@ -31,6 +26,63 @@ namespace MoviesDatabase.Parsers
             return genres;
         }
 
+        public List<Book> ParseBooks(string filePath)
+        {
+            var reader = XmlReader.Create(filePath);
+
+            var books = new List<Book>();
+
+            using (reader)
+            {
+                var book = this.ReadNextBook(reader);
+                while (book != null)
+                {
+                    books.Add(book);
+                    book = this.ReadNextBook(reader);
+                }
+            }
+
+            return books;
+        }
+
+        public List<Producer> ParseProducers(string filePath)
+        {
+            var reader = XmlReader.Create(filePath);
+
+            var producers = new List<Producer>();
+
+            using (reader)
+            {
+                var producer = this.ReadNextProducer(reader);
+                while (producer != null)
+                {
+                    producers.Add(producer);
+                    producer = this.ReadNextProducer(reader);
+                }
+            }
+
+            return producers;
+        }
+
+        public List<Studio> ParseStudios(string filePath)
+        {
+            var reader = XmlReader.Create(filePath);
+
+            var studios = new List<Studio>();
+
+            using (reader)
+            {
+                var studio = this.ReadNextStudio(reader);
+                while (studio != null)
+                {
+                    studios.Add(studio);
+                    studio = this.ReadNextStudio(reader);
+                }
+            }
+
+            return studios;
+        }
+
         private Genre ReadNextGenre(XmlReader node)
         {
             var genre = new Genre();
@@ -52,25 +104,6 @@ namespace MoviesDatabase.Parsers
             }
 
             return genre;
-        }
-
-        public List<Book> ParseBooks(string filePath)
-        {
-            var reader = XmlReader.Create(filePath);
-
-            var books = new List<Book>();
-
-            using (reader)
-            {
-                var book = this.ReadNextBook(reader);
-                while (book != null)
-                {
-                    books.Add(book);
-                    book = this.ReadNextBook(reader);
-                }
-            }
-
-            return books;
         }
 
         private Book ReadNextBook(XmlReader node)
@@ -112,25 +145,6 @@ namespace MoviesDatabase.Parsers
             return book;
         }
 
-        public List<Producer> ParseProducers(string filePath)
-        {
-            var reader = XmlReader.Create(filePath);
-
-            var producers = new List<Producer>();
-
-            using (reader)
-            {
-                var producer = this.ReadNextProducer(reader);
-                while (producer != null)
-                {
-                    producers.Add(producer);
-                    producer = this.ReadNextProducer(reader);
-                }
-            }
-
-            return producers;
-        }
-
         private Producer ReadNextProducer(XmlReader node)
         {
             var producer = new Producer();
@@ -152,25 +166,6 @@ namespace MoviesDatabase.Parsers
             }
 
             return producer;
-        }
-
-        public List<Studio> ParseStudios(string filePath)
-        {
-            var reader = XmlReader.Create(filePath);
-
-            var studios = new List<Studio>();
-
-            using (reader)
-            {
-                var studio = this.ReadNextStudio(reader);
-                while (studio != null)
-                {
-                    studios.Add(studio);
-                    studio = this.ReadNextStudio(reader);
-                }
-            }
-
-            return studios;
         }
 
         private Studio ReadNextStudio(XmlReader node)
@@ -204,13 +199,13 @@ namespace MoviesDatabase.Parsers
             return studio;
         }
 
-        //public List<Star> ParseStars(string filePath)
-        //{
+        // public List<Star> ParseStars(string filePath)
+        // {
         //    var reader = XmlReader.Create(filePath);
 
-        //    var stars = new List<Star>();
+        // var stars = new List<Star>();
 
-        //    using (reader)
+        // using (reader)
         //    {
         //        var star = this.ReadNextStar(reader);
         //        while (star != null)
@@ -220,18 +215,18 @@ namespace MoviesDatabase.Parsers
         //        }
         //    }
 
-        //    return stars;
-        //}
+        // return stars;
+        // }
 
-        //private Star ReadNextStar(XmlReader node)
-        //{
+        // private Star ReadNextStar(XmlReader node)
+        // {
         //    var star = new Star();
         //    var isFirstNameRead = false;
         //    var isLastNameRead = false;
         //    var isAgeRead = false;
         //    var isAddressRead = false;
 
-        //    while ((!isIdRead || !isFirstNameRead || !isLastNameRead || !isAgeRead || !isAddressRead) && node.Read())
+        // while ((!isIdRead || !isFirstNameRead || !isLastNameRead || !isAgeRead || !isAddressRead) && node.Read())
         //    {
         //        if (node.IsStartElement() && node.Name == "star")
         //        {
@@ -239,42 +234,42 @@ namespace MoviesDatabase.Parsers
         //            isIdRead = true;
         //        }
 
-        //        if (node.IsStartElement() && node.Name == "firstName")
+        // if (node.IsStartElement() && node.Name == "firstName")
         //        {
         //            node.Read();
         //            star.FirstName = node.Value;
         //            isFirstNameRead = true;
         //        }
 
-        //        if (node.IsStartElement() && node.Name == "lastName")
+        // if (node.IsStartElement() && node.Name == "lastName")
         //        {
         //            node.Read();
         //            star.LastName = node.Value;
         //            isLastNameRead = true;
         //        }
 
-        //        if (node.IsStartElement() && node.Name == "age")
+        // if (node.IsStartElement() && node.Name == "age")
         //        {
         //            node.Read();
         //            star.Age = int.Parse(node.Value);
         //            isAgeRead = true;
         //        }
 
-        //        if (node.IsStartElement() && node.Name == "address")
+        // if (node.IsStartElement() && node.Name == "address")
         //        {
         //            node.Read();
         //            star.Address = node.Value;
         //            isAddressRead = true;
         //        }
 
-        //    }
+        // }
 
-        //    if (!isIdRead || !isFirstNameRead || !isLastNameRead || !isAddressRead || !isAgeRead)
+        // if (!isIdRead || !isFirstNameRead || !isLastNameRead || !isAddressRead || !isAgeRead)
         //    {
         //        return null;
         //    }
 
-        //    return star;
-        //}
+        // return star;
+        // }
     }
 }

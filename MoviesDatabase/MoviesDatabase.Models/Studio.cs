@@ -6,7 +6,6 @@ namespace MoviesDatabase.Models
     {
         public Studio()
         {
-
         }
 
         public Studio(string name, string address)

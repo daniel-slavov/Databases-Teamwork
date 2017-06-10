@@ -1,12 +1,7 @@
-﻿using MoviesDatabase.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Annotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MoviesDatabase.Models;
 
 namespace MoviesDatabase.PostgreSQL
 {
@@ -15,7 +10,6 @@ namespace MoviesDatabase.PostgreSQL
         public UsersDbContext()
             : base("name=UsersConnection")
         {
-
         }
 
         public DbSet<User> Users { get; set; }
@@ -34,17 +28,14 @@ namespace MoviesDatabase.PostgreSQL
                 .Property(user => user.Username)
                 .HasColumnName("Username")
                 .HasMaxLength(30)
-                .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(
-                        new IndexAttribute("IX_Username")
-                        { IsUnique = true }
-                        ));
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(new IndexAttribute("IX_Username") { IsUnique = true }));
 
             modelBuilder.Entity<User>()
                 .Property(user => user.PassHash)
                 .HasColumnName("PassHash")
                 .HasMaxLength(60);
-
         }
     }
 }

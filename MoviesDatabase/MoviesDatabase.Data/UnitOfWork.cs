@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MoviesDatabase.Data.Contracts;
 
 namespace MoviesDatabase.Data
@@ -21,6 +17,7 @@ namespace MoviesDatabase.Data
 
             this.dbContext = dbContext;
         }
+
         public void Dispose()
         {
         }

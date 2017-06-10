@@ -1,12 +1,8 @@
-﻿using MoviesDatabase.Data.Contracts;
+﻿using System;
+using System.Linq;
+using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Models;
 using MoviesDatabase.Services.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MoviesDatabase.Services
 {
@@ -16,7 +12,7 @@ namespace MoviesDatabase.Services
 
         public UserService(IRepository<User> userRepository)
         {
-            if(userRepository == null)
+            if (userRepository == null)
             {
                 throw new ArgumentNullException("User repository cannot be null!");
             }

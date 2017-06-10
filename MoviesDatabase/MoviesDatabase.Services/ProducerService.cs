@@ -4,7 +4,6 @@ using System.Linq;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
-using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.Services

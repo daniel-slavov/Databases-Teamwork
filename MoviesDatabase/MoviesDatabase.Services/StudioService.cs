@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
-using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.Services
@@ -72,18 +69,18 @@ namespace MoviesDatabase.Services
             this.unitOfWork.Commit();
         }
 
-		public void DeleteStudio(string name)
-		{
-		    var studio = this.studioRepository.Entities
-		        .FirstOrDefault(s => s.Name == name);
+        public void DeleteStudio(string name)
+        {
+            var studio = this.studioRepository.Entities
+                .FirstOrDefault(s => s.Name == name);
 
-		    if (studio == null)
-		    {
-		        throw new NullReferenceException("There is not studio with this name.");
-		    }
+            if (studio == null)
+            {
+                throw new NullReferenceException("There is not studio with this name.");
+            }
 
-		    this.studioRepository.Delete(studio);
-		    this.unitOfWork.Commit();
-		}
+            this.studioRepository.Delete(studio);
+            this.unitOfWork.Commit();
+        }
     }
 }

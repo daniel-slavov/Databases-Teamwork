@@ -17,20 +17,20 @@ namespace MoviesDatabase.Parsers.Models
             this.Genres = string.Join(", ", movie.Genres.Select(genre => genre.Name));
         }
 
-		public string Title { get; private set; }
+        public string Title { get; private set; }
 
-		public int Year { get; private set; }
+        public int Year { get; private set; }
 
-		public int Length { get; private set; }
+        public int Length { get; private set; }
 
-		public string Producer { get; private set; }
+        public string Producer { get; private set; }
 
-		public string Studio { get; private set; }
+        public string Studio { get; private set; }
 
-		public string Book { get; private set; }
+        public string Book { get; private set; }
 
         public string Stars { get; private set; }
 
-		public string Genres { get; private set; }
+        public string Genres { get; private set; }
     }
 }

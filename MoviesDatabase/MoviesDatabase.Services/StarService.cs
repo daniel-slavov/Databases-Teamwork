@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MoviesDatabase.Data.Contracts;
 using MoviesDatabase.Factories;
 using MoviesDatabase.Models;
-using MoviesDatabase.Parsers.Contracts;
 using MoviesDatabase.Services.Contracts;
-using System.Data.Entity;
 
 namespace MoviesDatabase.Services
 {
@@ -65,7 +62,7 @@ namespace MoviesDatabase.Services
 
         public IEnumerable<Movie> GetAllMoviesOfStar(string firstName, string lastName)
         {
-            var star = GetStarByName(firstName, lastName);
+            var star = this.GetStarByName(firstName, lastName);
             var movies = star.Movies;
 
             return movies;
@@ -79,7 +76,7 @@ namespace MoviesDatabase.Services
 
         public void DeleteStar(string firstName, string lastName)
         {
-            var star = GetStarByName(firstName, lastName);
+            var star = this.GetStarByName(firstName, lastName);
             if (star == null)
             {
                 throw new NullReferenceException("There is not star with these names.");
