@@ -9,10 +9,10 @@ namespace MoviesDatabase.CLI.Core
     public class Engine : IEngine
     {
         private const string TerminationCommand = "exit";
-		private const string LogoutCommand = "logout";
-		private const string HelpCommand = "help";
+        private const string LogoutCommand = "logout";
+        private const string HelpCommand = "help";
 
-		private const string Help = @"Help:"; // to be filled
+        private const string Help = @"Help:"; // to be filled
 
         private readonly IReader reader;
         private readonly IWriter writer;
@@ -28,23 +28,23 @@ namespace MoviesDatabase.CLI.Core
             }
 
             if (consoleWriter == null)
-			{
+            {
                 throw new ArgumentNullException("Writer cannot be null.");
-			}
+            }
 
             if (commandParser == null)
-			{
+            {
                 throw new ArgumentNullException("Parser cannot be null.");
-			}
+            }
 
             this.reader = consoleReader;
             this.writer = consoleWriter;
             this.parser = commandParser;
-		}
+        }
 
         public void Start()
         {
-            while(true)
+            while (true)
             {
                 string currentCommand = this.reader.ReadLine();
 
@@ -60,7 +60,7 @@ namespace MoviesDatabase.CLI.Core
 
                 if (currentCommand.ToLower() == LogoutCommand)
                 {
-                    isLoggedIn = false;
+                    this.isLoggedIn = false;
                     this.writer.WriteLine("Logout successful.");
                     continue;
                 }
@@ -70,7 +70,7 @@ namespace MoviesDatabase.CLI.Core
                     this.writer.WriteLine(Help);
                     continue;
                 }
-                    
+
                 try
                 {
                     this.ProcessCommand(currentCommand);
@@ -85,7 +85,7 @@ namespace MoviesDatabase.CLI.Core
         private void ProcessCommand(string fullCommand)
         {
             ICommand command = this.parser.ParseCommand(fullCommand);
-            if (isLoggedIn)
+            if (this.isLoggedIn)
             {
                 if (command.GetType().Name == "LoginCommand")
                 {
@@ -93,27 +93,28 @@ namespace MoviesDatabase.CLI.Core
                 }
                 else
                 {
-					IList<string> parameters = this.parser.ParseParameters(fullCommand);
-					string executionResult = command.Execute(parameters);
-					this.writer.WriteLine(executionResult);
+                    IList<string> parameters = this.parser.ParseParameters(fullCommand);
+                    string executionResult = command.Execute(parameters);
+                    this.writer.WriteLine(executionResult);
                 }
             }
             else
             {
-				if (command.GetType().Name == "LoginCommand")
-				{
-					IList<string> parameters = this.parser.ParseParameters(fullCommand);
-					string executionResult = command.Execute(parameters);
+                if (command.GetType().Name == "LoginCommand")
+                {
+                    IList<string> parameters = this.parser.ParseParameters(fullCommand);
+                    string executionResult = command.Execute(parameters);
                     if (executionResult == "Login successful.")
                     {
-                        isLoggedIn = true;
+                        this.isLoggedIn = true;
                     }
-					this.writer.WriteLine(executionResult);
-				}
-				else
-				{
-					this.writer.WriteLine("Plaese log in to use this command.");
-				}
+
+                    this.writer.WriteLine(executionResult);
+                }
+                else
+                {
+                    this.writer.WriteLine("Plaese log in to use this command.");
+                }
             }
         }
     }

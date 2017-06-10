@@ -10,32 +10,32 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class ListByStarCommand : ICommand
     {
-		private readonly IMovieService MovieService;
+        private readonly IMovieService movieService;
 
         public ListByStarCommand(IMovieService movieService)
-		{
-			if (movieService == null)
-			{
-				throw new ArgumentNullException("Movie service cannot be null.");
-			}
+        {
+            if (movieService == null)
+            {
+                throw new ArgumentNullException("Movie service cannot be null.");
+            }
 
-			this.MovieService = movieService;
-		}
+            this.movieService = movieService;
+        }
 
-		public string Execute(IList<string> parameters)
-		{
+        public string Execute(IList<string> parameters)
+        {
             string starName = string.Join(" ", parameters);
-            
-            IEnumerable<Movie> movies = this.MovieService.GetMoviesByStar(starName);
-		    
+
+            IEnumerable<Movie> movies = this.movieService.GetMoviesByStar(starName);
+
             if (movies == null)
-		    {
+            {
                 throw new NullReferenceException("This star has no movie to show.");
-		    }
+            }
 
-			IEnumerable<MovieForPrint> moviesForPrint = this.MovieService.ConvertForPrint(movies);
+            IEnumerable<MovieForPrint> moviesForPrint = this.movieService.ConvertForPrint(movies);
 
-			return ConsoleTable.From<MovieForPrint>(moviesForPrint).ToString();
-		}
+            return ConsoleTable.From<MovieForPrint>(moviesForPrint).ToString();
+        }
     }
 }

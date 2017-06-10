@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDatabase.CLI", "MoviesDatabase.CLI\MoviesDatabase.CLI.csproj", "{EA63DBD7-15B0-4CF3-A343-AD80D63D5722}"
 EndProject
@@ -82,7 +82,6 @@ Global
 		{3BD7D1F1-3F47-49A8-A0D0-6E08D516DE2A}.Release|x86.ActiveCfg = Release|Any CPU
 		{3BD7D1F1-3F47-49A8-A0D0-6E08D516DE2A}.Release|x86.Build.0 = Release|Any CPU
 		{01845097-86AC-4B1D-BCFB-40B1250A37A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01845097-86AC-4B1D-BCFB-40B1250A37A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01845097-86AC-4B1D-BCFB-40B1250A37A4}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{01845097-86AC-4B1D-BCFB-40B1250A37A4}.Debug|x86.Build.0 = Debug|Any CPU
 		{01845097-86AC-4B1D-BCFB-40B1250A37A4}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -7,16 +7,16 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class LoginCommand : ICommand
     {
-        private readonly IUserService UserService;
+        private readonly IUserService userService;
 
         public LoginCommand(IUserService userService)
         {
-            if(userService == null)
+            if (userService == null)
             {
                 throw new ArgumentException("User service cannot be null.");
             }
 
-            this.UserService = userService;
+            this.userService = userService;
         }
 
         public string Execute(IList<string> parameters)
@@ -29,9 +29,9 @@ namespace MoviesDatabase.CLI.Commands
             var username = parameters[0];
             var password = parameters[1];
 
-            var user = this.UserService.GetUser(username, password);
+            var user = this.userService.GetUser(username, password);
 
-            if(user == null)
+            if (user == null)
             {
                 throw new NullReferenceException("There is no user with these credentials.");
             }

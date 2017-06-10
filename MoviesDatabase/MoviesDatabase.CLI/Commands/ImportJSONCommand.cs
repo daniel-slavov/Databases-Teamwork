@@ -10,9 +10,9 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class ImportJSONCommand : ICommand
     {
-        private readonly IJSONParser JSONParser;
-		private readonly IMovieService MovieService;
-		private readonly IStarService StarService;
+        private readonly IJSONParser jsonParser;
+        private readonly IMovieService movieService;
+        private readonly IStarService starService;
 
         public ImportJSONCommand(IJSONParser jsonParser, IMovieService movieService, IStarService starService)
         {
@@ -21,19 +21,19 @@ namespace MoviesDatabase.CLI.Commands
                 throw new ArgumentNullException("JSON parser cannnot be null.");
             }
 
-			if (movieService == null)
-			{
-				throw new ArgumentNullException("Movie service cannnot be null.");
-			}
+            if (movieService == null)
+            {
+                throw new ArgumentNullException("Movie service cannnot be null.");
+            }
 
             if (starService == null)
             {
-				throw new ArgumentNullException("Star service cannnot be null.");
-			}
+                throw new ArgumentNullException("Star service cannnot be null.");
+            }
 
-            this.JSONParser = jsonParser;
-			this.MovieService = movieService;
-			this.StarService = starService;
+            this.jsonParser = jsonParser;
+            this.movieService = movieService;
+            this.starService = starService;
         }
 
         public string Execute(IList<string> parameters)
@@ -44,13 +44,13 @@ namespace MoviesDatabase.CLI.Commands
             switch (model.ToLower())
             {
                 case "movie":
-                    IList<MovieModel> movies = this.JSONParser.Parse<MovieModel>(path);
-                    this.MovieService.AddMovies(movies);
+                    IList<MovieModel> movies = this.jsonParser.Parse<MovieModel>(path);
+                    this.movieService.AddMovies(movies);
                     break;
-				case "star":
-                    IList<Star> stars = this.JSONParser.Parse<Star>(path);
-                    this.StarService.AddStars(stars);
-					break;
+                case "star":
+                    IList<Star> stars = this.jsonParser.Parse<Star>(path);
+                    this.starService.AddStars(stars);
+                    break;
                 default:
                     throw new ArgumentException($"{model}s are not supported.");
             }
@@ -59,5 +59,6 @@ namespace MoviesDatabase.CLI.Commands
         }
     }
 }
+
 // Sample command:
 // ImportJSON Movie ./sample.json

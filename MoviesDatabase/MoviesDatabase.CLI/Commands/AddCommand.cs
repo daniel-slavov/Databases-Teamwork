@@ -8,11 +8,11 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class AddCommand : ICommand
     {
-        private readonly IMovieService MovieService;
-		private readonly IReader Reader;
-		private readonly IWriter Writer;
+        private readonly IMovieService movieService;
+        private readonly IReader reader;
+        private readonly IWriter writer;
 
-		public AddCommand(IMovieService movieService, IReader reader, IWriter writer)
+        public AddCommand(IMovieService movieService, IReader reader, IWriter writer)
         {
             if (movieService == null)
             {
@@ -20,91 +20,91 @@ namespace MoviesDatabase.CLI.Commands
             }
 
             if (reader == null)
-			{
-				throw new ArgumentNullException("Console reader cannot be null.");
-			}
+            {
+                throw new ArgumentNullException("Console reader cannot be null.");
+            }
 
-			if (writer == null)
-			{
-				throw new ArgumentNullException("Console writer cannot be null.");
-			}
+            if (writer == null)
+            {
+                throw new ArgumentNullException("Console writer cannot be null.");
+            }
 
-            this.MovieService = movieService;
-			this.Reader = reader;
-            this.Writer = writer;
-		}
+            this.movieService = movieService;
+            this.reader = reader;
+            this.writer = writer;
+        }
 
         string ICommand.Execute(IList<string> parameters)
         {
-            string title = "";
-            string description = "";
-            string producer = "";
-            string studio = "";
-            string book = "";
-            string inputGenres = "";
-            string inputStars = "";
+            string title = string.Empty;
+            string description = string.Empty;
+            string producer = string.Empty;
+            string studio = string.Empty;
+            string book = string.Empty;
+            string inputGenres = string.Empty;
+            string inputStars = string.Empty;
             int year = 0;
             int length = 0;
             IList<string> genres = new List<string>();
-			IList<string> stars = new List<string>();
+            IList<string> stars = new List<string>();
 
-            while(string.IsNullOrWhiteSpace(title))
+            while (string.IsNullOrWhiteSpace(title))
             {
-                this.Writer.Write("Title: ");
-                title = this.Reader.ReadLine();
+                this.writer.Write("Title: ");
+                title = this.reader.ReadLine();
             }
 
             while (year < 1)
             {
-                this.Writer.Write("Year: ");
-                int.TryParse(this.Reader.ReadLine(), out year);
+                this.writer.Write("Year: ");
+                int.TryParse(this.reader.ReadLine(), out year);
             }
 
             while (string.IsNullOrWhiteSpace(description))
-			{
-				this.Writer.Write("Description: ");
-				description = this.Reader.ReadLine();
-			}
+            {
+                this.writer.Write("Description: ");
+                description = this.reader.ReadLine();
+            }
 
             while (year < 1)
             {
-                this.Writer.Write("Length: ");
-                length = int.Parse(this.Reader.ReadLine());
+                this.writer.Write("Length: ");
+                length = int.Parse(this.reader.ReadLine());
             }
 
             while (string.IsNullOrWhiteSpace(producer))
-			{
-				this.Writer.Write("Pruducer: ");
-				producer = this.Reader.ReadLine();
-			}
+            {
+                this.writer.Write("Pruducer: ");
+                producer = this.reader.ReadLine();
+            }
 
             while (string.IsNullOrWhiteSpace(studio))
-			{
-				this.Writer.Write("Studio: ");
-				studio = this.Reader.ReadLine();
-			}
+            {
+                this.writer.Write("Studio: ");
+                studio = this.reader.ReadLine();
+            }
 
-			while (string.IsNullOrWhiteSpace(book))
-			{
-				this.Writer.Write("Book: ");
-				book = this.Reader.ReadLine();
-			}
+            while (string.IsNullOrWhiteSpace(book))
+            {
+                this.writer.Write("Book: ");
+                book = this.reader.ReadLine();
+            }
 
             while (string.IsNullOrWhiteSpace(inputGenres))
             {
-                this.Writer.Write("Genres: ");
-                inputGenres = this.Reader.ReadLine();
-				genres = inputGenres.Replace(", ", "_").Split('_');
+                this.writer.Write("Genres: ");
+                inputGenres = this.reader.ReadLine();
+                genres = inputGenres.Replace(", ", "_").Split('_');
             }
 
             while (string.IsNullOrWhiteSpace(inputStars))
             {
-                this.Writer.Write("Stars: ");
-                inputStars = this.Reader.ReadLine();
-				stars = inputStars.Replace(", ", "_").Split('_');
+                this.writer.Write("Stars: ");
+                inputStars = this.reader.ReadLine();
+                stars = inputStars.Replace(", ", "_").Split('_');
             }
 
-            this.MovieService.CreateMovie(title, year, description, length, producer, studio, book, genres, stars);
+            this.movieService.CreateMovie(title, year, description, length, producer, studio, book, genres, stars);
 
             return "Movie was added successfully.";
         }

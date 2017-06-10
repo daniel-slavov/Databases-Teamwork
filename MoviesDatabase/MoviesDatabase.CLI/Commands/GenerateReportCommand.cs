@@ -10,13 +10,13 @@ namespace MoviesDatabase.CLI.Commands
 {
     public class GenerateReportCommand : ICommand
     {
-        private readonly IMovieService MovieService;
-        private readonly ICommand ListCommand;
+        private readonly IMovieService movieService;
+        private readonly ICommand listCommand;
 
         public GenerateReportCommand(IMovieService movieService)
         {
-            this.MovieService = movieService;
-            this.ListCommand = new ListAllCommand(movieService);
+            this.movieService = movieService;
+            this.listCommand = new ListAllCommand(movieService);
         }
 
         public string Execute(IList<string> parameters)
@@ -38,11 +38,11 @@ namespace MoviesDatabase.CLI.Commands
                     };
                     document.Add(title);
 
-                    string data = "";
+                    string data = string.Empty;
 
                     try
                     {
-                        data = this.ListCommand.Execute(null);
+                        data = this.listCommand.Execute(null);
                     }
                     catch (Exception ex)
                     {
@@ -70,5 +70,6 @@ namespace MoviesDatabase.CLI.Commands
         }
     }
 }
+
 // Sample command:
 // GenerateReport ./somepath

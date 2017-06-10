@@ -1,5 +1,4 @@
-﻿using System;
-namespace MoviesDatabase.CLI.Core.Contracts
+﻿namespace MoviesDatabase.CLI.Core.Contracts
 {
     public interface IEngine
     {
