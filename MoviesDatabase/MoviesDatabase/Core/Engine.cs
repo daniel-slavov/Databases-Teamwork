@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.CLI.Core.Contracts;

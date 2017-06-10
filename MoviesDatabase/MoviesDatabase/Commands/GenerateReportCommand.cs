@@ -1,51 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using MoviesDatabase.CLI.Commands.Contracts;
-using MoviesDatabase.CLI.Providers.Contracts;
-using MoviesDatabase.Services.Contracts;
+using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.IO;
+using MoviesDatabase.CLI.Commands.Contracts;
+using MoviesDatabase.Services.Contracts;
 
 namespace MoviesDatabase.CLI.Commands
 {
     public class GenerateReportCommand : ICommand
     {
-        public GenerateReportCommand()
+        private readonly IMovieService MovieService;
+        private readonly ICommand ListCommand;
+
+        public GenerateReportCommand(IMovieService movieService)
         {
+            this.MovieService = movieService;
+            this.ListCommand = new ListAllCommand(movieService);
         }
 
         public string Execute(IList<string> parameters)
         {
             string path = Path.Combine(parameters[0], "MoviesReport.pdf");
 
-
-            if (!System.IO.File.Exists(path))
+            if (!File.Exists(path))
             {
                 using (FileStream fileStream = File.Create(path))
                 {
-                    Document document = new Document(PageSize.A4, 10, 10, 10, 10);
+                    Document document = new Document(PageSize.A4.Rotate(), 10, 10, 10, 10);
 
                     PdfWriter writer = PdfWriter.GetInstance(document, fileStream);
                     document.Open();
 
-                    Chunk chunk = new Chunk("This is from chunk. ");
-                    document.Add(chunk);
+                    Paragraph title = new Paragraph("Movies in the database:")
+                    {
+                        Alignment = Element.ALIGN_CENTER
+                    };
+                    document.Add(title);
 
-                    Phrase phrase = new Phrase("This is from Phrase.");
-                    document.Add(phrase);
+                    string data = "";
 
-                    Paragraph para = new Paragraph("This is from paragraph.");
-                    document.Add(para);
+                    try
+                    {
+                        data = this.ListCommand.Execute(null);
+                    }
+                    catch (Exception ex)
+                    {
+                        data = ex.Message;
+                    }
 
-                    string text = "you are successfully created PDF file.";
-                    Paragraph paragraph = new Paragraph();
-                    paragraph.SpacingBefore = 10;
-                    paragraph.SpacingAfter = 10;
-                    paragraph.Alignment = Element.ALIGN_LEFT;
-                    paragraph.Font = FontFactory.GetFont(FontFactory.HELVETICA, 12f, BaseColor.GREEN);
-                    paragraph.Add(text);
-                    document.Add(paragraph);
+                    Paragraph dataParagraph = new Paragraph(data);
+                    document.Add(dataParagraph);
+
+                    Paragraph date = new Paragraph(DateTime.Now.ToString())
+                    {
+                        Alignment = Element.ALIGN_RIGHT
+                    };
+                    document.Add(date);
 
                     document.Close();
                 }
@@ -55,7 +66,7 @@ namespace MoviesDatabase.CLI.Commands
                 throw new IOException("File already exists.");
             }
 
-            return "generateReport";
+            return "Report generated successfully.";
         }
     }
 }
