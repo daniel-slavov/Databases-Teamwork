@@ -12,7 +12,23 @@ namespace MoviesDatabase.CLI.Core
         private const string LogoutCommand = "logout";
         private const string HelpCommand = "help";
 
-        private const string Help = @"Help:"; // to be filled
+        private const string Help = @"Help:
+    Commands:
+        - Add - Adds a new movie in the database.
+        - Delete Sample_Movie_Title - Deletes the movie from the database.
+        - Exit - Closes the application.
+        - GenerateReport ./folder/subfolder - Generates a report with all movies in the database and exports a PDF file in the provided location.
+        - ImportJSON ./folder/sampleFile.json - Imports the provided JSON file in the database.
+        - ImportXML ./folder/sampleFile.json - Imports the provided XML file in the database.
+        - ListAll - Lists all movies in the console.
+        - ListByGenre sampleGenre - Lists all movies with the provided genre in the console.
+        - ListByStar FirstName_LastName - Lists all movies with the provided star in the console.
+        - Login username password - Logs you in.
+        - Logout - Logs you out.
+
+All commands are case insensitive.
+You should be logged in to use database functionalities.
+";
 
         private readonly IReader reader;
         private readonly IWriter writer;
