@@ -74,6 +74,7 @@
     <Compile Include="Services\BookServiceTests.cs" />
     <Compile Include="Services\GenreServiceTests.cs" />
     <Compile Include="Services\ProducerServiceTests.cs" />
+    <Compile Include="Services\StarServiceTests.cs" />
     <Compile Include="Services\StudioServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\UserServiceTests.cs" />

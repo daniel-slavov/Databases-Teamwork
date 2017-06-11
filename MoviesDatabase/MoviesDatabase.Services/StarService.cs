@@ -22,6 +22,11 @@ namespace MoviesDatabase.Services
                 throw new ArgumentNullException("Star repository cannot be null!");
             }
 
+            if (unitOfWork == null)
+            {
+                throw new ArgumentNullException("Unit of work cannot be null");
+            }
+
             if (starFactory == null)
             {
                 throw new ArgumentNullException("Star factory cannot be null!");
