@@ -64,9 +64,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\AddCommandTests.cs" />
     <Compile Include="Commands\DeleteCommandTests.cs" />
+    <Compile Include="Commands\ListByStarCommandTests.cs" />
     <Compile Include="Commands\ListAllCommandTests.cs" />
+    <Compile Include="Commands\ListByGenreCommandTests.cs" />
+    <Compile Include="Commands\LoginCommandTests.cs" />
+    <Compile Include="Commands\UpdateCommandTests.cs" />
     <Compile Include="Models\ProducerTest.cs" />
     <Compile Include="Models\StudioTest.cs" />
     <Compile Include="Models\UserTest.cs" />

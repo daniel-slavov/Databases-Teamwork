@@ -35,7 +35,7 @@ namespace MoviesDatabase.CLI.Commands
 
             if (movies == null)
             {
-                throw new ArgumentNullException("No movies to show.");
+                throw new NullReferenceException("No movies to show.");
             }
 
             IEnumerable<MovieForPrint> moviesForPrint = this.movieService.ConvertForPrint(movies);

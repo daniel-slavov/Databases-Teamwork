@@ -13,7 +13,7 @@ namespace MoviesDatabase.CLI.Commands
         {
             if (userService == null)
             {
-                throw new ArgumentException("User service cannot be null.");
+                throw new ArgumentNullException("User service cannot be null.");
             }
 
             this.userService = userService;

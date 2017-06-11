@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace MoviesDatabase.Test.Commands
 {
     [TestFixture]
-    public class ListAllCommandTests
+    public class ListByStarCommandTests
     {
         private Mock<IMovieService> movieServiceMock;
         private Mock<ITableCreator> tableCreatorMock;
@@ -26,31 +26,31 @@ namespace MoviesDatabase.Test.Commands
         [Test]
         public void Constructor_ShouldNotThrow_WhenAllServicesAreProvided()
         {
-            Assert.DoesNotThrow(() => new ListAllCommand(movieServiceMock.Object, tableCreatorMock.Object));
+            Assert.DoesNotThrow(() => new ListByStarCommand(movieServiceMock.Object, tableCreatorMock.Object));
         }
 
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenMovieServiceIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new ListAllCommand(null, tableCreatorMock.Object));
+            Assert.Throws<ArgumentNullException>(() => new ListByStarCommand(null, tableCreatorMock.Object));
         }
 
         [Test]
         public void Constructor_ShouldThrowArgumentNullException_WhenTableCreatorIsNull()
         {
-            Assert.Throws<ArgumentNullException>(() => new ListAllCommand(movieServiceMock.Object, null));
+            Assert.Throws<ArgumentNullException>(() => new ListByStarCommand(movieServiceMock.Object, null));
         }
 
         [Test]
         public void Execute_ShouldReturnCorrectString()
         {
-            var listAllCommand = new ListAllCommand(movieServiceMock.Object, tableCreatorMock.Object);
+            var listByStarCommand = new ListByStarCommand(movieServiceMock.Object, tableCreatorMock.Object);
             var expectedResult = "test string";
-            movieServiceMock.Setup(x => x.GetAllMovies()).Returns(new List<Movie>());
+            movieServiceMock.Setup(x => x.GetMoviesByStar("")).Returns(new List<Movie>());
             movieServiceMock.Setup(x => x.ConvertForPrint(new List<Movie>())).Returns(new List<MovieForPrint>());
             tableCreatorMock.Setup(x => x.CreateTable<MovieForPrint>(new List<MovieForPrint>())).Returns(expectedResult);
 
-            var actualResult = listAllCommand.Execute(new List<string>());
+            var actualResult = listByStarCommand.Execute(new List<string>());
 
             StringAssert.AreEqualIgnoringCase(expectedResult, actualResult);
         }
@@ -58,10 +58,10 @@ namespace MoviesDatabase.Test.Commands
         [Test]
         public void Execute_ShouldThrowNullReferenceException_WhenNoMoviesAreReturnedFromDatabase()
         {
-            var listAllCommand = new ListAllCommand(movieServiceMock.Object, tableCreatorMock.Object);
-            movieServiceMock.Setup(x => x.GetAllMovies()).Returns((IEnumerable<Movie>)null);
+            var listByStarCommand = new ListByStarCommand(movieServiceMock.Object, tableCreatorMock.Object);
+            movieServiceMock.Setup(x => x.GetMoviesByStar("")).Returns((IEnumerable<Movie>)null);
 
-            Assert.Throws<NullReferenceException>(() => listAllCommand.Execute(new List<string>()));
+            Assert.Throws<NullReferenceException>(() => listByStarCommand.Execute(new List<string>() { "" }));
         }
     }
 }

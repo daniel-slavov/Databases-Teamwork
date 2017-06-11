@@ -1,6 +1,6 @@
-﻿using ConsoleTables;
+﻿using System.Collections.Generic;
+using ConsoleTables;
 using MoviesDatabase.CLI.Providers.Contracts;
-using System.Collections.Generic;
 
 namespace MoviesDatabase.CLI.Providers
 {

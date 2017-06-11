@@ -34,7 +34,7 @@ namespace MoviesDatabase.CLI.Commands
             this.writer = writer;
         }
 
-        string ICommand.Execute(IList<string> parameters)
+        public string Execute(IList<string> parameters)
         {
             string title = string.Empty;
             string description = string.Empty;
