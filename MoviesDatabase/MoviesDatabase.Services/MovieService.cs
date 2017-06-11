@@ -21,7 +21,15 @@ namespace MoviesDatabase.Services
         private readonly IBookService bookService;
         private readonly IStarService starService;
 
-        public MovieService(IRepository<Movie> movieRepository, IUnitOfWork unitOfWork, IMovieFactory movieFactory, IProducerService producerService, IStudioService studioService, IGenreService genreService, IBookService bookService, IStarService starService)
+        public MovieService(
+            IRepository<Movie> movieRepository,
+            IUnitOfWork unitOfWork,
+            IMovieFactory movieFactory,
+            IProducerService producerService,
+            IStudioService studioService,
+            IGenreService genreService,
+            IBookService bookService,
+            IStarService starService)
         {
             if (movieRepository == null)
             {
@@ -182,6 +190,11 @@ namespace MoviesDatabase.Services
         {
             var movie = this.movieRepository.Entities
                 .FirstOrDefault(m => m.Title == title);
+
+            if (movie == null)
+            {
+                throw new NullReferenceException("There is no movie this title.");
+            }
 
             this.movieRepository.Delete(movie);
             this.unitOfWork.Commit();

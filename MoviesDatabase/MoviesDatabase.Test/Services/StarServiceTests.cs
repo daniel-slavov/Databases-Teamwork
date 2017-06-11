@@ -148,7 +148,7 @@ namespace MoviesDatabase.Test.Services
         }
 
         [Test]
-        public void CreateStar_ShouldReturnCorrectBook_WhenValidParametersPassed()
+        public void CreateStar_ShouldReturnCorrectStar_WhenValidParametersPassed()
         {
             var starRepositoryMock = new Mock<IRepository<Star>>();
             var unitOfWorkMock = new Mock<IUnitOfWork>();
@@ -205,6 +205,52 @@ namespace MoviesDatabase.Test.Services
         }
 
         [Test]
+        public void GetAllMoviesOfStar_ShouldCallRepositoryEntities_WhenValidParametersPassed()
+        {
+            var firstName = "Natalie";
+            var lastName = "Portman";
+            var starRepositoryMock = new Mock<IRepository<Star>>();
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var starFactoryMock = new Mock<IStarFactory>();
+            var list = new List<Star>() { new Star(firstName, lastName, null, null) };
+            var queryableStars = list.AsQueryable();
+            starRepositoryMock.Setup(r => r.Entities).Returns(queryableStars);
+            var starService = new StarService(
+                starRepositoryMock.Object, unitOfWorkMock.Object, starFactoryMock.Object);
+
+            starService.GetAllMoviesOfStar(firstName, lastName);
+
+            starRepositoryMock.Verify(r => r.Entities, Times.Once);
+        }
+
+        [Test]
+        public void GetAllMoviesOfStar_ShouldReturnCorrectMovies_WhenValidParametersPassed()
+        {
+            var firstName = "Natalie";
+            var lastName = "Portman";
+            var starRepositoryMock = new Mock<IRepository<Star>>();
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var starFactoryMock = new Mock<IStarFactory>();
+            var star = new Star(firstName, lastName, null, null);
+            var list = new List<Star>() { star };
+            var queryableStars = list.AsQueryable();
+            starRepositoryMock.Setup(r => r.Entities).Returns(queryableStars);
+            var movies = new List<Movie>()
+            {
+                new Movie("Fast And Furious", 2001, null, 112, null, null, null, null, null),
+                new Movie("Fast And Furious 2", 2002, null, 112, null, null, null, null, null)
+            };
+            star.Movies.Add(movies[0]);
+            star.Movies.Add(movies[1]);
+            var starService = new StarService(
+                starRepositoryMock.Object, unitOfWorkMock.Object, starFactoryMock.Object);
+
+            var returnedMoves = starService.GetAllMoviesOfStar(firstName, lastName);
+
+            Assert.AreEqual(movies, returnedMoves);
+        }
+
+        [Test]
         public void UpdateStar_ShouldCallRepositoryAddMethod_WhenValidParametersPassed()
         {
             var starRepositoryMock = new Mock<IRepository<Star>>();
@@ -254,7 +300,7 @@ namespace MoviesDatabase.Test.Services
         }
 
         [Test]
-        public void DeleteStar_ShouldThrowArgumentNullException_WhenBookIsNotFound()
+        public void DeleteStar_ShouldThrowNullReferenceException_WhenStarIsNotFound()
         {
             var firstName = "Natalie";
             var lastName = "Portman";
@@ -291,7 +337,7 @@ namespace MoviesDatabase.Test.Services
         }
 
         [Test]
-        public void DeleteBook_ShouldCallUnitOfWorkCommitMethod_WhenValidParametersPassed()
+        public void DeleteStar_ShouldCallUnitOfWorkCommitMethod_WhenValidParametersPassed()
         {
             var firstName = "Natalie";
             var lastName = "Portman";

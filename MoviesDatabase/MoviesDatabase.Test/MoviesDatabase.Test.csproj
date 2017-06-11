@@ -73,6 +73,7 @@
     <Compile Include="Models\MovieTest.cs" />
     <Compile Include="Services\BookServiceTests.cs" />
     <Compile Include="Services\GenreServiceTests.cs" />
+    <Compile Include="Services\MovieServiceTests.cs" />
     <Compile Include="Services\ProducerServiceTests.cs" />
     <Compile Include="Services\StarServiceTests.cs" />
     <Compile Include="Services\StudioServiceTest.cs" />
