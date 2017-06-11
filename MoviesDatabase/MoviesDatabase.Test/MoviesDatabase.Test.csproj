@@ -64,6 +64,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\DeleteCommandTests.cs" />
+    <Compile Include="Commands\ListAllCommandTests.cs" />
     <Compile Include="Models\ProducerTest.cs" />
     <Compile Include="Models\StudioTest.cs" />
     <Compile Include="Models\UserTest.cs" />
@@ -84,6 +87,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MoviesDatabase.CLI\MoviesDatabase.CLI.csproj">
+      <Project>{ea63dbd7-15b0-4cf3-a343-ad80d63d5722}</Project>
+      <Name>MoviesDatabase.CLI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MoviesDatabase.Data\MoviesDatabase.Data.csproj">
       <Project>{914326FF-1E4E-4511-8093-F6DFB741F9DB}</Project>
       <Name>MoviesDatabase.Data</Name>
@@ -95,6 +102,14 @@
     <ProjectReference Include="..\MoviesDatabase.Models\MoviesDatabase.Models.csproj">
       <Project>{a3aaa882-1b28-4abb-8586-731c5d43ac3c}</Project>
       <Name>MoviesDatabase.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.Parsers\MoviesDatabase.Parsers.csproj">
+      <Project>{29d4fff4-1525-4601-b0fd-dedb5d68c831}</Project>
+      <Name>MoviesDatabase.Parsers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MoviesDatabase.PostgreSQL\MoviesDatabase.PostgreSQL.csproj">
+      <Project>{3bd7d1f1-3f47-49a8-a0d0-6e08d516de2a}</Project>
+      <Name>MoviesDatabase.PostgreSQL</Name>
     </ProjectReference>
     <ProjectReference Include="..\MoviesDatabase.Services\MoviesDatabase.Services.csproj">
       <Project>{5d0a0f23-57c4-4df5-9064-c65b9b281688}</Project>

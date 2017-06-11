@@ -5,18 +5,31 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MoviesDatabase.CLI.Commands.Contracts;
 using MoviesDatabase.Services.Contracts;
+using MoviesDatabase.CLI.Providers.Contracts;
 
 namespace MoviesDatabase.CLI.Commands
 {
     public class GenerateReportCommand : ICommand
     {
         private readonly IMovieService movieService;
+        private readonly ITableCreator tableCreator;
         private readonly ICommand listCommand;
 
-        public GenerateReportCommand(IMovieService movieService)
+        public GenerateReportCommand(IMovieService movieService, ITableCreator tableCreator)
         {
+            if (movieService == null)
+            {
+                throw new ArgumentNullException("Movie service cannot be null.");
+            }
+
+            if (tableCreator == null)
+            {
+                throw new ArgumentNullException("Table creator cannot be null.");
+            }
+
             this.movieService = movieService;
-            this.listCommand = new ListAllCommand(movieService);
+            this.tableCreator = tableCreator;
+            this.listCommand = new ListAllCommand(movieService, tableCreator);
         }
 
         public string Execute(IList<string> parameters)
@@ -49,6 +62,7 @@ namespace MoviesDatabase.CLI.Commands
                         data = ex.Message;
                     }
 
+                    // Font tableFont = new Font(Currier, 16, Font.NORMAL);
                     Paragraph dataParagraph = new Paragraph(data);
                     document.Add(dataParagraph);
 
