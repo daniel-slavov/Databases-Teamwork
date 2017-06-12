@@ -24,4 +24,20 @@
       China
     </address>
   </studio>
+  <studio>
+    <name>
+      Twentieth Century
+    </name>
+    <address>
+      Hollywood, USA
+    </address>
+  </studio>
+  <studio>
+    <name>
+      Disney
+    </name>
+    <address>
+      Hollywood, USA
+    </address>
+  </studio>
 </studios>

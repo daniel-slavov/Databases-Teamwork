@@ -116,5 +116,216 @@
             "Mystery",
             "Sci-Fi"
         ]
+    },
+    {
+        "Title": "Spider-Man",
+        "Year": 2002,
+        "Description": "When bitten by a genetically modified spider, a nerdy, shy, and awkward high school student gains spider-like abilities that he eventually must use to fight evil as a superhero after tragedy befalls his family.",
+        "Length":121,
+        "ProducerName": "Sam Raimi",
+        "StudioName":"Columbia Pictures",
+        "BookTitle": "SpiderMan",
+        "Stars":[
+            "Tobey Maguire",
+            "Kirsten Dunst",
+            "Willem Dafoe",
+            "James Franco"
+        ],
+        "Genres":[
+            "Adventure",
+            "Action"
+        ]
+    },
+    {
+        "Title": "The Matrix",
+        "Year": 1999,
+        "Description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+        "Length":136,
+        "ProducerName": "Wachowski Brothers",
+        "StudioName":"Warner Bros.",
+        "BookTitle": "The Matrix",
+        "Stars":[
+            "Keanu Reeves",
+            "Laurence Fishburne",
+            "Carrie-Anne Moss"
+        ],
+        "Genres":[
+            "Action",
+            "Sci-Fi"
+        ]
+    },
+    {
+        "Title": "Alice in Wonderland",
+        "Year": 2010,
+        "Description": "Nineteen-year-old Alice returns to the magical world from her childhood adventure, where she reunites with her old friends and learns of her true destiny: to end the Red Queen's reign of terror.",
+        "Length":108,
+        "ProducerName": "Tim Burton",
+        "StudioName":"Walt Disney Pictures",
+        "BookTitle": "Alice in Wonderland",
+        "Stars":[
+            "Mia Wasikowska",
+            "Johnny Depprne",
+            "Helena Bonham Carter",
+            "Anne Hathaway"
+        ],
+        "Genres":[
+            "Adventure",
+            "Family",
+            "Fantasy"
+        ]
+    },
+    {
+        "Title": "Pirates of the Caribbean",
+        "Year": 2003,
+        "Description": "Blacksmith Will Turner teams up with eccentric pirate Captain Jack Sparrow to save his love, the governor's daughter, from Jack's former pirate allies, who are now undead.",
+        "Length":143,
+        "ProducerName": "Gore Verbinski",
+        "StudioName":"Walt Disney Pictures",
+        "BookTitle": "Pirates Of the Caribbean",
+        "Stars":[
+            "Johnny Depp",
+            "Orlando Bloom",
+            "Keira Knightley",
+            "Geoffrey Rush"
+        ],
+        "Genres":[
+            "Adventure",
+            "Action",
+            "Fantasy"
+        ]
+    },
+    {
+        "Title": "The Wolf of Wall Street",
+        "Year": 2013,
+        "Description": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+        "Length":180,
+        "ProducerName": "Martin Scorsese",
+        "StudioName":"Red Granite Pictures",
+        "BookTitle": "The Wolf of Wall Street",
+        "Stars":[
+            "Leonardo DiCaprio",
+            "Jonah Hill",
+            "Margot Robbie",
+            "Matthew McConaughey"
+        ],
+        "Genres":[
+            "Biography",
+            "Comedy",
+            "Crime",
+            "Drama"
+        ]
+    },
+    {
+        "Title": "We're the Millers",
+        "Year": 2013,
+        "Description": "A veteran pot dealer creates a fake family as part of his plan to move a huge shipment of weed into the U.S. from Mexico.",
+        "Length":110,
+        "ProducerName": "Rawson Marshall Thurber",
+        "StudioName":"New Line Cinema",
+        "BookTitle": "We're the Millers",
+        "Stars":[
+            "Jennifer Aniston",
+            "Jason Sudeikis",
+            "Emma Roberts",
+            "Will Poulter"
+        ],
+        "Genres":[
+            "Comedy",
+            "Crime"
+        ]
+    },
+    {
+        "Title": "Pretty Woman",
+        "Year": 1990,
+        "Description": "A man in a legal but hurtful business needs an escort for some social events, and hires a beautiful prostitute he meets... only to fall in love.",
+        "Length":119,
+        "ProducerName": "Garry Marshall",
+        "StudioName":"Touchstone Pictures",
+        "BookTitle": "Pretty Woman",
+        "Stars":[
+            "Richard Gere",
+            "Julia Roberts"
+        ],
+        "Genres":[
+            "Comedy",
+            "Romance"
+        ]
+    },
+    {
+        "Title": "Dirty Grandpa",
+        "Year": 2016,
+        "Description": "Right before his wedding, an uptight guy is tricked into driving his grandfather, a lecherous former Army Lieutenant-Colonel, to Florida for spring break.",
+        "Length":102,
+        "ProducerName": "Dan Mazer",
+        "StudioName":"Lionsgate",
+        "BookTitle": "Dirty Grandpa",
+        "Stars":[
+            "Robert De Niro",
+            "Zac Efron",
+            "Zoey Deutch",
+            "Julianne Hough"
+        ],
+        "Genres":[
+            "Comedy"
+        ]
+    },
+    {
+        "Title": "Suicide Squad",
+        "Year": 2016,
+        "Description": "A secret government agency recruits some of the most dangerous incarcerated super-villains to form a defensive task force. Their first mission: save the world from the apocalypse.",
+        "Length":123,
+        "ProducerName": "David Ayer",
+        "StudioName":"Warner Bros.",
+        "BookTitle": "Suicide Squad",
+        "Stars":[
+            "Will Smith",
+            "Margot Robbie",
+            "Jared Leto",
+            "Viola Davis"
+        ],
+        "Genres":[
+            "Action",
+            "Adventure",
+            "Fantasy",
+            "Sci-Fi"
+        ]
+    },
+    {
+        "Title": "The Internship",
+        "Year": 2013,
+        "Description": "Two salesmen whose careers have been torpedoed by the digital age find their way into a coveted internship at Google, where they must compete with a group of young, tech-savvy geniuses for a shot at employment.",
+        "Length":119,
+        "ProducerName": "Shawn Levy",
+        "StudioName":"Twentieth Century Fox",
+        "BookTitle": "The Internship",
+        "Stars":[
+            "Owen Wilson",
+            "Vince Vaughn",
+            "Rose Byrne",
+            "Dylan O'Brien"
+        ],
+        "Genres":[
+            "Comedy"
+        ]
+    },
+    {
+        "Title": "Snow White and the Huntsman",
+        "Year": 2012,
+        "Description": "In a twist to the fairy tale, the Huntsman ordered to take Snow White into the woods to be killed winds up becoming her protector and mentor in a quest to vanquish the Evil Queen.",
+        "Length":127,
+        "ProducerName": "Rupert Sanders",
+        "StudioName":"Universal Pictures",
+        "BookTitle": "Snow White",
+        "Stars":[
+            "Charlize Theron",
+            "Kristen Stewart",
+            "Chris Hemsworth"
+        ],
+        "Genres":[
+            "Action",
+            "Adventure",
+            "Drama",
+            "Fantasy"
+        ]
     }
 ]

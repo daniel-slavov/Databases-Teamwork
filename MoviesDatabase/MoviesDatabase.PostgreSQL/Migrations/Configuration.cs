@@ -19,8 +19,7 @@ namespace MoviesDatabase.PostgreSQL.Migrations
                 user => user.Username,
                 new User() { Username = "simona.tsenova", PassHash = "123456" },
                 new User() { Username = "yoana.georgieva", PassHash = "123456" },
-                new User() { Username = "daniel.slavov", PassHash = "123456" }
-                );
+                new User() { Username = "daniel.slavov", PassHash = "123456" });
         }
     }
 }

@@ -104,7 +104,6 @@ namespace MoviesDatabase.Data.Migrations
                 .ForeignKey("dbo.Movies", t => t.Movie_MovieID, cascadeDelete: true)
                 .Index(t => t.Star_StarID)
                 .Index(t => t.Movie_MovieID);
-            
         }
         
         public override void Down()
