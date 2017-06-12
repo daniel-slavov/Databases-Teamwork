@@ -8,7 +8,7 @@ namespace MoviesDatabase.Data
     public class MoviesDbContext : DbContext
     {
         public MoviesDbContext()
-            : base("MoviesDBConnection")
+            : base("MoviesHostedDB")
         {
         }
 
