@@ -30,7 +30,7 @@ namespace MoviesDatabase.CLI
             this.Bind<IReader>().To<ConsoleReader>().InSingletonScope();
             this.Bind<IWriter>().To<ConsoleWriter>().InSingletonScope();
             this.Bind<ICommandParser>().To<CommandParser>().InSingletonScope();
-
+            this.Bind<ITableCreator>().To<TableCreator>();
             this.Bind<IJSONParser>().To<JSONParser>();
             this.Bind<IXMLParser>().To<XMLParser>();
 
