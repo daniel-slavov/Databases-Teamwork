@@ -858,49 +858,57 @@ namespace MoviesDatabase.Test.Services
             unitOfWorkMock.Verify(n => n.Commit(), Times.Once);
         }
 
-        //[Test]
-        //public void CreateMovie_ShouldReturnCorrectMovie_WhenValidParametersPassed()
-        //{
-        //    var title = "Star Wars";
-        //    var year = 2001;
-        //    var length = 136;
-        //    var genres = new List<string>()
-        //    {
-        //        "Adventure"
-        //    };
-        //    var stars = new List<string>()
-        //    {
-        //        "Harrison Ford"
-        //    };
+        [Test]
+        public void CreateMovie_ShouldReturnCorrectMovie_WhenValidParametersPassed()
+        {
+            var title = "Star Wars";
+            var year = 2001;
+            var length = 136;
+            var genres = new List<string>()
+            {
+                "Adventure"
+            };
+            var stars = new List<string>()
+            {
+                "Harrison Ford"
+            };
 
-        //    var movieRepositoryMock = new Mock<IRepository<Movie>>();
-        //    var unitOfWorkMock = new Mock<IUnitOfWork>();
-        //    var movieFactoryMock = new Mock<IMovieFactory>();
-        //    var producerServiceMock = new Mock<IProducerService>();
-        //    var studioServiceMock = new Mock<IStudioService>();
-        //    var genreServiceMock = new Mock<IGenreService>();
-        //    var bookServiceMock = new Mock<IBookService>();
-        //    var starServiceMock = new Mock<IStarService>();
-        //    var genresObjects = new List<Genre>()
-        //    {
-        //        new Genre("Adventure")
-        //    };
-        //    var starsObjects = new List<Star>()
-        //    {
-        //        new Star("Harrison", "Ford", null, null)
-        //    };
-        //    var producer = new Producer("George Lucas");
-        //    var book = new Book("Star Wars", null, null);
-        //    var studio = new Studio("Twentieth Century", null);
-        //    var movie = new Movie(title, year, null, length, producer, studio, book, genresObjects, starsObjects);
-        //    movieFactoryMock.Setup(f => f.CreateMovie(title, year, null, length, producer, studio, book, genresObjects, starsObjects)).Returns(movie);
-        //    var movieService = new MovieService(movieRepositoryMock.Object, unitOfWorkMock.Object, movieFactoryMock.Object, producerServiceMock.Object,
-        //        studioServiceMock.Object, genreServiceMock.Object, bookServiceMock.Object, starServiceMock.Object);
-            
+            var movieRepositoryMock = new Mock<IRepository<Movie>>();
+            var unitOfWorkMock = new Mock<IUnitOfWork>();
+            var movieFactoryMock = new Mock<IMovieFactory>();
+            var producerServiceMock = new Mock<IProducerService>();
+            var studioServiceMock = new Mock<IStudioService>();
+            var genreServiceMock = new Mock<IGenreService>();
+            var bookServiceMock = new Mock<IBookService>();
+            var starServiceMock = new Mock<IStarService>();
+            var genresObjects = new List<Genre>()
+            {
+                new Genre("Adventure")
+            };
+            var starsObjects = new List<Star>()
+            {
+                new Star("Harrison", "Ford", null, null)
+            };
+            var producer = new Producer("George Lucas");
+            producerServiceMock.Setup(s => s.CreateProducer("George Lucas")).Returns(producer);
 
-        //    var createdMovie = movieService.CreateMovie(title, year, null, length, "George Lucas", "Twentieth Century", "Star Wars", genres, stars);
+            var book = new Book("Star Wars", null, null);
+            bookServiceMock.Setup(s => s.CreateBook("Star Wars", null, null)).Returns(book);
 
-        //    Assert.AreSame(movie, createdMovie);
-        //}
+            var studio = new Studio("Twentieth Century", null);
+            studioServiceMock.Setup(s => s.CreateStudio("Twentieth Century", null)).Returns(studio);
+            starServiceMock.Setup(s => s.GetStarByName("Harrison", "Ford")).Returns(starsObjects[0]);
+            genreServiceMock.Setup(s => s.GetGenreBy("Adventure")).Returns(genresObjects[0]);
+
+            var movie = new Movie(title, year, null, length, producer, studio, book, genresObjects, starsObjects);
+            movieFactoryMock.Setup(f => f.CreateMovie(title, year, null, length, producer, studio, book, genresObjects, starsObjects)).Returns(movie);
+            var movieService = new MovieService(movieRepositoryMock.Object, unitOfWorkMock.Object, movieFactoryMock.Object, producerServiceMock.Object,
+                studioServiceMock.Object, genreServiceMock.Object, bookServiceMock.Object, starServiceMock.Object);
+
+
+            var createdMovie = movieService.CreateMovie(title, year, null, length, "George Lucas", "Twentieth Century", "Star Wars", genres, stars);
+
+            Assert.AreSame(movie, createdMovie);
+        }
     }
 }
