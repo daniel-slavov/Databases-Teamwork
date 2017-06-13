@@ -55,7 +55,7 @@ namespace MoviesDatabase.CLI.Commands
 
                     foreach (string parameter in parameters)
                     {
-                        KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
+                        KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1].Replace("_", " "));
 
                         PropertyInfo propertyInfo = currentBook.GetType().GetProperty(update.Key);
                         propertyInfo.SetValue(currentBook, Convert.ChangeType(update.Value, (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? Nullable.GetUnderlyingType(propertyInfo.PropertyType) : propertyInfo.PropertyType), null);
@@ -77,7 +77,7 @@ namespace MoviesDatabase.CLI.Commands
 
                     foreach (string parameter in parameters)
                     {
-                        KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
+                        KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1].Replace("_", " "));
 
                         PropertyInfo propertyInfo = currentStar.GetType().GetProperty(update.Key);
                         propertyInfo.SetValue(currentStar, Convert.ChangeType(update.Value, (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? Nullable.GetUnderlyingType(propertyInfo.PropertyType) : propertyInfo.PropertyType), null);
@@ -96,7 +96,7 @@ namespace MoviesDatabase.CLI.Commands
 
                     foreach (string parameter in parameters)
                     {
-                        KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1]);
+                        KeyValuePair<string, string> update = new KeyValuePair<string, string>(parameter.Split(':')[0], parameter.Split(':')[1].Replace("_", " "));
 
                         PropertyInfo propertyInfo = currentStudio.GetType().GetProperty(update.Key);
                         propertyInfo.SetValue(currentStudio, Convert.ChangeType(update.Value, (propertyInfo.PropertyType.IsGenericType && propertyInfo.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) ? Nullable.GetUnderlyingType(propertyInfo.PropertyType) : propertyInfo.PropertyType), null);
